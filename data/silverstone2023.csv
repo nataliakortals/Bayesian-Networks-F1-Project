@@ -1,0 +1,972 @@
+"X","driver","lap_number","driver_number","lap_time","tyre","team","position","rainfall","pitstop_duration","start_position","traction","asphalt_grip","asphalt_abrasion","track_evol","tyre_stress","braking","lateral","downforce"
+1,"ALB",1,23,101.364,"MEDIUM","Williams",10,"Dry",NA,8,3,3,3,2,5,2,5,4
+2,"ALB",2,23,95.004,"MEDIUM","Williams",10,"Dry",NA,8,3,3,3,2,5,2,5,4
+3,"ALB",3,23,93.809,"MEDIUM","Williams",10,"Dry",NA,8,3,3,3,2,5,2,5,4
+4,"ALB",4,23,93.866,"MEDIUM","Williams",10,"Dry",NA,8,3,3,3,2,5,2,5,4
+5,"ALB",5,23,93.86,"MEDIUM","Williams",10,"Dry",NA,8,3,3,3,2,5,2,5,4
+6,"ALB",6,23,94.21,"MEDIUM","Williams",10,"Dry",NA,8,3,3,3,2,5,2,5,4
+7,"ALB",7,23,94.099,"MEDIUM","Williams",10,"Dry",NA,8,3,3,3,2,5,2,5,4
+8,"ALB",8,23,93.922,"MEDIUM","Williams",10,"Dry",NA,8,3,3,3,2,5,2,5,4
+9,"ALB",9,23,93.731,"MEDIUM","Williams",10,"Dry",NA,8,3,3,3,2,5,2,5,4
+10,"ALB",10,23,94.045,"MEDIUM","Williams",10,"Dry",NA,8,3,3,3,2,5,2,5,4
+11,"ALB",11,23,93.842,"MEDIUM","Williams",10,"Dry",NA,8,3,3,3,2,5,2,5,4
+12,"ALB",12,23,93.857,"MEDIUM","Williams",10,"Dry",NA,8,3,3,3,2,5,2,5,4
+13,"ALB",13,23,93.751,"MEDIUM","Williams",10,"Dry",NA,8,3,3,3,2,5,2,5,4
+14,"ALB",14,23,93.951,"MEDIUM","Williams",10,"Dry",NA,8,3,3,3,2,5,2,5,4
+15,"ALB",15,23,93.786,"MEDIUM","Williams",10,"Dry",NA,8,3,3,3,2,5,2,5,4
+16,"ALB",16,23,94.343,"MEDIUM","Williams",11,"Dry",NA,8,3,3,3,2,5,2,5,4
+17,"ALB",17,23,93.707,"MEDIUM","Williams",11,"Dry",NA,8,3,3,3,2,5,2,5,4
+18,"ALB",18,23,93.615,"MEDIUM","Williams",11,"Dry",NA,8,3,3,3,2,5,2,5,4
+19,"ALB",19,23,93.654,"MEDIUM","Williams",10,"Dry",NA,8,3,3,3,2,5,2,5,4
+20,"ALB",20,23,93.44,"MEDIUM","Williams",10,"Dry",NA,8,3,3,3,2,5,2,5,4
+21,"ALB",21,23,93.195,"MEDIUM","Williams",10,"Dry",NA,8,3,3,3,2,5,2,5,4
+22,"ALB",22,23,93.021,"MEDIUM","Williams",10,"Dry",NA,8,3,3,3,2,5,2,5,4
+23,"ALB",23,23,93.117,"MEDIUM","Williams",10,"Dry",NA,8,3,3,3,2,5,2,5,4
+24,"ALB",24,23,93.163,"MEDIUM","Williams",10,"Dry",NA,8,3,3,3,2,5,2,5,4
+25,"ALB",25,23,93.374,"MEDIUM","Williams",10,"Dry",NA,8,3,3,3,2,5,2,5,4
+26,"ALB",26,23,93.175,"MEDIUM","Williams",10,"Dry",NA,8,3,3,3,2,5,2,5,4
+27,"ALB",27,23,93.126,"MEDIUM","Williams",9,"Dry",NA,8,3,3,3,2,5,2,5,4
+28,"ALB",28,23,93.084,"MEDIUM","Williams",9,"Dry",NA,8,3,3,3,2,5,2,5,4
+29,"ALB",29,23,92.869,"MEDIUM","Williams",7,"Dry",NA,8,3,3,3,2,5,2,5,4
+30,"ALB",30,23,92.882,"MEDIUM","Williams",7,"Dry",NA,8,3,3,3,2,5,2,5,4
+31,"ALB",31,23,92.816,"MEDIUM","Williams",7,"Dry",NA,8,3,3,3,2,5,2,5,4
+32,"ALB",32,23,96.773,"MEDIUM","Williams",6,"Dry",NA,8,3,3,3,2,5,2,5,4
+33,"ALB",33,23,146.603,"SOFT","Williams",9,"Dry",29.634,8,3,3,3,2,5,2,5,4
+34,"ALB",34,23,126.403,"SOFT","Williams",9,"Dry",NA,8,3,3,3,2,5,2,5,4
+35,"ALB",35,23,142.565,"SOFT","Williams",9,"Dry",NA,8,3,3,3,2,5,2,5,4
+36,"ALB",36,23,145.067,"SOFT","Williams",9,"Dry",NA,8,3,3,3,2,5,2,5,4
+37,"ALB",37,23,145.628,"SOFT","Williams",9,"Dry",NA,8,3,3,3,2,5,2,5,4
+38,"ALB",38,23,135.556,"SOFT","Williams",9,"Dry",NA,8,3,3,3,2,5,2,5,4
+39,"ALB",39,23,92.63,"SOFT","Williams",9,"Dry",NA,8,3,3,3,2,5,2,5,4
+40,"ALB",40,23,92.176,"SOFT","Williams",9,"Dry",NA,8,3,3,3,2,5,2,5,4
+41,"ALB",41,23,91.273,"SOFT","Williams",9,"Dry",NA,8,3,3,3,2,5,2,5,4
+42,"ALB",42,23,91.879,"SOFT","Williams",9,"Dry",NA,8,3,3,3,2,5,2,5,4
+43,"ALB",43,23,91.752,"SOFT","Williams",9,"Dry",NA,8,3,3,3,2,5,2,5,4
+44,"ALB",44,23,92.057,"SOFT","Williams",8,"Dry",NA,8,3,3,3,2,5,2,5,4
+45,"ALB",45,23,92.146,"SOFT","Williams",8,"Dry",NA,8,3,3,3,2,5,2,5,4
+46,"ALB",46,23,92.116,"SOFT","Williams",8,"Dry",NA,8,3,3,3,2,5,2,5,4
+47,"ALB",47,23,91.537,"SOFT","Williams",8,"Dry",NA,8,3,3,3,2,5,2,5,4
+48,"ALB",48,23,91.466,"SOFT","Williams",8,"Dry",NA,8,3,3,3,2,5,2,5,4
+49,"ALB",49,23,91.912,"SOFT","Williams",8,"Dry",NA,8,3,3,3,2,5,2,5,4
+50,"ALB",50,23,91.86,"SOFT","Williams",8,"Dry",NA,8,3,3,3,2,5,2,5,4
+51,"ALB",51,23,91.93,"SOFT","Williams",8,"Dry",NA,8,3,3,3,2,5,2,5,4
+52,"ALB",52,23,91.809,"SOFT","Williams",8,"Dry",NA,8,3,3,3,2,5,2,5,4
+53,"ALO",1,14,100.026,"MEDIUM","Aston Martin",7,"Dry",NA,9,3,3,3,2,5,2,5,4
+54,"ALO",2,14,94.419,"MEDIUM","Aston Martin",7,"Dry",NA,9,3,3,3,2,5,2,5,4
+55,"ALO",3,14,93.424,"MEDIUM","Aston Martin",7,"Dry",NA,9,3,3,3,2,5,2,5,4
+56,"ALO",4,14,93.156,"MEDIUM","Aston Martin",7,"Dry",NA,9,3,3,3,2,5,2,5,4
+57,"ALO",5,14,94.157,"MEDIUM","Aston Martin",7,"Dry",NA,9,3,3,3,2,5,2,5,4
+58,"ALO",6,14,94.636,"MEDIUM","Aston Martin",7,"Dry",NA,9,3,3,3,2,5,2,5,4
+59,"ALO",7,14,94.645,"MEDIUM","Aston Martin",8,"Dry",NA,9,3,3,3,2,5,2,5,4
+60,"ALO",8,14,94.019,"MEDIUM","Aston Martin",8,"Dry",NA,9,3,3,3,2,5,2,5,4
+61,"ALO",9,14,93.657,"MEDIUM","Aston Martin",8,"Dry",NA,9,3,3,3,2,5,2,5,4
+62,"ALO",10,14,93.711,"MEDIUM","Aston Martin",8,"Dry",NA,9,3,3,3,2,5,2,5,4
+63,"ALO",11,14,93.737,"MEDIUM","Aston Martin",8,"Dry",NA,9,3,3,3,2,5,2,5,4
+64,"ALO",12,14,93.951,"MEDIUM","Aston Martin",8,"Dry",NA,9,3,3,3,2,5,2,5,4
+65,"ALO",13,14,93.565,"MEDIUM","Aston Martin",8,"Dry",NA,9,3,3,3,2,5,2,5,4
+66,"ALO",14,14,93.88,"MEDIUM","Aston Martin",8,"Dry",NA,9,3,3,3,2,5,2,5,4
+67,"ALO",15,14,93.736,"MEDIUM","Aston Martin",8,"Dry",NA,9,3,3,3,2,5,2,5,4
+68,"ALO",16,14,93.437,"MEDIUM","Aston Martin",8,"Dry",NA,9,3,3,3,2,5,2,5,4
+69,"ALO",17,14,93.188,"MEDIUM","Aston Martin",8,"Dry",NA,9,3,3,3,2,5,2,5,4
+70,"ALO",18,14,93.317,"MEDIUM","Aston Martin",8,"Dry",NA,9,3,3,3,2,5,2,5,4
+71,"ALO",19,14,93.185,"MEDIUM","Aston Martin",7,"Dry",NA,9,3,3,3,2,5,2,5,4
+72,"ALO",20,14,93.016,"MEDIUM","Aston Martin",7,"Dry",NA,9,3,3,3,2,5,2,5,4
+73,"ALO",21,14,93.19,"MEDIUM","Aston Martin",7,"Dry",NA,9,3,3,3,2,5,2,5,4
+74,"ALO",22,14,93.092,"MEDIUM","Aston Martin",7,"Dry",NA,9,3,3,3,2,5,2,5,4
+75,"ALO",23,14,93.026,"MEDIUM","Aston Martin",7,"Dry",NA,9,3,3,3,2,5,2,5,4
+76,"ALO",24,14,93.017,"MEDIUM","Aston Martin",7,"Dry",NA,9,3,3,3,2,5,2,5,4
+77,"ALO",25,14,93.078,"MEDIUM","Aston Martin",7,"Dry",NA,9,3,3,3,2,5,2,5,4
+78,"ALO",26,14,93.152,"MEDIUM","Aston Martin",7,"Dry",NA,9,3,3,3,2,5,2,5,4
+79,"ALO",27,14,92.914,"MEDIUM","Aston Martin",6,"Dry",NA,9,3,3,3,2,5,2,5,4
+80,"ALO",28,14,92.744,"MEDIUM","Aston Martin",6,"Dry",NA,9,3,3,3,2,5,2,5,4
+81,"ALO",29,14,92.727,"MEDIUM","Aston Martin",5,"Dry",NA,9,3,3,3,2,5,2,5,4
+82,"ALO",30,14,92.686,"MEDIUM","Aston Martin",4,"Dry",NA,9,3,3,3,2,5,2,5,4
+83,"ALO",31,14,92.916,"MEDIUM","Aston Martin",4,"Dry",NA,9,3,3,3,2,5,2,5,4
+84,"ALO",32,14,98.559,"MEDIUM","Aston Martin",4,"Dry",NA,9,3,3,3,2,5,2,5,4
+85,"ALO",33,14,123.93,"MEDIUM","Aston Martin",4,"Dry",NA,9,3,3,3,2,5,2,5,4
+86,"ALO",34,14,147.213,"SOFT","Aston Martin",6,"Dry",28.679,9,3,3,3,2,5,2,5,4
+87,"ALO",35,14,145.191,"SOFT","Aston Martin",6,"Dry",NA,9,3,3,3,2,5,2,5,4
+88,"ALO",36,14,145.427,"SOFT","Aston Martin",6,"Dry",NA,9,3,3,3,2,5,2,5,4
+89,"ALO",37,14,145.274,"SOFT","Aston Martin",6,"Dry",NA,9,3,3,3,2,5,2,5,4
+90,"ALO",38,14,137.955,"SOFT","Aston Martin",6,"Dry",NA,9,3,3,3,2,5,2,5,4
+91,"ALO",39,14,92.32,"SOFT","Aston Martin",6,"Dry",NA,9,3,3,3,2,5,2,5,4
+92,"ALO",40,14,91.691,"SOFT","Aston Martin",6,"Dry",NA,9,3,3,3,2,5,2,5,4
+93,"ALO",41,14,91.652,"SOFT","Aston Martin",6,"Dry",NA,9,3,3,3,2,5,2,5,4
+94,"ALO",42,14,91.829,"SOFT","Aston Martin",6,"Dry",NA,9,3,3,3,2,5,2,5,4
+95,"ALO",43,14,91.747,"SOFT","Aston Martin",6,"Dry",NA,9,3,3,3,2,5,2,5,4
+96,"ALO",44,14,92.131,"SOFT","Aston Martin",6,"Dry",NA,9,3,3,3,2,5,2,5,4
+97,"ALO",45,14,92.036,"SOFT","Aston Martin",6,"Dry",NA,9,3,3,3,2,5,2,5,4
+98,"ALO",46,14,92.891,"SOFT","Aston Martin",7,"Dry",NA,9,3,3,3,2,5,2,5,4
+99,"ALO",47,14,91.828,"SOFT","Aston Martin",7,"Dry",NA,9,3,3,3,2,5,2,5,4
+100,"ALO",48,14,91.338,"SOFT","Aston Martin",7,"Dry",NA,9,3,3,3,2,5,2,5,4
+101,"ALO",49,14,92.075,"SOFT","Aston Martin",7,"Dry",NA,9,3,3,3,2,5,2,5,4
+102,"ALO",50,14,91.999,"SOFT","Aston Martin",7,"Dry",NA,9,3,3,3,2,5,2,5,4
+103,"ALO",51,14,91.93,"SOFT","Aston Martin",7,"Dry",NA,9,3,3,3,2,5,2,5,4
+104,"ALO",52,14,91.711,"SOFT","Aston Martin",7,"Dry",NA,9,3,3,3,2,5,2,5,4
+105,"BOT",1,77,104.975,"HARD","Alfa Romeo",18,"Dry",NA,20,3,3,3,2,5,2,5,4
+106,"BOT",2,77,96.741,"HARD","Alfa Romeo",19,"Dry",NA,20,3,3,3,2,5,2,5,4
+107,"BOT",3,77,94.865,"HARD","Alfa Romeo",19,"Dry",NA,20,3,3,3,2,5,2,5,4
+108,"BOT",4,77,94.611,"HARD","Alfa Romeo",19,"Dry",NA,20,3,3,3,2,5,2,5,4
+109,"BOT",5,77,94.804,"HARD","Alfa Romeo",19,"Dry",NA,20,3,3,3,2,5,2,5,4
+110,"BOT",6,77,94.791,"HARD","Alfa Romeo",19,"Dry",NA,20,3,3,3,2,5,2,5,4
+111,"BOT",7,77,94.879,"HARD","Alfa Romeo",19,"Dry",NA,20,3,3,3,2,5,2,5,4
+112,"BOT",8,77,94.476,"HARD","Alfa Romeo",18,"Dry",NA,20,3,3,3,2,5,2,5,4
+113,"BOT",9,77,94.386,"HARD","Alfa Romeo",18,"Dry",NA,20,3,3,3,2,5,2,5,4
+114,"BOT",10,77,94.306,"HARD","Alfa Romeo",17,"Dry",NA,20,3,3,3,2,5,2,5,4
+115,"BOT",11,77,94.354,"HARD","Alfa Romeo",17,"Dry",NA,20,3,3,3,2,5,2,5,4
+116,"BOT",12,77,94.541,"HARD","Alfa Romeo",17,"Dry",NA,20,3,3,3,2,5,2,5,4
+117,"BOT",13,77,94.618,"HARD","Alfa Romeo",17,"Dry",NA,20,3,3,3,2,5,2,5,4
+118,"BOT",14,77,94.604,"HARD","Alfa Romeo",17,"Dry",NA,20,3,3,3,2,5,2,5,4
+119,"BOT",15,77,94.627,"HARD","Alfa Romeo",16,"Dry",NA,20,3,3,3,2,5,2,5,4
+120,"BOT",16,77,94.367,"HARD","Alfa Romeo",16,"Dry",NA,20,3,3,3,2,5,2,5,4
+121,"BOT",17,77,93.867,"HARD","Alfa Romeo",16,"Dry",NA,20,3,3,3,2,5,2,5,4
+122,"BOT",18,77,93.749,"HARD","Alfa Romeo",16,"Dry",NA,20,3,3,3,2,5,2,5,4
+123,"BOT",19,77,93.73,"HARD","Alfa Romeo",16,"Dry",NA,20,3,3,3,2,5,2,5,4
+124,"BOT",20,77,93.671,"HARD","Alfa Romeo",16,"Dry",NA,20,3,3,3,2,5,2,5,4
+125,"BOT",21,77,93.607,"HARD","Alfa Romeo",16,"Dry",NA,20,3,3,3,2,5,2,5,4
+126,"BOT",22,77,93.468,"HARD","Alfa Romeo",16,"Dry",NA,20,3,3,3,2,5,2,5,4
+127,"BOT",23,77,93.787,"HARD","Alfa Romeo",16,"Dry",NA,20,3,3,3,2,5,2,5,4
+128,"BOT",24,77,93.464,"HARD","Alfa Romeo",16,"Dry",NA,20,3,3,3,2,5,2,5,4
+129,"BOT",25,77,93.292,"HARD","Alfa Romeo",15,"Dry",NA,20,3,3,3,2,5,2,5,4
+130,"BOT",26,77,93.47,"HARD","Alfa Romeo",15,"Dry",NA,20,3,3,3,2,5,2,5,4
+131,"BOT",27,77,93.588,"HARD","Alfa Romeo",15,"Dry",NA,20,3,3,3,2,5,2,5,4
+132,"BOT",28,77,93.5,"HARD","Alfa Romeo",14,"Dry",NA,20,3,3,3,2,5,2,5,4
+133,"BOT",29,77,93.351,"HARD","Alfa Romeo",14,"Dry",NA,20,3,3,3,2,5,2,5,4
+134,"BOT",30,77,93.367,"HARD","Alfa Romeo",13,"Dry",NA,20,3,3,3,2,5,2,5,4
+135,"BOT",31,77,93.44,"HARD","Alfa Romeo",13,"Dry",NA,20,3,3,3,2,5,2,5,4
+136,"BOT",32,77,105.965,"HARD","Alfa Romeo",12,"Dry",NA,20,3,3,3,2,5,2,5,4
+137,"BOT",33,77,146.908,"SOFT","Alfa Romeo",14,"Dry",29.662,20,3,3,3,2,5,2,5,4
+138,"BOT",34,77,126.68,"SOFT","Alfa Romeo",14,"Dry",NA,20,3,3,3,2,5,2,5,4
+139,"BOT",35,77,120.029,"SOFT","Alfa Romeo",14,"Dry",NA,20,3,3,3,2,5,2,5,4
+140,"BOT",36,77,145.248,"SOFT","Alfa Romeo",14,"Dry",NA,20,3,3,3,2,5,2,5,4
+141,"BOT",37,77,145.027,"SOFT","Alfa Romeo",14,"Dry",NA,20,3,3,3,2,5,2,5,4
+142,"BOT",38,77,131.371,"SOFT","Alfa Romeo",14,"Dry",NA,20,3,3,3,2,5,2,5,4
+143,"BOT",39,77,92.618,"SOFT","Alfa Romeo",14,"Dry",NA,20,3,3,3,2,5,2,5,4
+144,"BOT",40,77,93.056,"SOFT","Alfa Romeo",14,"Dry",NA,20,3,3,3,2,5,2,5,4
+145,"BOT",41,77,92.229,"SOFT","Alfa Romeo",14,"Dry",NA,20,3,3,3,2,5,2,5,4
+146,"BOT",42,77,91.902,"SOFT","Alfa Romeo",14,"Dry",NA,20,3,3,3,2,5,2,5,4
+147,"BOT",43,77,92.047,"SOFT","Alfa Romeo",14,"Dry",NA,20,3,3,3,2,5,2,5,4
+148,"BOT",44,77,92.563,"SOFT","Alfa Romeo",14,"Dry",NA,20,3,3,3,2,5,2,5,4
+149,"BOT",45,77,93.177,"SOFT","Alfa Romeo",13,"Dry",NA,20,3,3,3,2,5,2,5,4
+150,"BOT",46,77,92.284,"SOFT","Alfa Romeo",13,"Dry",NA,20,3,3,3,2,5,2,5,4
+151,"BOT",47,77,92.079,"SOFT","Alfa Romeo",13,"Dry",NA,20,3,3,3,2,5,2,5,4
+152,"BOT",48,77,91.974,"SOFT","Alfa Romeo",13,"Dry",NA,20,3,3,3,2,5,2,5,4
+153,"BOT",49,77,92.167,"SOFT","Alfa Romeo",13,"Dry",NA,20,3,3,3,2,5,2,5,4
+154,"BOT",50,77,92.163,"SOFT","Alfa Romeo",13,"Dry",NA,20,3,3,3,2,5,2,5,4
+155,"BOT",51,77,92.133,"SOFT","Alfa Romeo",13,"Dry",NA,20,3,3,3,2,5,2,5,4
+156,"BOT",52,77,91.852,"SOFT","Alfa Romeo",13,"Dry",NA,20,3,3,3,2,5,2,5,4
+157,"DEV",1,21,104.444,"SOFT","AlphaTauri",17,"Dry",NA,18,3,3,3,2,5,2,5,4
+158,"DEV",2,21,96.208,"SOFT","AlphaTauri",17,"Dry",NA,18,3,3,3,2,5,2,5,4
+159,"DEV",3,21,94.746,"SOFT","AlphaTauri",17,"Dry",NA,18,3,3,3,2,5,2,5,4
+160,"DEV",4,21,94.199,"SOFT","AlphaTauri",17,"Dry",NA,18,3,3,3,2,5,2,5,4
+161,"DEV",5,21,94.761,"SOFT","AlphaTauri",17,"Dry",NA,18,3,3,3,2,5,2,5,4
+162,"DEV",6,21,94.907,"SOFT","AlphaTauri",17,"Dry",NA,18,3,3,3,2,5,2,5,4
+163,"DEV",7,21,95.054,"SOFT","AlphaTauri",17,"Dry",NA,18,3,3,3,2,5,2,5,4
+164,"DEV",8,21,93.896,"SOFT","AlphaTauri",16,"Dry",NA,18,3,3,3,2,5,2,5,4
+165,"DEV",9,21,93.774,"SOFT","AlphaTauri",16,"Dry",NA,18,3,3,3,2,5,2,5,4
+166,"DEV",10,21,93.985,"SOFT","AlphaTauri",15,"Dry",NA,18,3,3,3,2,5,2,5,4
+167,"DEV",11,21,93.758,"SOFT","AlphaTauri",15,"Dry",NA,18,3,3,3,2,5,2,5,4
+168,"DEV",12,21,94.165,"SOFT","AlphaTauri",15,"Dry",NA,18,3,3,3,2,5,2,5,4
+169,"DEV",13,21,94.232,"SOFT","AlphaTauri",15,"Dry",NA,18,3,3,3,2,5,2,5,4
+170,"DEV",14,21,94.879,"SOFT","AlphaTauri",15,"Dry",NA,18,3,3,3,2,5,2,5,4
+171,"DEV",15,21,94.17,"SOFT","AlphaTauri",14,"Dry",NA,18,3,3,3,2,5,2,5,4
+172,"DEV",16,21,94.148,"SOFT","AlphaTauri",14,"Dry",NA,18,3,3,3,2,5,2,5,4
+173,"DEV",17,21,93.637,"SOFT","AlphaTauri",14,"Dry",NA,18,3,3,3,2,5,2,5,4
+174,"DEV",18,21,93.453,"SOFT","AlphaTauri",14,"Dry",NA,18,3,3,3,2,5,2,5,4
+175,"DEV",19,21,93.835,"SOFT","AlphaTauri",14,"Dry",NA,18,3,3,3,2,5,2,5,4
+176,"DEV",20,21,93.48,"SOFT","AlphaTauri",14,"Dry",NA,18,3,3,3,2,5,2,5,4
+177,"DEV",21,21,93.652,"SOFT","AlphaTauri",14,"Dry",NA,18,3,3,3,2,5,2,5,4
+178,"DEV",22,21,93.647,"SOFT","AlphaTauri",14,"Dry",NA,18,3,3,3,2,5,2,5,4
+179,"DEV",23,21,93.622,"SOFT","AlphaTauri",14,"Dry",NA,18,3,3,3,2,5,2,5,4
+180,"DEV",24,21,93.663,"SOFT","AlphaTauri",14,"Dry",NA,18,3,3,3,2,5,2,5,4
+181,"DEV",25,21,93.553,"SOFT","AlphaTauri",14,"Dry",NA,18,3,3,3,2,5,2,5,4
+182,"DEV",26,21,93.754,"SOFT","AlphaTauri",14,"Dry",NA,18,3,3,3,2,5,2,5,4
+183,"DEV",27,21,93.299,"SOFT","AlphaTauri",14,"Dry",NA,18,3,3,3,2,5,2,5,4
+184,"DEV",28,21,113.094,"MEDIUM","AlphaTauri",17,"Dry",28.242,18,3,3,3,2,5,2,5,4
+185,"DEV",29,21,92.499,"MEDIUM","AlphaTauri",17,"Dry",NA,18,3,3,3,2,5,2,5,4
+186,"DEV",30,21,92.564,"MEDIUM","AlphaTauri",17,"Dry",NA,18,3,3,3,2,5,2,5,4
+187,"DEV",31,21,92.829,"MEDIUM","AlphaTauri",17,"Dry",NA,18,3,3,3,2,5,2,5,4
+188,"DEV",32,21,110.128,"MEDIUM","AlphaTauri",16,"Dry",NA,18,3,3,3,2,5,2,5,4
+189,"DEV",33,21,144.933,"SOFT","AlphaTauri",17,"Dry",28.413,18,3,3,3,2,5,2,5,4
+190,"DEV",34,21,126.545,"SOFT","AlphaTauri",16,"Dry",NA,18,3,3,3,2,5,2,5,4
+191,"DEV",35,21,108.964,"SOFT","AlphaTauri",16,"Dry",NA,18,3,3,3,2,5,2,5,4
+192,"DEV",36,21,145.061,"SOFT","AlphaTauri",17,"Dry",NA,18,3,3,3,2,5,2,5,4
+193,"DEV",37,21,143.969,"SOFT","AlphaTauri",16,"Dry",NA,18,3,3,3,2,5,2,5,4
+194,"DEV",38,21,129.789,"SOFT","AlphaTauri",16,"Dry",NA,18,3,3,3,2,5,2,5,4
+195,"DEV",39,21,93.647,"SOFT","AlphaTauri",17,"Dry",NA,18,3,3,3,2,5,2,5,4
+196,"DEV",40,21,93.18,"SOFT","AlphaTauri",17,"Dry",NA,18,3,3,3,2,5,2,5,4
+197,"DEV",41,21,92.65,"SOFT","AlphaTauri",17,"Dry",NA,18,3,3,3,2,5,2,5,4
+198,"DEV",42,21,92.369,"SOFT","AlphaTauri",17,"Dry",NA,18,3,3,3,2,5,2,5,4
+199,"DEV",43,21,92.516,"SOFT","AlphaTauri",17,"Dry",NA,18,3,3,3,2,5,2,5,4
+200,"DEV",44,21,94.017,"SOFT","AlphaTauri",18,"Dry",NA,18,3,3,3,2,5,2,5,4
+201,"DEV",45,21,92.829,"SOFT","AlphaTauri",18,"Dry",NA,18,3,3,3,2,5,2,5,4
+202,"DEV",46,21,92.716,"SOFT","AlphaTauri",17,"Dry",NA,18,3,3,3,2,5,2,5,4
+203,"DEV",47,21,92.456,"SOFT","AlphaTauri",17,"Dry",NA,18,3,3,3,2,5,2,5,4
+204,"DEV",48,21,92.353,"SOFT","AlphaTauri",17,"Dry",NA,18,3,3,3,2,5,2,5,4
+205,"DEV",49,21,92.54,"SOFT","AlphaTauri",17,"Dry",NA,18,3,3,3,2,5,2,5,4
+206,"DEV",50,21,92.632,"SOFT","AlphaTauri",17,"Dry",NA,18,3,3,3,2,5,2,5,4
+207,"DEV",51,21,92.445,"SOFT","AlphaTauri",17,"Dry",NA,18,3,3,3,2,5,2,5,4
+208,"DEV",52,21,92.42,"SOFT","AlphaTauri",17,"Dry",NA,18,3,3,3,2,5,2,5,4
+209,"GAS",1,10,101.014,"MEDIUM","Alpine",9,"Dry",NA,10,3,3,3,2,5,2,5,4
+210,"GAS",2,10,94.706,"MEDIUM","Alpine",9,"Dry",NA,10,3,3,3,2,5,2,5,4
+211,"GAS",3,10,93.605,"MEDIUM","Alpine",9,"Dry",NA,10,3,3,3,2,5,2,5,4
+212,"GAS",4,10,93.349,"MEDIUM","Alpine",9,"Dry",NA,10,3,3,3,2,5,2,5,4
+213,"GAS",5,10,93.863,"MEDIUM","Alpine",9,"Dry",NA,10,3,3,3,2,5,2,5,4
+214,"GAS",6,10,94.143,"MEDIUM","Alpine",9,"Dry",NA,10,3,3,3,2,5,2,5,4
+215,"GAS",7,10,94.399,"MEDIUM","Alpine",9,"Dry",NA,10,3,3,3,2,5,2,5,4
+216,"GAS",8,10,93.905,"MEDIUM","Alpine",9,"Dry",NA,10,3,3,3,2,5,2,5,4
+217,"GAS",9,10,93.592,"MEDIUM","Alpine",9,"Dry",NA,10,3,3,3,2,5,2,5,4
+218,"GAS",10,10,93.855,"MEDIUM","Alpine",9,"Dry",NA,10,3,3,3,2,5,2,5,4
+219,"GAS",11,10,93.836,"MEDIUM","Alpine",9,"Dry",NA,10,3,3,3,2,5,2,5,4
+220,"GAS",12,10,93.705,"MEDIUM","Alpine",9,"Dry",NA,10,3,3,3,2,5,2,5,4
+221,"GAS",13,10,93.683,"MEDIUM","Alpine",9,"Dry",NA,10,3,3,3,2,5,2,5,4
+222,"GAS",14,10,93.843,"MEDIUM","Alpine",9,"Dry",NA,10,3,3,3,2,5,2,5,4
+223,"GAS",15,10,93.769,"MEDIUM","Alpine",9,"Dry",NA,10,3,3,3,2,5,2,5,4
+224,"GAS",16,10,93.535,"MEDIUM","Alpine",9,"Dry",NA,10,3,3,3,2,5,2,5,4
+225,"GAS",17,10,93.138,"MEDIUM","Alpine",9,"Dry",NA,10,3,3,3,2,5,2,5,4
+226,"GAS",18,10,93.291,"MEDIUM","Alpine",9,"Dry",NA,10,3,3,3,2,5,2,5,4
+227,"GAS",19,10,93.199,"MEDIUM","Alpine",8,"Dry",NA,10,3,3,3,2,5,2,5,4
+228,"GAS",20,10,93.248,"MEDIUM","Alpine",8,"Dry",NA,10,3,3,3,2,5,2,5,4
+229,"GAS",21,10,93.098,"MEDIUM","Alpine",8,"Dry",NA,10,3,3,3,2,5,2,5,4
+230,"GAS",22,10,93.168,"MEDIUM","Alpine",8,"Dry",NA,10,3,3,3,2,5,2,5,4
+231,"GAS",23,10,92.846,"MEDIUM","Alpine",8,"Dry",NA,10,3,3,3,2,5,2,5,4
+232,"GAS",24,10,93.164,"MEDIUM","Alpine",8,"Dry",NA,10,3,3,3,2,5,2,5,4
+233,"GAS",25,10,93.098,"MEDIUM","Alpine",8,"Dry",NA,10,3,3,3,2,5,2,5,4
+234,"GAS",26,10,93.243,"MEDIUM","Alpine",8,"Dry",NA,10,3,3,3,2,5,2,5,4
+235,"GAS",27,10,92.988,"MEDIUM","Alpine",7,"Dry",NA,10,3,3,3,2,5,2,5,4
+236,"GAS",28,10,93.255,"MEDIUM","Alpine",7,"Dry",NA,10,3,3,3,2,5,2,5,4
+237,"GAS",29,10,93.283,"MEDIUM","Alpine",6,"Dry",NA,10,3,3,3,2,5,2,5,4
+238,"GAS",30,10,93.299,"MEDIUM","Alpine",5,"Dry",NA,10,3,3,3,2,5,2,5,4
+239,"GAS",31,10,93.391,"MEDIUM","Alpine",6,"Dry",NA,10,3,3,3,2,5,2,5,4
+240,"GAS",32,10,126.804,"SOFT","Alpine",11,"Dry",28.458,10,3,3,3,2,5,2,5,4
+241,"GAS",33,10,128.973,"SOFT","Alpine",11,"Dry",NA,10,3,3,3,2,5,2,5,4
+242,"GAS",34,10,125.716,"SOFT","Alpine",11,"Dry",NA,10,3,3,3,2,5,2,5,4
+243,"GAS",35,10,137.502,"SOFT","Alpine",11,"Dry",NA,10,3,3,3,2,5,2,5,4
+244,"GAS",36,10,144.007,"SOFT","Alpine",11,"Dry",NA,10,3,3,3,2,5,2,5,4
+245,"GAS",37,10,145.817,"SOFT","Alpine",11,"Dry",NA,10,3,3,3,2,5,2,5,4
+246,"GAS",38,10,133.934,"SOFT","Alpine",11,"Dry",NA,10,3,3,3,2,5,2,5,4
+247,"GAS",39,10,92.98,"SOFT","Alpine",12,"Dry",NA,10,3,3,3,2,5,2,5,4
+248,"GAS",40,10,92.823,"SOFT","Alpine",12,"Dry",NA,10,3,3,3,2,5,2,5,4
+249,"GAS",41,10,91.827,"SOFT","Alpine",12,"Dry",NA,10,3,3,3,2,5,2,5,4
+250,"GAS",42,10,91.539,"SOFT","Alpine",12,"Dry",NA,10,3,3,3,2,5,2,5,4
+251,"GAS",43,10,91.648,"SOFT","Alpine",12,"Dry",NA,10,3,3,3,2,5,2,5,4
+252,"GAS",44,10,92.862,"SOFT","Alpine",11,"Dry",NA,10,3,3,3,2,5,2,5,4
+253,"GAS",45,10,96.665,"SOFT","Alpine",15,"Dry",NA,10,3,3,3,2,5,2,5,4
+254,"GAS",46,10,NA,"SOFT","Alpine",18,"Dry",NA,10,3,3,3,2,5,2,5,4
+255,"HAM",1,44,100.664,"MEDIUM","Mercedes",8,"Dry",NA,7,3,3,3,2,5,2,5,4
+256,"HAM",2,44,94.361,"MEDIUM","Mercedes",8,"Dry",NA,7,3,3,3,2,5,2,5,4
+257,"HAM",3,44,93.662,"MEDIUM","Mercedes",8,"Dry",NA,7,3,3,3,2,5,2,5,4
+258,"HAM",4,44,93.086,"MEDIUM","Mercedes",8,"Dry",NA,7,3,3,3,2,5,2,5,4
+259,"HAM",5,44,93.718,"MEDIUM","Mercedes",8,"Dry",NA,7,3,3,3,2,5,2,5,4
+260,"HAM",6,44,94.556,"MEDIUM","Mercedes",8,"Dry",NA,7,3,3,3,2,5,2,5,4
+261,"HAM",7,44,93.328,"MEDIUM","Mercedes",7,"Dry",NA,7,3,3,3,2,5,2,5,4
+262,"HAM",8,44,93.483,"MEDIUM","Mercedes",7,"Dry",NA,7,3,3,3,2,5,2,5,4
+263,"HAM",9,44,93.331,"MEDIUM","Mercedes",7,"Dry",NA,7,3,3,3,2,5,2,5,4
+264,"HAM",10,44,93.624,"MEDIUM","Mercedes",7,"Dry",NA,7,3,3,3,2,5,2,5,4
+265,"HAM",11,44,93.519,"MEDIUM","Mercedes",7,"Dry",NA,7,3,3,3,2,5,2,5,4
+266,"HAM",12,44,93.908,"MEDIUM","Mercedes",7,"Dry",NA,7,3,3,3,2,5,2,5,4
+267,"HAM",13,44,93.28,"MEDIUM","Mercedes",7,"Dry",NA,7,3,3,3,2,5,2,5,4
+268,"HAM",14,44,93.324,"MEDIUM","Mercedes",7,"Dry",NA,7,3,3,3,2,5,2,5,4
+269,"HAM",15,44,93.156,"MEDIUM","Mercedes",7,"Dry",NA,7,3,3,3,2,5,2,5,4
+270,"HAM",16,44,92.931,"MEDIUM","Mercedes",7,"Dry",NA,7,3,3,3,2,5,2,5,4
+271,"HAM",17,44,93.12,"MEDIUM","Mercedes",7,"Dry",NA,7,3,3,3,2,5,2,5,4
+272,"HAM",18,44,93.313,"MEDIUM","Mercedes",7,"Dry",NA,7,3,3,3,2,5,2,5,4
+273,"HAM",19,44,93.201,"MEDIUM","Mercedes",6,"Dry",NA,7,3,3,3,2,5,2,5,4
+274,"HAM",20,44,92.956,"MEDIUM","Mercedes",6,"Dry",NA,7,3,3,3,2,5,2,5,4
+275,"HAM",21,44,92.779,"MEDIUM","Mercedes",6,"Dry",NA,7,3,3,3,2,5,2,5,4
+276,"HAM",22,44,92.821,"MEDIUM","Mercedes",6,"Dry",NA,7,3,3,3,2,5,2,5,4
+277,"HAM",23,44,92.974,"MEDIUM","Mercedes",6,"Dry",NA,7,3,3,3,2,5,2,5,4
+278,"HAM",24,44,92.703,"MEDIUM","Mercedes",6,"Dry",NA,7,3,3,3,2,5,2,5,4
+279,"HAM",25,44,93.087,"MEDIUM","Mercedes",6,"Dry",NA,7,3,3,3,2,5,2,5,4
+280,"HAM",26,44,92.769,"MEDIUM","Mercedes",6,"Dry",NA,7,3,3,3,2,5,2,5,4
+281,"HAM",27,44,92.714,"MEDIUM","Mercedes",5,"Dry",NA,7,3,3,3,2,5,2,5,4
+282,"HAM",28,44,92.32,"MEDIUM","Mercedes",5,"Dry",NA,7,3,3,3,2,5,2,5,4
+283,"HAM",29,44,92.155,"MEDIUM","Mercedes",4,"Dry",NA,7,3,3,3,2,5,2,5,4
+284,"HAM",30,44,92.246,"MEDIUM","Mercedes",3,"Dry",NA,7,3,3,3,2,5,2,5,4
+285,"HAM",31,44,92.744,"MEDIUM","Mercedes",3,"Dry",NA,7,3,3,3,2,5,2,5,4
+286,"HAM",32,44,95.161,"MEDIUM","Mercedes",3,"Dry",NA,7,3,3,3,2,5,2,5,4
+287,"HAM",33,44,123.496,"MEDIUM","Mercedes",3,"Dry",NA,7,3,3,3,2,5,2,5,4
+288,"HAM",34,44,NA,"SOFT","Mercedes",3,"Dry",29.169,7,3,3,3,2,5,2,5,4
+289,"HAM",35,44,147.418,"SOFT","Mercedes",3,"Dry",NA,7,3,3,3,2,5,2,5,4
+290,"HAM",36,44,146.619,"SOFT","Mercedes",3,"Dry",NA,7,3,3,3,2,5,2,5,4
+291,"HAM",37,44,145.19,"SOFT","Mercedes",3,"Dry",NA,7,3,3,3,2,5,2,5,4
+292,"HAM",38,44,140.046,"SOFT","Mercedes",3,"Dry",NA,7,3,3,3,2,5,2,5,4
+293,"HAM",39,44,91.427,"SOFT","Mercedes",3,"Dry",NA,7,3,3,3,2,5,2,5,4
+294,"HAM",40,44,91.279,"SOFT","Mercedes",3,"Dry",NA,7,3,3,3,2,5,2,5,4
+295,"HAM",41,44,90.673,"SOFT","Mercedes",3,"Dry",NA,7,3,3,3,2,5,2,5,4
+296,"HAM",42,44,91.042,"SOFT","Mercedes",3,"Dry",NA,7,3,3,3,2,5,2,5,4
+297,"HAM",43,44,90.545,"SOFT","Mercedes",3,"Dry",NA,7,3,3,3,2,5,2,5,4
+298,"HAM",44,44,91.589,"SOFT","Mercedes",3,"Dry",NA,7,3,3,3,2,5,2,5,4
+299,"HAM",45,44,91.359,"SOFT","Mercedes",3,"Dry",NA,7,3,3,3,2,5,2,5,4
+300,"HAM",46,44,91.559,"SOFT","Mercedes",3,"Dry",NA,7,3,3,3,2,5,2,5,4
+301,"HAM",47,44,91.248,"SOFT","Mercedes",3,"Dry",NA,7,3,3,3,2,5,2,5,4
+302,"HAM",48,44,91.152,"SOFT","Mercedes",3,"Dry",NA,7,3,3,3,2,5,2,5,4
+303,"HAM",49,44,91.286,"SOFT","Mercedes",3,"Dry",NA,7,3,3,3,2,5,2,5,4
+304,"HAM",50,44,91.526,"SOFT","Mercedes",3,"Dry",NA,7,3,3,3,2,5,2,5,4
+305,"HAM",51,44,91.703,"SOFT","Mercedes",3,"Dry",NA,7,3,3,3,2,5,2,5,4
+306,"HAM",52,44,91.823,"SOFT","Mercedes",3,"Dry",NA,7,3,3,3,2,5,2,5,4
+307,"HUL",1,27,103.503,"HARD","Haas F1 Team",14,"Dry",NA,11,3,3,3,2,5,2,5,4
+308,"HUL",2,27,95.277,"HARD","Haas F1 Team",14,"Dry",NA,11,3,3,3,2,5,2,5,4
+309,"HUL",3,27,94.53,"HARD","Haas F1 Team",14,"Dry",NA,11,3,3,3,2,5,2,5,4
+310,"HUL",4,27,94.354,"HARD","Haas F1 Team",14,"Dry",NA,11,3,3,3,2,5,2,5,4
+311,"HUL",5,27,95.588,"HARD","Haas F1 Team",15,"Dry",NA,11,3,3,3,2,5,2,5,4
+312,"HUL",6,27,95.631,"HARD","Haas F1 Team",16,"Dry",NA,11,3,3,3,2,5,2,5,4
+313,"HUL",7,27,94.412,"HARD","Haas F1 Team",16,"Dry",NA,11,3,3,3,2,5,2,5,4
+314,"HUL",8,27,127.922,"MEDIUM","Haas F1 Team",20,"Dry",41.972,11,3,3,3,2,5,2,5,4
+315,"HUL",9,27,93.669,"MEDIUM","Haas F1 Team",20,"Dry",NA,11,3,3,3,2,5,2,5,4
+316,"HUL",10,27,93.525,"MEDIUM","Haas F1 Team",19,"Dry",NA,11,3,3,3,2,5,2,5,4
+317,"HUL",11,27,93.966,"MEDIUM","Haas F1 Team",19,"Dry",NA,11,3,3,3,2,5,2,5,4
+318,"HUL",12,27,94.022,"MEDIUM","Haas F1 Team",19,"Dry",NA,11,3,3,3,2,5,2,5,4
+319,"HUL",13,27,94.3,"MEDIUM","Haas F1 Team",19,"Dry",NA,11,3,3,3,2,5,2,5,4
+320,"HUL",14,27,94.186,"MEDIUM","Haas F1 Team",19,"Dry",NA,11,3,3,3,2,5,2,5,4
+321,"HUL",15,27,93.925,"MEDIUM","Haas F1 Team",19,"Dry",NA,11,3,3,3,2,5,2,5,4
+322,"HUL",16,27,93.64,"MEDIUM","Haas F1 Team",19,"Dry",NA,11,3,3,3,2,5,2,5,4
+323,"HUL",17,27,93.616,"MEDIUM","Haas F1 Team",19,"Dry",NA,11,3,3,3,2,5,2,5,4
+324,"HUL",18,27,93.591,"MEDIUM","Haas F1 Team",19,"Dry",NA,11,3,3,3,2,5,2,5,4
+325,"HUL",19,27,93.763,"MEDIUM","Haas F1 Team",19,"Dry",NA,11,3,3,3,2,5,2,5,4
+326,"HUL",20,27,93.555,"MEDIUM","Haas F1 Team",19,"Dry",NA,11,3,3,3,2,5,2,5,4
+327,"HUL",21,27,93.35,"MEDIUM","Haas F1 Team",19,"Dry",NA,11,3,3,3,2,5,2,5,4
+328,"HUL",22,27,93.143,"MEDIUM","Haas F1 Team",19,"Dry",NA,11,3,3,3,2,5,2,5,4
+329,"HUL",23,27,93.294,"MEDIUM","Haas F1 Team",19,"Dry",NA,11,3,3,3,2,5,2,5,4
+330,"HUL",24,27,93.461,"MEDIUM","Haas F1 Team",19,"Dry",NA,11,3,3,3,2,5,2,5,4
+331,"HUL",25,27,93.351,"MEDIUM","Haas F1 Team",19,"Dry",NA,11,3,3,3,2,5,2,5,4
+332,"HUL",26,27,93.644,"MEDIUM","Haas F1 Team",19,"Dry",NA,11,3,3,3,2,5,2,5,4
+333,"HUL",27,27,93.122,"MEDIUM","Haas F1 Team",19,"Dry",NA,11,3,3,3,2,5,2,5,4
+334,"HUL",28,27,93.28,"MEDIUM","Haas F1 Team",19,"Dry",NA,11,3,3,3,2,5,2,5,4
+335,"HUL",29,27,93.107,"MEDIUM","Haas F1 Team",19,"Dry",NA,11,3,3,3,2,5,2,5,4
+336,"HUL",30,27,93.332,"MEDIUM","Haas F1 Team",19,"Dry",NA,11,3,3,3,2,5,2,5,4
+337,"HUL",31,27,93.133,"MEDIUM","Haas F1 Team",19,"Dry",NA,11,3,3,3,2,5,2,5,4
+338,"HUL",32,27,114.146,"MEDIUM","Haas F1 Team",18,"Dry",NA,11,3,3,3,2,5,2,5,4
+339,"HUL",33,27,146.674,"SOFT","Haas F1 Team",18,"Dry",30.003,11,3,3,3,2,5,2,5,4
+340,"HUL",34,27,125.892,"SOFT","Haas F1 Team",18,"Dry",NA,11,3,3,3,2,5,2,5,4
+341,"HUL",35,27,101.883,"SOFT","Haas F1 Team",18,"Dry",NA,11,3,3,3,2,5,2,5,4
+342,"HUL",36,27,137.786,"SOFT","Haas F1 Team",18,"Dry",NA,11,3,3,3,2,5,2,5,4
+343,"HUL",37,27,143.16,"SOFT","Haas F1 Team",17,"Dry",NA,11,3,3,3,2,5,2,5,4
+344,"HUL",38,27,128.983,"SOFT","Haas F1 Team",17,"Dry",NA,11,3,3,3,2,5,2,5,4
+345,"HUL",39,27,92.527,"SOFT","Haas F1 Team",16,"Dry",NA,11,3,3,3,2,5,2,5,4
+346,"HUL",40,27,92.932,"SOFT","Haas F1 Team",16,"Dry",NA,11,3,3,3,2,5,2,5,4
+347,"HUL",41,27,92.104,"SOFT","Haas F1 Team",15,"Dry",NA,11,3,3,3,2,5,2,5,4
+348,"HUL",42,27,92.097,"SOFT","Haas F1 Team",15,"Dry",NA,11,3,3,3,2,5,2,5,4
+349,"HUL",43,27,92.325,"SOFT","Haas F1 Team",15,"Dry",NA,11,3,3,3,2,5,2,5,4
+350,"HUL",44,27,92.441,"SOFT","Haas F1 Team",15,"Dry",NA,11,3,3,3,2,5,2,5,4
+351,"HUL",45,27,92.534,"SOFT","Haas F1 Team",14,"Dry",NA,11,3,3,3,2,5,2,5,4
+352,"HUL",46,27,92.584,"SOFT","Haas F1 Team",14,"Dry",NA,11,3,3,3,2,5,2,5,4
+353,"HUL",47,27,92.101,"SOFT","Haas F1 Team",14,"Dry",NA,11,3,3,3,2,5,2,5,4
+354,"HUL",48,27,92.06,"SOFT","Haas F1 Team",14,"Dry",NA,11,3,3,3,2,5,2,5,4
+355,"HUL",49,27,92.08,"SOFT","Haas F1 Team",14,"Dry",NA,11,3,3,3,2,5,2,5,4
+356,"HUL",50,27,92.158,"SOFT","Haas F1 Team",14,"Dry",NA,11,3,3,3,2,5,2,5,4
+357,"HUL",51,27,92.166,"SOFT","Haas F1 Team",14,"Dry",NA,11,3,3,3,2,5,2,5,4
+358,"HUL",52,27,91.776,"SOFT","Haas F1 Team",14,"Dry",NA,11,3,3,3,2,5,2,5,4
+359,"LEC",1,16,98.3,"MEDIUM","Ferrari",4,"Dry",NA,4,3,3,3,2,5,2,5,4
+360,"LEC",2,16,93.994,"MEDIUM","Ferrari",4,"Dry",NA,4,3,3,3,2,5,2,5,4
+361,"LEC",3,16,92.934,"MEDIUM","Ferrari",4,"Dry",NA,4,3,3,3,2,5,2,5,4
+362,"LEC",4,16,92.961,"MEDIUM","Ferrari",4,"Dry",NA,4,3,3,3,2,5,2,5,4
+363,"LEC",5,16,94.409,"MEDIUM","Ferrari",4,"Dry",NA,4,3,3,3,2,5,2,5,4
+364,"LEC",6,16,93.761,"MEDIUM","Ferrari",4,"Dry",NA,4,3,3,3,2,5,2,5,4
+365,"LEC",7,16,93.403,"MEDIUM","Ferrari",4,"Dry",NA,4,3,3,3,2,5,2,5,4
+366,"LEC",8,16,93.244,"MEDIUM","Ferrari",4,"Dry",NA,4,3,3,3,2,5,2,5,4
+367,"LEC",9,16,93.087,"MEDIUM","Ferrari",4,"Dry",NA,4,3,3,3,2,5,2,5,4
+368,"LEC",10,16,93.167,"MEDIUM","Ferrari",4,"Dry",NA,4,3,3,3,2,5,2,5,4
+369,"LEC",11,16,93.048,"MEDIUM","Ferrari",4,"Dry",NA,4,3,3,3,2,5,2,5,4
+370,"LEC",12,16,93.621,"MEDIUM","Ferrari",4,"Dry",NA,4,3,3,3,2,5,2,5,4
+371,"LEC",13,16,93.214,"MEDIUM","Ferrari",4,"Dry",NA,4,3,3,3,2,5,2,5,4
+372,"LEC",14,16,93.523,"MEDIUM","Ferrari",4,"Dry",NA,4,3,3,3,2,5,2,5,4
+373,"LEC",15,16,93.542,"MEDIUM","Ferrari",4,"Dry",NA,4,3,3,3,2,5,2,5,4
+374,"LEC",16,16,93.248,"MEDIUM","Ferrari",4,"Dry",NA,4,3,3,3,2,5,2,5,4
+375,"LEC",17,16,93.151,"MEDIUM","Ferrari",4,"Dry",NA,4,3,3,3,2,5,2,5,4
+376,"LEC",18,16,92.475,"MEDIUM","Ferrari",4,"Dry",NA,4,3,3,3,2,5,2,5,4
+377,"LEC",19,16,112.861,"HARD","Ferrari",12,"Dry",28.244,4,3,3,3,2,5,2,5,4
+378,"LEC",20,16,92.87,"HARD","Ferrari",12,"Dry",NA,4,3,3,3,2,5,2,5,4
+379,"LEC",21,16,92.848,"HARD","Ferrari",12,"Dry",NA,4,3,3,3,2,5,2,5,4
+380,"LEC",22,16,93.035,"HARD","Ferrari",12,"Dry",NA,4,3,3,3,2,5,2,5,4
+381,"LEC",23,16,92.554,"HARD","Ferrari",12,"Dry",NA,4,3,3,3,2,5,2,5,4
+382,"LEC",24,16,92.731,"HARD","Ferrari",12,"Dry",NA,4,3,3,3,2,5,2,5,4
+383,"LEC",25,16,92.798,"HARD","Ferrari",11,"Dry",NA,4,3,3,3,2,5,2,5,4
+384,"LEC",26,16,92.794,"HARD","Ferrari",11,"Dry",NA,4,3,3,3,2,5,2,5,4
+385,"LEC",27,16,92.942,"HARD","Ferrari",10,"Dry",NA,4,3,3,3,2,5,2,5,4
+386,"LEC",28,16,92.814,"HARD","Ferrari",10,"Dry",NA,4,3,3,3,2,5,2,5,4
+387,"LEC",29,16,92.658,"HARD","Ferrari",8,"Dry",NA,4,3,3,3,2,5,2,5,4
+388,"LEC",30,16,92.464,"HARD","Ferrari",8,"Dry",NA,4,3,3,3,2,5,2,5,4
+389,"LEC",31,16,93.233,"HARD","Ferrari",9,"Dry",NA,4,3,3,3,2,5,2,5,4
+390,"LEC",32,16,96.215,"HARD","Ferrari",7,"Dry",NA,4,3,3,3,2,5,2,5,4
+391,"LEC",33,16,146.13,"MEDIUM","Ferrari",10,"Dry",28.805,4,3,3,3,2,5,2,5,4
+392,"LEC",34,16,126.609,"MEDIUM","Ferrari",10,"Dry",NA,4,3,3,3,2,5,2,5,4
+393,"LEC",35,16,143.719,"MEDIUM","Ferrari",10,"Dry",NA,4,3,3,3,2,5,2,5,4
+394,"LEC",36,16,143.86,"MEDIUM","Ferrari",10,"Dry",NA,4,3,3,3,2,5,2,5,4
+395,"LEC",37,16,145.892,"MEDIUM","Ferrari",10,"Dry",NA,4,3,3,3,2,5,2,5,4
+396,"LEC",38,16,134.823,"MEDIUM","Ferrari",10,"Dry",NA,4,3,3,3,2,5,2,5,4
+397,"LEC",39,16,92.5,"MEDIUM","Ferrari",10,"Dry",NA,4,3,3,3,2,5,2,5,4
+398,"LEC",40,16,92.234,"MEDIUM","Ferrari",10,"Dry",NA,4,3,3,3,2,5,2,5,4
+399,"LEC",41,16,91.286,"MEDIUM","Ferrari",10,"Dry",NA,4,3,3,3,2,5,2,5,4
+400,"LEC",42,16,91.926,"MEDIUM","Ferrari",10,"Dry",NA,4,3,3,3,2,5,2,5,4
+401,"LEC",43,16,92.052,"MEDIUM","Ferrari",10,"Dry",NA,4,3,3,3,2,5,2,5,4
+402,"LEC",44,16,92.815,"MEDIUM","Ferrari",9,"Dry",NA,4,3,3,3,2,5,2,5,4
+403,"LEC",45,16,91.9,"MEDIUM","Ferrari",9,"Dry",NA,4,3,3,3,2,5,2,5,4
+404,"LEC",46,16,91.85,"MEDIUM","Ferrari",9,"Dry",NA,4,3,3,3,2,5,2,5,4
+405,"LEC",47,16,91.36,"MEDIUM","Ferrari",9,"Dry",NA,4,3,3,3,2,5,2,5,4
+406,"LEC",48,16,91.255,"MEDIUM","Ferrari",9,"Dry",NA,4,3,3,3,2,5,2,5,4
+407,"LEC",49,16,91.781,"MEDIUM","Ferrari",9,"Dry",NA,4,3,3,3,2,5,2,5,4
+408,"LEC",50,16,91.716,"MEDIUM","Ferrari",9,"Dry",NA,4,3,3,3,2,5,2,5,4
+409,"LEC",51,16,91.763,"MEDIUM","Ferrari",9,"Dry",NA,4,3,3,3,2,5,2,5,4
+410,"LEC",52,16,92.257,"MEDIUM","Ferrari",9,"Dry",NA,4,3,3,3,2,5,2,5,4
+411,"MAG",1,20,105.771,"MEDIUM","Haas F1 Team",20,"Dry",NA,19,3,3,3,2,5,2,5,4
+412,"MAG",2,20,96.337,"MEDIUM","Haas F1 Team",20,"Dry",NA,19,3,3,3,2,5,2,5,4
+413,"MAG",3,20,95.169,"MEDIUM","Haas F1 Team",20,"Dry",NA,19,3,3,3,2,5,2,5,4
+414,"MAG",4,20,94.731,"MEDIUM","Haas F1 Team",20,"Dry",NA,19,3,3,3,2,5,2,5,4
+415,"MAG",5,20,94.598,"MEDIUM","Haas F1 Team",20,"Dry",NA,19,3,3,3,2,5,2,5,4
+416,"MAG",6,20,94.933,"MEDIUM","Haas F1 Team",20,"Dry",NA,19,3,3,3,2,5,2,5,4
+417,"MAG",7,20,94.95,"MEDIUM","Haas F1 Team",20,"Dry",NA,19,3,3,3,2,5,2,5,4
+418,"MAG",8,20,94.427,"MEDIUM","Haas F1 Team",19,"Dry",NA,19,3,3,3,2,5,2,5,4
+419,"MAG",9,20,94.577,"MEDIUM","Haas F1 Team",19,"Dry",NA,19,3,3,3,2,5,2,5,4
+420,"MAG",10,20,94.715,"MEDIUM","Haas F1 Team",18,"Dry",NA,19,3,3,3,2,5,2,5,4
+421,"MAG",11,20,94.31,"MEDIUM","Haas F1 Team",18,"Dry",NA,19,3,3,3,2,5,2,5,4
+422,"MAG",12,20,94.544,"MEDIUM","Haas F1 Team",18,"Dry",NA,19,3,3,3,2,5,2,5,4
+423,"MAG",13,20,94.339,"MEDIUM","Haas F1 Team",18,"Dry",NA,19,3,3,3,2,5,2,5,4
+424,"MAG",14,20,95.024,"MEDIUM","Haas F1 Team",18,"Dry",NA,19,3,3,3,2,5,2,5,4
+425,"MAG",15,20,94.606,"MEDIUM","Haas F1 Team",17,"Dry",NA,19,3,3,3,2,5,2,5,4
+426,"MAG",16,20,94.559,"MEDIUM","Haas F1 Team",17,"Dry",NA,19,3,3,3,2,5,2,5,4
+427,"MAG",17,20,94.216,"MEDIUM","Haas F1 Team",17,"Dry",NA,19,3,3,3,2,5,2,5,4
+428,"MAG",18,20,93.795,"MEDIUM","Haas F1 Team",17,"Dry",NA,19,3,3,3,2,5,2,5,4
+429,"MAG",19,20,94.281,"MEDIUM","Haas F1 Team",17,"Dry",NA,19,3,3,3,2,5,2,5,4
+430,"MAG",20,20,93.935,"MEDIUM","Haas F1 Team",17,"Dry",NA,19,3,3,3,2,5,2,5,4
+431,"MAG",21,20,94.083,"MEDIUM","Haas F1 Team",17,"Dry",NA,19,3,3,3,2,5,2,5,4
+432,"MAG",22,20,93.997,"MEDIUM","Haas F1 Team",17,"Dry",NA,19,3,3,3,2,5,2,5,4
+433,"MAG",23,20,93.98,"MEDIUM","Haas F1 Team",17,"Dry",NA,19,3,3,3,2,5,2,5,4
+434,"MAG",24,20,93.891,"MEDIUM","Haas F1 Team",17,"Dry",NA,19,3,3,3,2,5,2,5,4
+435,"MAG",25,20,94.037,"MEDIUM","Haas F1 Team",16,"Dry",NA,19,3,3,3,2,5,2,5,4
+436,"MAG",26,20,94.119,"MEDIUM","Haas F1 Team",16,"Dry",NA,19,3,3,3,2,5,2,5,4
+437,"MAG",27,20,93.935,"MEDIUM","Haas F1 Team",16,"Dry",NA,19,3,3,3,2,5,2,5,4
+438,"MAG",28,20,93.76,"MEDIUM","Haas F1 Team",15,"Dry",NA,19,3,3,3,2,5,2,5,4
+439,"MAG",29,20,93.356,"MEDIUM","Haas F1 Team",15,"Dry",NA,19,3,3,3,2,5,2,5,4
+440,"MAG",30,20,93.466,"MEDIUM","Haas F1 Team",14,"Dry",NA,19,3,3,3,2,5,2,5,4
+441,"MAG",31,20,93.464,"MEDIUM","Haas F1 Team",14,"Dry",NA,19,3,3,3,2,5,2,5,4
+442,"MAG",32,20,NA,"MEDIUM","Haas F1 Team",NA,"Dry",NA,19,3,3,3,2,5,2,5,4
+443,"NOR",1,4,96.551,"MEDIUM","McLaren",1,"Dry",NA,2,3,3,3,2,5,2,5,4
+444,"NOR",2,4,93.046,"MEDIUM","McLaren",1,"Dry",NA,2,3,3,3,2,5,2,5,4
+445,"NOR",3,4,93.18,"MEDIUM","McLaren",1,"Dry",NA,2,3,3,3,2,5,2,5,4
+446,"NOR",4,4,92.772,"MEDIUM","McLaren",1,"Dry",NA,2,3,3,3,2,5,2,5,4
+447,"NOR",5,4,93.914,"MEDIUM","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+448,"NOR",6,4,93.112,"MEDIUM","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+449,"NOR",7,4,93.19,"MEDIUM","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+450,"NOR",8,4,93.101,"MEDIUM","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+451,"NOR",9,4,92.612,"MEDIUM","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+452,"NOR",10,4,92.977,"MEDIUM","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+453,"NOR",11,4,92.978,"MEDIUM","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+454,"NOR",12,4,93.116,"MEDIUM","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+455,"NOR",13,4,92.986,"MEDIUM","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+456,"NOR",14,4,93.67,"MEDIUM","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+457,"NOR",15,4,93.221,"MEDIUM","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+458,"NOR",16,4,92.903,"MEDIUM","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+459,"NOR",17,4,92.985,"MEDIUM","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+460,"NOR",18,4,92.731,"MEDIUM","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+461,"NOR",19,4,92.5,"MEDIUM","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+462,"NOR",20,4,92.77,"MEDIUM","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+463,"NOR",21,4,92.604,"MEDIUM","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+464,"NOR",22,4,92.637,"MEDIUM","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+465,"NOR",23,4,92.619,"MEDIUM","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+466,"NOR",24,4,92.721,"MEDIUM","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+467,"NOR",25,4,92.949,"MEDIUM","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+468,"NOR",26,4,92.758,"MEDIUM","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+469,"NOR",27,4,92.734,"MEDIUM","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+470,"NOR",28,4,92.714,"MEDIUM","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+471,"NOR",29,4,92.806,"MEDIUM","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+472,"NOR",30,4,92.609,"MEDIUM","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+473,"NOR",31,4,92.808,"MEDIUM","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+474,"NOR",32,4,92.571,"MEDIUM","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+475,"NOR",33,4,122.83,"MEDIUM","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+476,"NOR",34,4,NA,"HARD","McLaren",2,"Dry",28.438,2,3,3,3,2,5,2,5,4
+477,"NOR",35,4,147.853,"HARD","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+478,"NOR",36,4,146.496,"HARD","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+479,"NOR",37,4,144.316,"HARD","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+480,"NOR",38,4,141.488,"HARD","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+481,"NOR",39,4,91.243,"HARD","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+482,"NOR",40,4,90.997,"HARD","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+483,"NOR",41,4,90.76,"HARD","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+484,"NOR",42,4,90.922,"HARD","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+485,"NOR",43,4,90.543,"HARD","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+486,"NOR",44,4,90.786,"HARD","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+487,"NOR",45,4,91.301,"HARD","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+488,"NOR",46,4,91.094,"HARD","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+489,"NOR",47,4,91.593,"HARD","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+490,"NOR",48,4,91.36,"HARD","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+491,"NOR",49,4,91.02,"HARD","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+492,"NOR",50,4,91.56,"HARD","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+493,"NOR",51,4,91.077,"HARD","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+494,"NOR",52,4,91.251,"HARD","McLaren",2,"Dry",NA,2,3,3,3,2,5,2,5,4
+495,"OCO",1,31,102.516,"SOFT","Alpine",12,"Dry",NA,13,3,3,3,2,5,2,5,4
+496,"OCO",2,31,95.23,"SOFT","Alpine",12,"Dry",NA,13,3,3,3,2,5,2,5,4
+497,"OCO",3,31,94.113,"SOFT","Alpine",12,"Dry",NA,13,3,3,3,2,5,2,5,4
+498,"OCO",4,31,93.941,"SOFT","Alpine",12,"Dry",NA,13,3,3,3,2,5,2,5,4
+499,"OCO",5,31,93.946,"SOFT","Alpine",12,"Dry",NA,13,3,3,3,2,5,2,5,4
+500,"OCO",6,31,94.381,"SOFT","Alpine",12,"Dry",NA,13,3,3,3,2,5,2,5,4
+501,"OCO",7,31,94.346,"SOFT","Alpine",12,"Dry",NA,13,3,3,3,2,5,2,5,4
+502,"OCO",8,31,94.032,"SOFT","Alpine",12,"Dry",NA,13,3,3,3,2,5,2,5,4
+503,"OCO",9,31,93.846,"SOFT","Alpine",12,"Dry",NA,13,3,3,3,2,5,2,5,4
+504,"PER",1,11,104.033,"MEDIUM","Red Bull Racing",16,"Dry",NA,15,3,3,3,2,5,2,5,4
+505,"PER",2,11,95.482,"MEDIUM","Red Bull Racing",15,"Dry",NA,15,3,3,3,2,5,2,5,4
+506,"PER",3,11,94.38,"MEDIUM","Red Bull Racing",15,"Dry",NA,15,3,3,3,2,5,2,5,4
+507,"PER",4,11,94.339,"MEDIUM","Red Bull Racing",15,"Dry",NA,15,3,3,3,2,5,2,5,4
+508,"PER",5,11,94.073,"MEDIUM","Red Bull Racing",14,"Dry",NA,15,3,3,3,2,5,2,5,4
+509,"PER",6,11,93.671,"MEDIUM","Red Bull Racing",13,"Dry",NA,15,3,3,3,2,5,2,5,4
+510,"PER",7,11,93.919,"MEDIUM","Red Bull Racing",13,"Dry",NA,15,3,3,3,2,5,2,5,4
+511,"PER",8,11,93.568,"MEDIUM","Red Bull Racing",13,"Dry",NA,15,3,3,3,2,5,2,5,4
+512,"PER",9,11,93.271,"MEDIUM","Red Bull Racing",13,"Dry",NA,15,3,3,3,2,5,2,5,4
+513,"PER",10,11,93.364,"MEDIUM","Red Bull Racing",12,"Dry",NA,15,3,3,3,2,5,2,5,4
+514,"PER",11,11,93.547,"MEDIUM","Red Bull Racing",12,"Dry",NA,15,3,3,3,2,5,2,5,4
+515,"PER",12,11,93.429,"MEDIUM","Red Bull Racing",11,"Dry",NA,15,3,3,3,2,5,2,5,4
+516,"PER",13,11,93.452,"MEDIUM","Red Bull Racing",11,"Dry",NA,15,3,3,3,2,5,2,5,4
+517,"PER",14,11,93.751,"MEDIUM","Red Bull Racing",11,"Dry",NA,15,3,3,3,2,5,2,5,4
+518,"PER",15,11,93.48,"MEDIUM","Red Bull Racing",11,"Dry",NA,15,3,3,3,2,5,2,5,4
+519,"PER",16,11,93.055,"MEDIUM","Red Bull Racing",10,"Dry",NA,15,3,3,3,2,5,2,5,4
+520,"PER",17,11,93.28,"MEDIUM","Red Bull Racing",10,"Dry",NA,15,3,3,3,2,5,2,5,4
+521,"PER",18,11,93.099,"MEDIUM","Red Bull Racing",10,"Dry",NA,15,3,3,3,2,5,2,5,4
+522,"PER",19,11,93.276,"MEDIUM","Red Bull Racing",9,"Dry",NA,15,3,3,3,2,5,2,5,4
+523,"PER",20,11,93.202,"MEDIUM","Red Bull Racing",9,"Dry",NA,15,3,3,3,2,5,2,5,4
+524,"PER",21,11,93.233,"MEDIUM","Red Bull Racing",9,"Dry",NA,15,3,3,3,2,5,2,5,4
+525,"PER",22,11,93.026,"MEDIUM","Red Bull Racing",9,"Dry",NA,15,3,3,3,2,5,2,5,4
+526,"PER",23,11,93.262,"MEDIUM","Red Bull Racing",9,"Dry",NA,15,3,3,3,2,5,2,5,4
+527,"PER",24,11,92.726,"MEDIUM","Red Bull Racing",9,"Dry",NA,15,3,3,3,2,5,2,5,4
+528,"PER",25,11,92.907,"MEDIUM","Red Bull Racing",9,"Dry",NA,15,3,3,3,2,5,2,5,4
+529,"PER",26,11,92.962,"MEDIUM","Red Bull Racing",9,"Dry",NA,15,3,3,3,2,5,2,5,4
+530,"PER",27,11,92.742,"MEDIUM","Red Bull Racing",8,"Dry",NA,15,3,3,3,2,5,2,5,4
+531,"PER",28,11,92.235,"MEDIUM","Red Bull Racing",8,"Dry",NA,15,3,3,3,2,5,2,5,4
+532,"PER",29,11,110.559,"SOFT","Red Bull Racing",13,"Dry",28.06,15,3,3,3,2,5,2,5,4
+533,"PER",30,11,91.408,"SOFT","Red Bull Racing",12,"Dry",NA,15,3,3,3,2,5,2,5,4
+534,"PER",31,11,91.532,"SOFT","Red Bull Racing",12,"Dry",NA,15,3,3,3,2,5,2,5,4
+535,"PER",32,11,104.38,"SOFT","Red Bull Racing",10,"Dry",NA,15,3,3,3,2,5,2,5,4
+536,"PER",33,11,128.084,"SOFT","Red Bull Racing",8,"Dry",NA,15,3,3,3,2,5,2,5,4
+537,"PER",34,11,125.804,"SOFT","Red Bull Racing",8,"Dry",NA,15,3,3,3,2,5,2,5,4
+538,"PER",35,11,142.313,"SOFT","Red Bull Racing",8,"Dry",NA,15,3,3,3,2,5,2,5,4
+539,"PER",36,11,145.094,"SOFT","Red Bull Racing",8,"Dry",NA,15,3,3,3,2,5,2,5,4
+540,"PER",37,11,145.46,"SOFT","Red Bull Racing",8,"Dry",NA,15,3,3,3,2,5,2,5,4
+541,"PER",38,11,136.625,"SOFT","Red Bull Racing",8,"Dry",NA,15,3,3,3,2,5,2,5,4
+542,"PER",39,11,92.503,"SOFT","Red Bull Racing",8,"Dry",NA,15,3,3,3,2,5,2,5,4
+543,"PER",40,11,91.909,"SOFT","Red Bull Racing",8,"Dry",NA,15,3,3,3,2,5,2,5,4
+544,"PER",41,11,91.391,"SOFT","Red Bull Racing",8,"Dry",NA,15,3,3,3,2,5,2,5,4
+545,"PER",42,11,91.716,"SOFT","Red Bull Racing",8,"Dry",NA,15,3,3,3,2,5,2,5,4
+546,"PER",43,11,92.005,"SOFT","Red Bull Racing",7,"Dry",NA,15,3,3,3,2,5,2,5,4
+547,"PER",44,11,91.712,"SOFT","Red Bull Racing",7,"Dry",NA,15,3,3,3,2,5,2,5,4
+548,"PER",45,11,91.571,"SOFT","Red Bull Racing",7,"Dry",NA,15,3,3,3,2,5,2,5,4
+549,"PER",46,11,91.675,"SOFT","Red Bull Racing",6,"Dry",NA,15,3,3,3,2,5,2,5,4
+550,"PER",47,11,91.505,"SOFT","Red Bull Racing",6,"Dry",NA,15,3,3,3,2,5,2,5,4
+551,"PER",48,11,91.209,"SOFT","Red Bull Racing",6,"Dry",NA,15,3,3,3,2,5,2,5,4
+552,"PER",49,11,91.36,"SOFT","Red Bull Racing",6,"Dry",NA,15,3,3,3,2,5,2,5,4
+553,"PER",50,11,91.139,"SOFT","Red Bull Racing",6,"Dry",NA,15,3,3,3,2,5,2,5,4
+554,"PER",51,11,90.914,"SOFT","Red Bull Racing",6,"Dry",NA,15,3,3,3,2,5,2,5,4
+555,"PER",52,11,91.188,"SOFT","Red Bull Racing",6,"Dry",NA,15,3,3,3,2,5,2,5,4
+556,"PIA",1,81,97.773,"MEDIUM","McLaren",3,"Dry",NA,3,3,3,3,2,5,2,5,4
+557,"PIA",2,81,93.845,"MEDIUM","McLaren",3,"Dry",NA,3,3,3,3,2,5,2,5,4
+558,"PIA",3,81,92.499,"MEDIUM","McLaren",3,"Dry",NA,3,3,3,3,2,5,2,5,4
+559,"PIA",4,81,92.581,"MEDIUM","McLaren",3,"Dry",NA,3,3,3,3,2,5,2,5,4
+560,"PIA",5,81,93.461,"MEDIUM","McLaren",3,"Dry",NA,3,3,3,3,2,5,2,5,4
+561,"PIA",6,81,93.008,"MEDIUM","McLaren",3,"Dry",NA,3,3,3,3,2,5,2,5,4
+562,"PIA",7,81,93.29,"MEDIUM","McLaren",3,"Dry",NA,3,3,3,3,2,5,2,5,4
+563,"PIA",8,81,93.233,"MEDIUM","McLaren",3,"Dry",NA,3,3,3,3,2,5,2,5,4
+564,"PIA",9,81,92.79,"MEDIUM","McLaren",3,"Dry",NA,3,3,3,3,2,5,2,5,4
+565,"PIA",10,81,93.379,"MEDIUM","McLaren",3,"Dry",NA,3,3,3,3,2,5,2,5,4
+566,"PIA",11,81,92.976,"MEDIUM","McLaren",3,"Dry",NA,3,3,3,3,2,5,2,5,4
+567,"PIA",12,81,93.464,"MEDIUM","McLaren",3,"Dry",NA,3,3,3,3,2,5,2,5,4
+568,"PIA",13,81,93.144,"MEDIUM","McLaren",3,"Dry",NA,3,3,3,3,2,5,2,5,4
+569,"PIA",14,81,93.603,"MEDIUM","McLaren",3,"Dry",NA,3,3,3,3,2,5,2,5,4
+570,"PIA",15,81,93.267,"MEDIUM","McLaren",3,"Dry",NA,3,3,3,3,2,5,2,5,4
+571,"PIA",16,81,93.005,"MEDIUM","McLaren",3,"Dry",NA,3,3,3,3,2,5,2,5,4
+572,"PIA",17,81,92.775,"MEDIUM","McLaren",3,"Dry",NA,3,3,3,3,2,5,2,5,4
+573,"PIA",18,81,93.019,"MEDIUM","McLaren",3,"Dry",NA,3,3,3,3,2,5,2,5,4
+574,"PIA",19,81,92.88,"MEDIUM","McLaren",3,"Dry",NA,3,3,3,3,2,5,2,5,4
+575,"PIA",20,81,92.66,"MEDIUM","McLaren",3,"Dry",NA,3,3,3,3,2,5,2,5,4
+576,"PIA",21,81,92.749,"MEDIUM","McLaren",3,"Dry",NA,3,3,3,3,2,5,2,5,4
+577,"PIA",22,81,92.537,"MEDIUM","McLaren",3,"Dry",NA,3,3,3,3,2,5,2,5,4
+578,"PIA",23,81,92.732,"MEDIUM","McLaren",3,"Dry",NA,3,3,3,3,2,5,2,5,4
+579,"PIA",24,81,92.676,"MEDIUM","McLaren",3,"Dry",NA,3,3,3,3,2,5,2,5,4
+580,"PIA",25,81,92.809,"MEDIUM","McLaren",3,"Dry",NA,3,3,3,3,2,5,2,5,4
+581,"PIA",26,81,93.052,"MEDIUM","McLaren",3,"Dry",NA,3,3,3,3,2,5,2,5,4
+582,"PIA",27,81,92.844,"MEDIUM","McLaren",3,"Dry",NA,3,3,3,3,2,5,2,5,4
+583,"PIA",28,81,93.19,"MEDIUM","McLaren",3,"Dry",NA,3,3,3,3,2,5,2,5,4
+584,"PIA",29,81,92.563,"MEDIUM","McLaren",3,"Dry",NA,3,3,3,3,2,5,2,5,4
+585,"PIA",30,81,112.49,"HARD","McLaren",6,"Dry",28.655,3,3,3,3,2,5,2,5,4
+586,"PIA",31,81,91.68,"HARD","McLaren",5,"Dry",NA,3,3,3,3,2,5,2,5,4
+587,"PIA",32,81,99.41,"HARD","McLaren",5,"Dry",NA,3,3,3,3,2,5,2,5,4
+588,"PIA",33,81,127.856,"HARD","McLaren",5,"Dry",NA,3,3,3,3,2,5,2,5,4
+589,"PIA",34,81,134.583,"HARD","McLaren",4,"Dry",NA,3,3,3,3,2,5,2,5,4
+590,"PIA",35,81,148.389,"HARD","McLaren",4,"Dry",NA,3,3,3,3,2,5,2,5,4
+591,"PIA",36,81,145.4,"HARD","McLaren",4,"Dry",NA,3,3,3,3,2,5,2,5,4
+592,"PIA",37,81,145.067,"HARD","McLaren",4,"Dry",NA,3,3,3,3,2,5,2,5,4
+593,"PIA",38,81,139.502,"HARD","McLaren",4,"Dry",NA,3,3,3,3,2,5,2,5,4
+594,"PIA",39,81,91.646,"HARD","McLaren",4,"Dry",NA,3,3,3,3,2,5,2,5,4
+595,"PIA",40,81,91.475,"HARD","McLaren",4,"Dry",NA,3,3,3,3,2,5,2,5,4
+596,"PIA",41,81,90.85,"HARD","McLaren",4,"Dry",NA,3,3,3,3,2,5,2,5,4
+597,"PIA",42,81,91.178,"HARD","McLaren",4,"Dry",NA,3,3,3,3,2,5,2,5,4
+598,"PIA",43,81,91.011,"HARD","McLaren",4,"Dry",NA,3,3,3,3,2,5,2,5,4
+599,"PIA",44,81,91.465,"HARD","McLaren",4,"Dry",NA,3,3,3,3,2,5,2,5,4
+600,"PIA",45,81,91.406,"HARD","McLaren",4,"Dry",NA,3,3,3,3,2,5,2,5,4
+601,"PIA",46,81,91.496,"HARD","McLaren",4,"Dry",NA,3,3,3,3,2,5,2,5,4
+602,"PIA",47,81,91.427,"HARD","McLaren",4,"Dry",NA,3,3,3,3,2,5,2,5,4
+603,"PIA",48,81,91.159,"HARD","McLaren",4,"Dry",NA,3,3,3,3,2,5,2,5,4
+604,"PIA",49,81,91.422,"HARD","McLaren",4,"Dry",NA,3,3,3,3,2,5,2,5,4
+605,"PIA",50,81,91.752,"HARD","McLaren",4,"Dry",NA,3,3,3,3,2,5,2,5,4
+606,"PIA",51,81,91.305,"HARD","McLaren",4,"Dry",NA,3,3,3,3,2,5,2,5,4
+607,"PIA",52,81,90.941,"HARD","McLaren",4,"Dry",NA,3,3,3,3,2,5,2,5,4
+608,"RUS",1,63,98.651,"SOFT","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+609,"RUS",2,63,94.115,"SOFT","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+610,"RUS",3,63,93.096,"SOFT","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+611,"RUS",4,63,93.084,"SOFT","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+612,"RUS",5,63,94.211,"SOFT","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+613,"RUS",6,63,93.839,"SOFT","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+614,"RUS",7,63,93.432,"SOFT","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+615,"RUS",8,63,93.136,"SOFT","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+616,"RUS",9,63,93.154,"SOFT","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+617,"RUS",10,63,93.424,"SOFT","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+618,"RUS",11,63,93.089,"SOFT","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+619,"RUS",12,63,93.354,"SOFT","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+620,"RUS",13,63,93.159,"SOFT","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+621,"RUS",14,63,93.729,"SOFT","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+622,"RUS",15,63,93.27,"SOFT","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+623,"RUS",16,63,93.309,"SOFT","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+624,"RUS",17,63,93.174,"SOFT","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+625,"RUS",18,63,93.072,"SOFT","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+626,"RUS",19,63,92.807,"SOFT","Mercedes",4,"Dry",NA,6,3,3,3,2,5,2,5,4
+627,"RUS",20,63,92.803,"SOFT","Mercedes",4,"Dry",NA,6,3,3,3,2,5,2,5,4
+628,"RUS",21,63,92.85,"SOFT","Mercedes",4,"Dry",NA,6,3,3,3,2,5,2,5,4
+629,"RUS",22,63,92.568,"SOFT","Mercedes",4,"Dry",NA,6,3,3,3,2,5,2,5,4
+630,"RUS",23,63,92.683,"SOFT","Mercedes",4,"Dry",NA,6,3,3,3,2,5,2,5,4
+631,"RUS",24,63,92.852,"SOFT","Mercedes",4,"Dry",NA,6,3,3,3,2,5,2,5,4
+632,"RUS",25,63,92.863,"SOFT","Mercedes",4,"Dry",NA,6,3,3,3,2,5,2,5,4
+633,"RUS",26,63,92.958,"SOFT","Mercedes",4,"Dry",NA,6,3,3,3,2,5,2,5,4
+634,"RUS",27,63,93.062,"SOFT","Mercedes",4,"Dry",NA,6,3,3,3,2,5,2,5,4
+635,"RUS",28,63,92.504,"SOFT","Mercedes",4,"Dry",NA,6,3,3,3,2,5,2,5,4
+636,"RUS",29,63,113.262,"MEDIUM","Mercedes",9,"Dry",29.455,6,3,3,3,2,5,2,5,4
+637,"RUS",30,63,91.51,"MEDIUM","Mercedes",9,"Dry",NA,6,3,3,3,2,5,2,5,4
+638,"RUS",31,63,91.8,"MEDIUM","Mercedes",8,"Dry",NA,6,3,3,3,2,5,2,5,4
+639,"RUS",32,63,100.097,"MEDIUM","Mercedes",8,"Dry",NA,6,3,3,3,2,5,2,5,4
+640,"RUS",33,63,128.178,"MEDIUM","Mercedes",6,"Dry",NA,6,3,3,3,2,5,2,5,4
+641,"RUS",34,63,131.011,"MEDIUM","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+642,"RUS",35,63,146.512,"MEDIUM","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+643,"RUS",36,63,146.366,"MEDIUM","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+644,"RUS",37,63,144.727,"MEDIUM","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+645,"RUS",38,63,138.924,"MEDIUM","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+646,"RUS",39,63,91.848,"MEDIUM","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+647,"RUS",40,63,91.606,"MEDIUM","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+648,"RUS",41,63,91.124,"MEDIUM","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+649,"RUS",42,63,91.188,"MEDIUM","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+650,"RUS",43,63,91.231,"MEDIUM","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+651,"RUS",44,63,91.568,"MEDIUM","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+652,"RUS",45,63,91.718,"MEDIUM","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+653,"RUS",46,63,91.984,"MEDIUM","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+654,"RUS",47,63,91.644,"MEDIUM","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+655,"RUS",48,63,91.569,"MEDIUM","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+656,"RUS",49,63,91.612,"MEDIUM","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+657,"RUS",50,63,91.421,"MEDIUM","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+658,"RUS",51,63,91.563,"MEDIUM","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+659,"RUS",52,63,91.433,"MEDIUM","Mercedes",5,"Dry",NA,6,3,3,3,2,5,2,5,4
+660,"SAI",1,55,99.284,"MEDIUM","Ferrari",6,"Dry",NA,5,3,3,3,2,5,2,5,4
+661,"SAI",2,55,94.177,"MEDIUM","Ferrari",6,"Dry",NA,5,3,3,3,2,5,2,5,4
+662,"SAI",3,55,93.456,"MEDIUM","Ferrari",6,"Dry",NA,5,3,3,3,2,5,2,5,4
+663,"SAI",4,55,92.975,"MEDIUM","Ferrari",6,"Dry",NA,5,3,3,3,2,5,2,5,4
+664,"SAI",5,55,93.666,"MEDIUM","Ferrari",6,"Dry",NA,5,3,3,3,2,5,2,5,4
+665,"SAI",6,55,94.215,"MEDIUM","Ferrari",6,"Dry",NA,5,3,3,3,2,5,2,5,4
+666,"SAI",7,55,93.427,"MEDIUM","Ferrari",6,"Dry",NA,5,3,3,3,2,5,2,5,4
+667,"SAI",8,55,93.442,"MEDIUM","Ferrari",6,"Dry",NA,5,3,3,3,2,5,2,5,4
+668,"SAI",9,55,93.417,"MEDIUM","Ferrari",6,"Dry",NA,5,3,3,3,2,5,2,5,4
+669,"SAI",10,55,93.405,"MEDIUM","Ferrari",6,"Dry",NA,5,3,3,3,2,5,2,5,4
+670,"SAI",11,55,93.279,"MEDIUM","Ferrari",6,"Dry",NA,5,3,3,3,2,5,2,5,4
+671,"SAI",12,55,93.323,"MEDIUM","Ferrari",6,"Dry",NA,5,3,3,3,2,5,2,5,4
+672,"SAI",13,55,93.105,"MEDIUM","Ferrari",6,"Dry",NA,5,3,3,3,2,5,2,5,4
+673,"SAI",14,55,93.941,"MEDIUM","Ferrari",6,"Dry",NA,5,3,3,3,2,5,2,5,4
+674,"SAI",15,55,93.623,"MEDIUM","Ferrari",6,"Dry",NA,5,3,3,3,2,5,2,5,4
+675,"SAI",16,55,93.498,"MEDIUM","Ferrari",6,"Dry",NA,5,3,3,3,2,5,2,5,4
+676,"SAI",17,55,93.076,"MEDIUM","Ferrari",6,"Dry",NA,5,3,3,3,2,5,2,5,4
+677,"SAI",18,55,93.302,"MEDIUM","Ferrari",6,"Dry",NA,5,3,3,3,2,5,2,5,4
+678,"SAI",19,55,93.242,"MEDIUM","Ferrari",5,"Dry",NA,5,3,3,3,2,5,2,5,4
+679,"SAI",20,55,93.007,"MEDIUM","Ferrari",5,"Dry",NA,5,3,3,3,2,5,2,5,4
+680,"SAI",21,55,93.261,"MEDIUM","Ferrari",5,"Dry",NA,5,3,3,3,2,5,2,5,4
+681,"SAI",22,55,92.871,"MEDIUM","Ferrari",5,"Dry",NA,5,3,3,3,2,5,2,5,4
+682,"SAI",23,55,92.755,"MEDIUM","Ferrari",5,"Dry",NA,5,3,3,3,2,5,2,5,4
+683,"SAI",24,55,92.77,"MEDIUM","Ferrari",5,"Dry",NA,5,3,3,3,2,5,2,5,4
+684,"SAI",25,55,93.133,"MEDIUM","Ferrari",5,"Dry",NA,5,3,3,3,2,5,2,5,4
+685,"SAI",26,55,93.181,"MEDIUM","Ferrari",5,"Dry",NA,5,3,3,3,2,5,2,5,4
+686,"SAI",27,55,112.728,"HARD","Ferrari",12,"Dry",28.869,5,3,3,3,2,5,2,5,4
+687,"SAI",28,55,92.22,"HARD","Ferrari",12,"Dry",NA,5,3,3,3,2,5,2,5,4
+688,"SAI",29,55,91.945,"HARD","Ferrari",11,"Dry",NA,5,3,3,3,2,5,2,5,4
+689,"SAI",30,55,92.129,"HARD","Ferrari",10,"Dry",NA,5,3,3,3,2,5,2,5,4
+690,"SAI",31,55,92.494,"HARD","Ferrari",10,"Dry",NA,5,3,3,3,2,5,2,5,4
+691,"SAI",32,55,102.583,"HARD","Ferrari",9,"Dry",NA,5,3,3,3,2,5,2,5,4
+692,"SAI",33,55,129.65,"HARD","Ferrari",7,"Dry",NA,5,3,3,3,2,5,2,5,4
+693,"SAI",34,55,130.323,"HARD","Ferrari",7,"Dry",NA,5,3,3,3,2,5,2,5,4
+694,"SAI",35,55,143.064,"HARD","Ferrari",7,"Dry",NA,5,3,3,3,2,5,2,5,4
+695,"SAI",36,55,145.182,"HARD","Ferrari",7,"Dry",NA,5,3,3,3,2,5,2,5,4
+696,"SAI",37,55,145.086,"HARD","Ferrari",7,"Dry",NA,5,3,3,3,2,5,2,5,4
+697,"SAI",38,55,137.408,"HARD","Ferrari",7,"Dry",NA,5,3,3,3,2,5,2,5,4
+698,"SAI",39,55,92.459,"HARD","Ferrari",7,"Dry",NA,5,3,3,3,2,5,2,5,4
+699,"SAI",40,55,91.783,"HARD","Ferrari",7,"Dry",NA,5,3,3,3,2,5,2,5,4
+700,"SAI",41,55,91.427,"HARD","Ferrari",7,"Dry",NA,5,3,3,3,2,5,2,5,4
+701,"SAI",42,55,91.643,"HARD","Ferrari",7,"Dry",NA,5,3,3,3,2,5,2,5,4
+702,"SAI",43,55,92.89,"HARD","Ferrari",8,"Dry",NA,5,3,3,3,2,5,2,5,4
+703,"SAI",44,55,94.622,"HARD","Ferrari",10,"Dry",NA,5,3,3,3,2,5,2,5,4
+704,"SAI",45,55,92.606,"HARD","Ferrari",10,"Dry",NA,5,3,3,3,2,5,2,5,4
+705,"SAI",46,55,91.906,"HARD","Ferrari",10,"Dry",NA,5,3,3,3,2,5,2,5,4
+706,"SAI",47,55,91.592,"HARD","Ferrari",10,"Dry",NA,5,3,3,3,2,5,2,5,4
+707,"SAI",48,55,91.438,"HARD","Ferrari",10,"Dry",NA,5,3,3,3,2,5,2,5,4
+708,"SAI",49,55,91.723,"HARD","Ferrari",10,"Dry",NA,5,3,3,3,2,5,2,5,4
+709,"SAI",50,55,91.408,"HARD","Ferrari",10,"Dry",NA,5,3,3,3,2,5,2,5,4
+710,"SAI",51,55,91.366,"HARD","Ferrari",10,"Dry",NA,5,3,3,3,2,5,2,5,4
+711,"SAI",52,55,91.88,"HARD","Ferrari",10,"Dry",NA,5,3,3,3,2,5,2,5,4
+712,"SAR",1,2,103.792,"MEDIUM","Williams",15,"Dry",NA,14,3,3,3,2,5,2,5,4
+713,"SAR",2,2,96.266,"MEDIUM","Williams",16,"Dry",NA,14,3,3,3,2,5,2,5,4
+714,"SAR",3,2,94.577,"MEDIUM","Williams",16,"Dry",NA,14,3,3,3,2,5,2,5,4
+715,"SAR",4,2,94.332,"MEDIUM","Williams",16,"Dry",NA,14,3,3,3,2,5,2,5,4
+716,"SAR",5,2,94.842,"MEDIUM","Williams",16,"Dry",NA,14,3,3,3,2,5,2,5,4
+717,"SAR",6,2,94.356,"MEDIUM","Williams",15,"Dry",NA,14,3,3,3,2,5,2,5,4
+718,"SAR",7,2,94.581,"MEDIUM","Williams",15,"Dry",NA,14,3,3,3,2,5,2,5,4
+719,"SAR",8,2,94.108,"MEDIUM","Williams",15,"Dry",NA,14,3,3,3,2,5,2,5,4
+720,"SAR",9,2,93.94,"MEDIUM","Williams",15,"Dry",NA,14,3,3,3,2,5,2,5,4
+721,"SAR",10,2,94.31,"MEDIUM","Williams",14,"Dry",NA,14,3,3,3,2,5,2,5,4
+722,"SAR",11,2,93.925,"MEDIUM","Williams",14,"Dry",NA,14,3,3,3,2,5,2,5,4
+723,"SAR",12,2,94.239,"MEDIUM","Williams",14,"Dry",NA,14,3,3,3,2,5,2,5,4
+724,"SAR",13,2,94.329,"MEDIUM","Williams",14,"Dry",NA,14,3,3,3,2,5,2,5,4
+725,"SAR",14,2,93.683,"MEDIUM","Williams",13,"Dry",NA,14,3,3,3,2,5,2,5,4
+726,"SAR",15,2,94.123,"MEDIUM","Williams",13,"Dry",NA,14,3,3,3,2,5,2,5,4
+727,"SAR",16,2,93.771,"MEDIUM","Williams",13,"Dry",NA,14,3,3,3,2,5,2,5,4
+728,"SAR",17,2,93.728,"MEDIUM","Williams",13,"Dry",NA,14,3,3,3,2,5,2,5,4
+729,"SAR",18,2,93.465,"MEDIUM","Williams",13,"Dry",NA,14,3,3,3,2,5,2,5,4
+730,"SAR",19,2,93.573,"MEDIUM","Williams",13,"Dry",NA,14,3,3,3,2,5,2,5,4
+731,"SAR",20,2,93.387,"MEDIUM","Williams",13,"Dry",NA,14,3,3,3,2,5,2,5,4
+732,"SAR",21,2,93.458,"MEDIUM","Williams",13,"Dry",NA,14,3,3,3,2,5,2,5,4
+733,"SAR",22,2,93.479,"MEDIUM","Williams",13,"Dry",NA,14,3,3,3,2,5,2,5,4
+734,"SAR",23,2,93.212,"MEDIUM","Williams",13,"Dry",NA,14,3,3,3,2,5,2,5,4
+735,"SAR",24,2,93.502,"MEDIUM","Williams",13,"Dry",NA,14,3,3,3,2,5,2,5,4
+736,"SAR",25,2,93.508,"MEDIUM","Williams",13,"Dry",NA,14,3,3,3,2,5,2,5,4
+737,"SAR",26,2,93.553,"MEDIUM","Williams",13,"Dry",NA,14,3,3,3,2,5,2,5,4
+738,"SAR",27,2,93.731,"MEDIUM","Williams",13,"Dry",NA,14,3,3,3,2,5,2,5,4
+739,"SAR",28,2,93.49,"MEDIUM","Williams",13,"Dry",NA,14,3,3,3,2,5,2,5,4
+740,"SAR",29,2,92.723,"MEDIUM","Williams",12,"Dry",NA,14,3,3,3,2,5,2,5,4
+741,"SAR",30,2,112.724,"SOFT","Williams",16,"Dry",28.847,14,3,3,3,2,5,2,5,4
+742,"SAR",31,2,91.994,"SOFT","Williams",16,"Dry",NA,14,3,3,3,2,5,2,5,4
+743,"SAR",32,2,112.267,"SOFT","Williams",15,"Dry",NA,14,3,3,3,2,5,2,5,4
+744,"SAR",33,2,128.913,"SOFT","Williams",13,"Dry",NA,14,3,3,3,2,5,2,5,4
+745,"SAR",34,2,125.672,"SOFT","Williams",13,"Dry",NA,14,3,3,3,2,5,2,5,4
+746,"SAR",35,2,122.167,"SOFT","Williams",13,"Dry",NA,14,3,3,3,2,5,2,5,4
+747,"SAR",36,2,144.892,"SOFT","Williams",13,"Dry",NA,14,3,3,3,2,5,2,5,4
+748,"SAR",37,2,145.271,"SOFT","Williams",13,"Dry",NA,14,3,3,3,2,5,2,5,4
+749,"SAR",38,2,132.192,"SOFT","Williams",13,"Dry",NA,14,3,3,3,2,5,2,5,4
+750,"SAR",39,2,92.794,"SOFT","Williams",13,"Dry",NA,14,3,3,3,2,5,2,5,4
+751,"SAR",40,2,92.949,"SOFT","Williams",13,"Dry",NA,14,3,3,3,2,5,2,5,4
+752,"SAR",41,2,91.84,"SOFT","Williams",13,"Dry",NA,14,3,3,3,2,5,2,5,4
+753,"SAR",42,2,91.699,"SOFT","Williams",13,"Dry",NA,14,3,3,3,2,5,2,5,4
+754,"SAR",43,2,91.743,"SOFT","Williams",13,"Dry",NA,14,3,3,3,2,5,2,5,4
+755,"SAR",44,2,92.849,"SOFT","Williams",13,"Dry",NA,14,3,3,3,2,5,2,5,4
+756,"SAR",45,2,92.724,"SOFT","Williams",12,"Dry",NA,14,3,3,3,2,5,2,5,4
+757,"SAR",46,2,92.421,"SOFT","Williams",12,"Dry",NA,14,3,3,3,2,5,2,5,4
+758,"SAR",47,2,91.868,"SOFT","Williams",12,"Dry",NA,14,3,3,3,2,5,2,5,4
+759,"SAR",48,2,91.71,"SOFT","Williams",12,"Dry",NA,14,3,3,3,2,5,2,5,4
+760,"SAR",49,2,91.873,"SOFT","Williams",12,"Dry",NA,14,3,3,3,2,5,2,5,4
+761,"SAR",50,2,92.085,"SOFT","Williams",12,"Dry",NA,14,3,3,3,2,5,2,5,4
+762,"SAR",51,2,91.956,"SOFT","Williams",12,"Dry",NA,14,3,3,3,2,5,2,5,4
+763,"SAR",52,2,91.984,"SOFT","Williams",12,"Dry",NA,14,3,3,3,2,5,2,5,4
+764,"STR",1,18,102.049,"MEDIUM","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+765,"STR",2,18,95.093,"MEDIUM","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+766,"STR",3,18,94.021,"MEDIUM","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+767,"STR",4,18,93.799,"MEDIUM","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+768,"STR",5,18,93.856,"MEDIUM","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+769,"STR",6,18,94.189,"MEDIUM","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+770,"STR",7,18,94.115,"MEDIUM","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+771,"STR",8,18,93.872,"MEDIUM","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+772,"STR",9,18,93.871,"MEDIUM","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+773,"STR",10,18,94.007,"MEDIUM","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+774,"STR",11,18,94.198,"MEDIUM","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+775,"STR",12,18,94.766,"MEDIUM","Aston Martin",12,"Dry",NA,12,3,3,3,2,5,2,5,4
+776,"STR",13,18,94.308,"MEDIUM","Aston Martin",12,"Dry",NA,12,3,3,3,2,5,2,5,4
+777,"STR",14,18,94.213,"MEDIUM","Aston Martin",12,"Dry",NA,12,3,3,3,2,5,2,5,4
+778,"STR",15,18,93.931,"MEDIUM","Aston Martin",12,"Dry",NA,12,3,3,3,2,5,2,5,4
+779,"STR",16,18,93.798,"MEDIUM","Aston Martin",12,"Dry",NA,12,3,3,3,2,5,2,5,4
+780,"STR",17,18,93.651,"MEDIUM","Aston Martin",12,"Dry",NA,12,3,3,3,2,5,2,5,4
+781,"STR",18,18,93.294,"MEDIUM","Aston Martin",12,"Dry",NA,12,3,3,3,2,5,2,5,4
+782,"STR",19,18,93.338,"MEDIUM","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+783,"STR",20,18,93.489,"MEDIUM","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+784,"STR",21,18,93.498,"MEDIUM","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+785,"STR",22,18,93.431,"MEDIUM","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+786,"STR",23,18,93.114,"MEDIUM","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+787,"STR",24,18,93.391,"MEDIUM","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+788,"STR",25,18,94.28,"MEDIUM","Aston Martin",12,"Dry",NA,12,3,3,3,2,5,2,5,4
+789,"STR",26,18,93.557,"MEDIUM","Aston Martin",12,"Dry",NA,12,3,3,3,2,5,2,5,4
+790,"STR",27,18,93.237,"MEDIUM","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+791,"STR",28,18,93.26,"MEDIUM","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+792,"STR",29,18,93.702,"MEDIUM","Aston Martin",10,"Dry",NA,12,3,3,3,2,5,2,5,4
+793,"STR",30,18,94.014,"MEDIUM","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+794,"STR",31,18,92.933,"MEDIUM","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+795,"STR",32,18,131.273,"SOFT","Aston Martin",14,"Dry",28.561,12,3,3,3,2,5,2,5,4
+796,"STR",33,18,128.963,"SOFT","Aston Martin",12,"Dry",NA,12,3,3,3,2,5,2,5,4
+797,"STR",34,18,126.623,"SOFT","Aston Martin",12,"Dry",NA,12,3,3,3,2,5,2,5,4
+798,"STR",35,18,123.428,"SOFT","Aston Martin",12,"Dry",NA,12,3,3,3,2,5,2,5,4
+799,"STR",36,18,144.06,"SOFT","Aston Martin",12,"Dry",NA,12,3,3,3,2,5,2,5,4
+800,"STR",37,18,145.969,"SOFT","Aston Martin",12,"Dry",NA,12,3,3,3,2,5,2,5,4
+801,"STR",38,18,133.174,"SOFT","Aston Martin",12,"Dry",NA,12,3,3,3,2,5,2,5,4
+802,"STR",39,18,92.306,"SOFT","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+803,"STR",40,18,92.32,"SOFT","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+804,"STR",41,18,91.707,"SOFT","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+805,"STR",42,18,91.508,"SOFT","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+806,"STR",43,18,91.803,"SOFT","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+807,"STR",44,18,94.01,"SOFT","Aston Martin",12,"Dry",NA,12,3,3,3,2,5,2,5,4
+808,"STR",45,18,93.008,"SOFT","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+809,"STR",46,18,91.998,"SOFT","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+810,"STR",47,18,91.768,"SOFT","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+811,"STR",48,18,91.745,"SOFT","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+812,"STR",49,18,91.86,"SOFT","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+813,"STR",50,18,91.794,"SOFT","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+814,"STR",51,18,91.691,"SOFT","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+815,"STR",52,18,92.138,"SOFT","Aston Martin",11,"Dry",NA,12,3,3,3,2,5,2,5,4
+816,"TSU",1,22,103.165,"SOFT","AlphaTauri",13,"Dry",NA,16,3,3,3,2,5,2,5,4
+817,"TSU",2,22,95.252,"SOFT","AlphaTauri",13,"Dry",NA,16,3,3,3,2,5,2,5,4
+818,"TSU",3,22,94.229,"SOFT","AlphaTauri",13,"Dry",NA,16,3,3,3,2,5,2,5,4
+819,"TSU",4,22,94.362,"SOFT","AlphaTauri",13,"Dry",NA,16,3,3,3,2,5,2,5,4
+820,"TSU",5,22,94.457,"SOFT","AlphaTauri",13,"Dry",NA,16,3,3,3,2,5,2,5,4
+821,"TSU",6,22,95.373,"SOFT","AlphaTauri",14,"Dry",NA,16,3,3,3,2,5,2,5,4
+822,"TSU",7,22,94.571,"SOFT","AlphaTauri",14,"Dry",NA,16,3,3,3,2,5,2,5,4
+823,"TSU",8,22,94.486,"SOFT","AlphaTauri",14,"Dry",NA,16,3,3,3,2,5,2,5,4
+824,"TSU",9,22,94.235,"SOFT","AlphaTauri",14,"Dry",NA,16,3,3,3,2,5,2,5,4
+825,"TSU",10,22,94.173,"SOFT","AlphaTauri",13,"Dry",NA,16,3,3,3,2,5,2,5,4
+826,"TSU",11,22,94.085,"SOFT","AlphaTauri",13,"Dry",NA,16,3,3,3,2,5,2,5,4
+827,"TSU",12,22,94.237,"SOFT","AlphaTauri",13,"Dry",NA,16,3,3,3,2,5,2,5,4
+828,"TSU",13,22,94.433,"SOFT","AlphaTauri",13,"Dry",NA,16,3,3,3,2,5,2,5,4
+829,"TSU",14,22,94.769,"SOFT","AlphaTauri",14,"Dry",NA,16,3,3,3,2,5,2,5,4
+830,"TSU",15,22,114.644,"HARD","AlphaTauri",18,"Dry",28.353,16,3,3,3,2,5,2,5,4
+831,"TSU",16,22,93.058,"HARD","AlphaTauri",18,"Dry",NA,16,3,3,3,2,5,2,5,4
+832,"TSU",17,22,92.952,"HARD","AlphaTauri",18,"Dry",NA,16,3,3,3,2,5,2,5,4
+833,"TSU",18,22,93.094,"HARD","AlphaTauri",18,"Dry",NA,16,3,3,3,2,5,2,5,4
+834,"TSU",19,22,93.424,"HARD","AlphaTauri",18,"Dry",NA,16,3,3,3,2,5,2,5,4
+835,"TSU",20,22,93.281,"HARD","AlphaTauri",18,"Dry",NA,16,3,3,3,2,5,2,5,4
+836,"TSU",21,22,93.189,"HARD","AlphaTauri",18,"Dry",NA,16,3,3,3,2,5,2,5,4
+837,"TSU",22,22,93.004,"HARD","AlphaTauri",18,"Dry",NA,16,3,3,3,2,5,2,5,4
+838,"TSU",23,22,93.098,"HARD","AlphaTauri",18,"Dry",NA,16,3,3,3,2,5,2,5,4
+839,"TSU",24,22,93.205,"HARD","AlphaTauri",18,"Dry",NA,16,3,3,3,2,5,2,5,4
+840,"TSU",25,22,93.224,"HARD","AlphaTauri",17,"Dry",NA,16,3,3,3,2,5,2,5,4
+841,"TSU",26,22,93.319,"HARD","AlphaTauri",17,"Dry",NA,16,3,3,3,2,5,2,5,4
+842,"TSU",27,22,93.418,"HARD","AlphaTauri",17,"Dry",NA,16,3,3,3,2,5,2,5,4
+843,"TSU",28,22,93.275,"HARD","AlphaTauri",16,"Dry",NA,16,3,3,3,2,5,2,5,4
+844,"TSU",29,22,93.118,"HARD","AlphaTauri",16,"Dry",NA,16,3,3,3,2,5,2,5,4
+845,"TSU",30,22,93.211,"HARD","AlphaTauri",15,"Dry",NA,16,3,3,3,2,5,2,5,4
+846,"TSU",31,22,93.279,"HARD","AlphaTauri",15,"Dry",NA,16,3,3,3,2,5,2,5,4
+847,"TSU",32,22,107.079,"HARD","AlphaTauri",13,"Dry",NA,16,3,3,3,2,5,2,5,4
+848,"TSU",33,22,145.863,"SOFT","AlphaTauri",16,"Dry",28.603,16,3,3,3,2,5,2,5,4
+849,"TSU",34,22,127.037,"SOFT","AlphaTauri",15,"Dry",NA,16,3,3,3,2,5,2,5,4
+850,"TSU",35,22,114.219,"SOFT","AlphaTauri",15,"Dry",NA,16,3,3,3,2,5,2,5,4
+851,"TSU",36,22,144.84,"SOFT","AlphaTauri",16,"Dry",NA,16,3,3,3,2,5,2,5,4
+852,"TSU",37,22,143.518,"SOFT","AlphaTauri",15,"Dry",NA,16,3,3,3,2,5,2,5,4
+853,"TSU",38,22,130.75,"SOFT","AlphaTauri",15,"Dry",NA,16,3,3,3,2,5,2,5,4
+854,"TSU",39,22,92.882,"SOFT","AlphaTauri",15,"Dry",NA,16,3,3,3,2,5,2,5,4
+855,"TSU",40,22,92.932,"SOFT","AlphaTauri",15,"Dry",NA,16,3,3,3,2,5,2,5,4
+856,"TSU",41,22,93.321,"SOFT","AlphaTauri",16,"Dry",NA,16,3,3,3,2,5,2,5,4
+857,"TSU",42,22,92.306,"SOFT","AlphaTauri",16,"Dry",NA,16,3,3,3,2,5,2,5,4
+858,"TSU",43,22,92.572,"SOFT","AlphaTauri",16,"Dry",NA,16,3,3,3,2,5,2,5,4
+859,"TSU",44,22,92.534,"SOFT","AlphaTauri",16,"Dry",NA,16,3,3,3,2,5,2,5,4
+860,"TSU",45,22,92.494,"SOFT","AlphaTauri",16,"Dry",NA,16,3,3,3,2,5,2,5,4
+861,"TSU",46,22,92.535,"SOFT","AlphaTauri",15,"Dry",NA,16,3,3,3,2,5,2,5,4
+862,"TSU",47,22,92.291,"SOFT","AlphaTauri",15,"Dry",NA,16,3,3,3,2,5,2,5,4
+863,"TSU",48,22,92.084,"SOFT","AlphaTauri",15,"Dry",NA,16,3,3,3,2,5,2,5,4
+864,"TSU",49,22,92.504,"SOFT","AlphaTauri",15,"Dry",NA,16,3,3,3,2,5,2,5,4
+865,"TSU",50,22,92.79,"SOFT","AlphaTauri",15,"Dry",NA,16,3,3,3,2,5,2,5,4
+866,"TSU",51,22,93.212,"SOFT","AlphaTauri",16,"Dry",NA,16,3,3,3,2,5,2,5,4
+867,"TSU",52,22,92.78,"SOFT","AlphaTauri",16,"Dry",NA,16,3,3,3,2,5,2,5,4
+868,"VER",1,1,97.167,"MEDIUM","Red Bull Racing",2,"Dry",NA,1,3,3,3,2,5,2,5,4
+869,"VER",2,1,93.433,"MEDIUM","Red Bull Racing",2,"Dry",NA,1,3,3,3,2,5,2,5,4
+870,"VER",3,1,92.73,"MEDIUM","Red Bull Racing",2,"Dry",NA,1,3,3,3,2,5,2,5,4
+871,"VER",4,1,92.78,"MEDIUM","Red Bull Racing",2,"Dry",NA,1,3,3,3,2,5,2,5,4
+872,"VER",5,1,92.582,"MEDIUM","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+873,"VER",6,1,93.027,"MEDIUM","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+874,"VER",7,1,93.1,"MEDIUM","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+875,"VER",8,1,92.884,"MEDIUM","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+876,"VER",9,1,92.822,"MEDIUM","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+877,"VER",10,1,92.594,"MEDIUM","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+878,"VER",11,1,92.597,"MEDIUM","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+879,"VER",12,1,92.687,"MEDIUM","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+880,"VER",13,1,92.678,"MEDIUM","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+881,"VER",14,1,93.046,"MEDIUM","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+882,"VER",15,1,92.99,"MEDIUM","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+883,"VER",16,1,92.808,"MEDIUM","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+884,"VER",17,1,92.603,"MEDIUM","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+885,"VER",18,1,92.507,"MEDIUM","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+886,"VER",19,1,92.338,"MEDIUM","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+887,"VER",20,1,92.295,"MEDIUM","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+888,"VER",21,1,92.494,"MEDIUM","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+889,"VER",22,1,92.184,"MEDIUM","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+890,"VER",23,1,92.272,"MEDIUM","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+891,"VER",24,1,92.35,"MEDIUM","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+892,"VER",25,1,92.295,"MEDIUM","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+893,"VER",26,1,92.276,"MEDIUM","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+894,"VER",27,1,92.138,"MEDIUM","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+895,"VER",28,1,92.215,"MEDIUM","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+896,"VER",29,1,92.251,"MEDIUM","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+897,"VER",30,1,92.363,"MEDIUM","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+898,"VER",31,1,92.388,"MEDIUM","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+899,"VER",32,1,92.21,"MEDIUM","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+900,"VER",33,1,118.611,"MEDIUM","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+901,"VER",34,1,NA,"SOFT","Red Bull Racing",1,"Dry",29.056,1,3,3,3,2,5,2,5,4
+902,"VER",35,1,147.771,"SOFT","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+903,"VER",36,1,146.545,"SOFT","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+904,"VER",37,1,143.835,"SOFT","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+905,"VER",38,1,141.674,"SOFT","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+906,"VER",39,1,90.348,"SOFT","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+907,"VER",40,1,90.547,"SOFT","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+908,"VER",41,1,90.688,"SOFT","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+909,"VER",42,1,90.275,"SOFT","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+910,"VER",43,1,90.535,"SOFT","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+911,"VER",44,1,90.648,"SOFT","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+912,"VER",45,1,91.342,"SOFT","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+913,"VER",46,1,91.114,"SOFT","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+914,"VER",47,1,91.148,"SOFT","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+915,"VER",48,1,91.4,"SOFT","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+916,"VER",49,1,91.218,"SOFT","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+917,"VER",50,1,91.292,"SOFT","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+918,"VER",51,1,91.397,"SOFT","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+919,"VER",52,1,90.975,"SOFT","Red Bull Racing",1,"Dry",NA,1,3,3,3,2,5,2,5,4
+920,"ZHO",1,24,105.239,"MEDIUM","Alfa Romeo",19,"Dry",NA,17,3,3,3,2,5,2,5,4
+921,"ZHO",2,24,95.912,"MEDIUM","Alfa Romeo",18,"Dry",NA,17,3,3,3,2,5,2,5,4
+922,"ZHO",3,24,94.679,"MEDIUM","Alfa Romeo",18,"Dry",NA,17,3,3,3,2,5,2,5,4
+923,"ZHO",4,24,94.408,"MEDIUM","Alfa Romeo",18,"Dry",NA,17,3,3,3,2,5,2,5,4
+924,"ZHO",5,24,94.736,"MEDIUM","Alfa Romeo",18,"Dry",NA,17,3,3,3,2,5,2,5,4
+925,"ZHO",6,24,94.807,"MEDIUM","Alfa Romeo",18,"Dry",NA,17,3,3,3,2,5,2,5,4
+926,"ZHO",7,24,94.995,"MEDIUM","Alfa Romeo",18,"Dry",NA,17,3,3,3,2,5,2,5,4
+927,"ZHO",8,24,94.267,"MEDIUM","Alfa Romeo",17,"Dry",NA,17,3,3,3,2,5,2,5,4
+928,"ZHO",9,24,94.044,"MEDIUM","Alfa Romeo",17,"Dry",NA,17,3,3,3,2,5,2,5,4
+929,"ZHO",10,24,94.392,"MEDIUM","Alfa Romeo",16,"Dry",NA,17,3,3,3,2,5,2,5,4
+930,"ZHO",11,24,94.221,"MEDIUM","Alfa Romeo",16,"Dry",NA,17,3,3,3,2,5,2,5,4
+931,"ZHO",12,24,94.235,"MEDIUM","Alfa Romeo",16,"Dry",NA,17,3,3,3,2,5,2,5,4
+932,"ZHO",13,24,94.13,"MEDIUM","Alfa Romeo",16,"Dry",NA,17,3,3,3,2,5,2,5,4
+933,"ZHO",14,24,94.418,"MEDIUM","Alfa Romeo",16,"Dry",NA,17,3,3,3,2,5,2,5,4
+934,"ZHO",15,24,94.677,"MEDIUM","Alfa Romeo",15,"Dry",NA,17,3,3,3,2,5,2,5,4
+935,"ZHO",16,24,94.263,"MEDIUM","Alfa Romeo",15,"Dry",NA,17,3,3,3,2,5,2,5,4
+936,"ZHO",17,24,94.027,"MEDIUM","Alfa Romeo",15,"Dry",NA,17,3,3,3,2,5,2,5,4
+937,"ZHO",18,24,93.861,"MEDIUM","Alfa Romeo",15,"Dry",NA,17,3,3,3,2,5,2,5,4
+938,"ZHO",19,24,93.907,"MEDIUM","Alfa Romeo",15,"Dry",NA,17,3,3,3,2,5,2,5,4
+939,"ZHO",20,24,93.726,"MEDIUM","Alfa Romeo",15,"Dry",NA,17,3,3,3,2,5,2,5,4
+940,"ZHO",21,24,93.56,"MEDIUM","Alfa Romeo",15,"Dry",NA,17,3,3,3,2,5,2,5,4
+941,"ZHO",22,24,93.679,"MEDIUM","Alfa Romeo",15,"Dry",NA,17,3,3,3,2,5,2,5,4
+942,"ZHO",23,24,93.642,"MEDIUM","Alfa Romeo",15,"Dry",NA,17,3,3,3,2,5,2,5,4
+943,"ZHO",24,24,93.17,"MEDIUM","Alfa Romeo",15,"Dry",NA,17,3,3,3,2,5,2,5,4
+944,"ZHO",25,24,115.24,"HARD","Alfa Romeo",18,"Dry",29.177,17,3,3,3,2,5,2,5,4
+945,"ZHO",26,24,92.524,"HARD","Alfa Romeo",18,"Dry",NA,17,3,3,3,2,5,2,5,4
+946,"ZHO",27,24,92.912,"HARD","Alfa Romeo",18,"Dry",NA,17,3,3,3,2,5,2,5,4
+947,"ZHO",28,24,92.999,"HARD","Alfa Romeo",18,"Dry",NA,17,3,3,3,2,5,2,5,4
+948,"ZHO",29,24,92.812,"HARD","Alfa Romeo",18,"Dry",NA,17,3,3,3,2,5,2,5,4
+949,"ZHO",30,24,93.006,"HARD","Alfa Romeo",18,"Dry",NA,17,3,3,3,2,5,2,5,4
+950,"ZHO",31,24,93.073,"HARD","Alfa Romeo",18,"Dry",NA,17,3,3,3,2,5,2,5,4
+951,"ZHO",32,24,115.002,"HARD","Alfa Romeo",17,"Dry",NA,17,3,3,3,2,5,2,5,4
+952,"ZHO",33,24,124.102,"HARD","Alfa Romeo",15,"Dry",NA,17,3,3,3,2,5,2,5,4
+953,"ZHO",34,24,142.914,"SOFT","Alfa Romeo",17,"Dry",28.709,17,3,3,3,2,5,2,5,4
+954,"ZHO",35,24,107.368,"SOFT","Alfa Romeo",17,"Dry",NA,17,3,3,3,2,5,2,5,4
+955,"ZHO",36,24,140.527,"SOFT","Alfa Romeo",15,"Dry",NA,17,3,3,3,2,5,2,5,4
+956,"ZHO",37,24,148.721,"SOFT","Alfa Romeo",18,"Dry",34.374,17,3,3,3,2,5,2,5,4
+957,"ZHO",38,24,127.914,"SOFT","Alfa Romeo",18,"Dry",NA,17,3,3,3,2,5,2,5,4
+958,"ZHO",39,24,93.188,"SOFT","Alfa Romeo",18,"Dry",NA,17,3,3,3,2,5,2,5,4
+959,"ZHO",40,24,93.31,"SOFT","Alfa Romeo",18,"Dry",NA,17,3,3,3,2,5,2,5,4
+960,"ZHO",41,24,92.655,"SOFT","Alfa Romeo",18,"Dry",NA,17,3,3,3,2,5,2,5,4
+961,"ZHO",42,24,92.243,"SOFT","Alfa Romeo",18,"Dry",NA,17,3,3,3,2,5,2,5,4
+962,"ZHO",43,24,92.645,"SOFT","Alfa Romeo",18,"Dry",NA,17,3,3,3,2,5,2,5,4
+963,"ZHO",44,24,92.789,"SOFT","Alfa Romeo",17,"Dry",NA,17,3,3,3,2,5,2,5,4
+964,"ZHO",45,24,92.502,"SOFT","Alfa Romeo",17,"Dry",NA,17,3,3,3,2,5,2,5,4
+965,"ZHO",46,24,92.329,"SOFT","Alfa Romeo",16,"Dry",NA,17,3,3,3,2,5,2,5,4
+966,"ZHO",47,24,91.957,"SOFT","Alfa Romeo",16,"Dry",NA,17,3,3,3,2,5,2,5,4
+967,"ZHO",48,24,91.769,"SOFT","Alfa Romeo",16,"Dry",NA,17,3,3,3,2,5,2,5,4
+968,"ZHO",49,24,92.599,"SOFT","Alfa Romeo",16,"Dry",NA,17,3,3,3,2,5,2,5,4
+969,"ZHO",50,24,92.459,"SOFT","Alfa Romeo",16,"Dry",NA,17,3,3,3,2,5,2,5,4
+970,"ZHO",51,24,92.09,"SOFT","Alfa Romeo",15,"Dry",NA,17,3,3,3,2,5,2,5,4
+971,"ZHO",52,24,92.114,"SOFT","Alfa Romeo",15,"Dry",NA,17,3,3,3,2,5,2,5,4
