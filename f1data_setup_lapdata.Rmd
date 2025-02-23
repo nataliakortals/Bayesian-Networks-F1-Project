@@ -1,0 +1,144 @@
+---
+title: "Downloading Bahrain GP 2023 Data"
+output: html_document
+date: "2024-10-09"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## BN using f1dataR
+
+This is a first attempt at producing a Bayesian Network based on Formula 1 data, using f1dataR (link)
+
+First, we set up the required packages.
+Todo: why this won't knit?
+
+```{r R setup}
+# setwd("C:/Users/s1975950/Desktop/BayesNetworks_UG23-24")
+library(f1dataR)
+# setup_fastf1()
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(reticulate)
+library(xtable)
+library(tidyverse)
+library(data.table)
+get_fastf1_version() # check the connection to fastf1 API is working, if not see (link)
+```
+
+## Data exploration
+
+Here are some plots to demonstrate what the f1dataR package can do.
+
+```{r}
+lec <- load_driver_telemetry(2023, 1, "Q", driver = "LEC", laps = "fastest") %>%
+  head(300)
+ggplot(lec, aes(distance, throttle)) +
+  geom_line() +
+  theme_minimal()
+```
+
+```{r}
+# ham <- load_driver_telemetry(2023, 1, "Q", driver = "HAM", laps = "fastest") %>%
+#     head(300)
+# 
+# per <- load_driver_telemetry(2023, 1, "Q", driver = "PER", laps = "fastest") %>%
+#     head(300)
+# data <- bind_rows(lec, ham, per)
+# ggplot(data, aes(distance, throttle, color = driver_code)) +
+#     geom_line() +
+#     theme_minimal()
+# ggplot(data, aes(distance, speed, color = driver_code)) +
+#     geom_line() +
+#     theme_dark_f1(axis_marks = TRUE) +
+#    theme(
+#        axis.title = element_text(),
+#        axis.line = element_line(color = "white"),
+#    ) +
+#    labs(
+#        title = "Speed Comparison for Bahrain 2023"
+#    )
+```
+
+```{r}
+# plot_fastest(2023, 1, "R", "PER")
+```
+## Setup for data downloading
+
+```{r setup race loading}
+year = 2023
+round = 1 #11 Budapest, 6 Monaco, 15 Singapore
+
+```
+
+```{r load drivers}
+drivers <- load_drivers(year)
+drivers <- drivers %>%  dplyr::select(c(driver_id, code))
+drivers <- drivers %>% rename(driver_surname = driver_id)
+drivers <- drivers %>% rename(driver = code)
+```
+```{r load pitstops}
+pitstops_data <- load_pitstops(year, round)
+pitstops_data <- merge(drivers, pitstops_data, by.x = "driver_surname", by.y = "driver_id")
+pitstops_data <- pitstops_data %>% rename(lap_number = lap)
+pitstops_data <- pitstops_data %>% rename(pitstop_duration = duration)
+pitstops_data <- pitstops_data %>%  dplyr::select(c(driver, lap_number, pitstop_duration))
+```
+
+```{r load starting position on the grid}
+results <- load_results(year,round)
+results <- results %>%  dplyr::select(c(driver_id, grid))
+results <- results %>% rename(start_position = grid)
+grid_data <- merge(results, drivers, by.x = "driver_id", by.y = "driver_surname")
+grid_data <- grid_data %>%  dplyr::select(c(driver, start_position))
+```
+
+
+```{r load the race}
+Race <- load_session_laps(season = year, round = round, session = "R", add_weather = TRUE)
+```
+
+```{r manipulate the race variables}
+# Extract variables of interest from Race
+Race_temp <- Race %>%  
+  select(driver, driver_number, lap_time, lap_number, 
+          compound, team, position, rainfall)
+  
+# # Discretize lap times based on quantiles.
+# Race_temp$lap_time <- cut(Race_temp$lap_time, breaks = c(min(Race_temp$lap_time), quantile(Race_temp$lap_time,probs = c(.05, .1, .15, .2, .25, .3,.4,.5, .75),na.rm=TRUE),max(Race_temp$lap_time)), ordered_result = TRUE)
+# Rename tyre column
+Race_temp <- Race_temp %>% rename(tyre = compound)
+# Change rainfall into wet/dry
+Race_temp <- Race_temp %>% mutate(rainfall = case_when(rainfall == TRUE ~ "Wet",
+                        rainfall == FALSE ~ "Dry"))
+
+
+Race_with_pitstops <- merge(Race_temp, pitstops_data, by=c("driver", "lap_number"), all = TRUE)
+#fill na for laps without a pit stop
+# Race_with_pitstops <- Race_with_pitstops %>% mutate(pitstop_duration = ifelse(is.na(pitstop_duration), 0, pitstop_duration))
+Race_full_data <- merge(Race_with_pitstops, grid_data)
+Race_full_data$pitstop_duration <- shift(Race_full_data$pitstop_duration, n=1, type="lag")
+
+```
+
+
+```{r}
+# Make a table with 10 random rows to show the data in the report
+set.seed(123)
+
+random_sample <- Race_full_data %>% sample_n(size = 10)
+
+latex_table <- xtable(random_sample)
+print(latex_table, type = "latex", include.rownames = FALSE)
+
+```
+
+Save the data into a .csv.
+
+```{r save into csv}
+# write.csv(Race_full_data,
+```
+

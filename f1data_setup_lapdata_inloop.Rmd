@@ -1,0 +1,99 @@
+---
+title: "Downloading Season 2023 Data"
+output: html_document
+date: "2024-10-09"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## BN using f1dataR
+
+This is a first attempt at producing a Bayesian Network based on Formula 1 data, using f1dataR (link)
+
+First, we set up the required packages.
+Todo: why this won't knit?
+
+```{r R setup}
+# setwd("C:/Users/s1975950/Desktop/BayesNetworks_UG23-24")
+library(f1dataR)
+# setup_fastf1()
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(reticulate)
+library(data.table)
+get_fastf1_version() # check the connection to fastf1 API is working, if not see (link)
+```
+## Setup the loops
+```{r setup for loops}
+year = 2023
+# rounds <- c(6,11,15) #11 Budapest, 6 Monaco, 15 Singapore
+rounds <- seq(1,22)
+schedule <- load_schedule(2023)
+
+# make a lift of circuit_ids
+races <- numeric(nrow(schedule))
+for (round in rounds){
+  races[round] = toString(schedule[round,]["circuit_id"])
+}
+print(races)
+```
+
+
+## Download the drivers data for compatibility between f1dataR calls
+
+```{r load drivers}
+drivers <- load_drivers(year)
+drivers <- drivers %>%  dplyr::select(c(driver_id, code))
+drivers <- drivers %>% rename(driver_surname = driver_id)
+drivers <- drivers %>% rename(driver = code)
+```
+
+## Perform the loops for each step of getting the race data
+```{r load pitstops}
+for (round in rounds){
+  print(round)
+  # load pitstops
+  pitstops_data <- load_pitstops(year, round)
+  pitstops_data <- merge(drivers, pitstops_data, by.x = "driver_surname", by.y = "driver_id")
+  pitstops_data <- pitstops_data %>% rename(lap_number = lap)
+  pitstops_data <- pitstops_data %>% rename(pitstop_duration = duration)
+  pitstops_data <- pitstops_data %>%  dplyr::select(c(driver, lap_number, pitstop_duration))
+
+  # load starting position on the grid
+  results <- load_results(year,round)
+  results <- results %>%  dplyr::select(c(driver_id, grid))
+  results <- results %>% rename(start_position = grid)
+  grid_data <- merge(results, drivers, by.x = "driver_id", by.y = "driver_surname")
+  grid_data <- grid_data %>%  dplyr::select(c(driver, start_position))
+  
+  # load the race
+  Race <- load_session_laps(season = year, round = round, session = "R", add_weather = TRUE)
+  print(dim(Race_full_data))
+  # manipulate the race variables
+  # Extract variables of interest from Race
+  Race_temp <- Race %>%  
+    select(driver, driver_number, lap_time, lap_number, 
+            compound, team, position, rainfall)
+  # Rename tyre column
+  Race_temp <- Race_temp %>% rename(tyre = compound)
+  # Change rainfall into wet/dry
+  Race_temp <- Race_temp %>% mutate(rainfall = case_when(rainfall == TRUE ~ "Wet",
+                          rainfall == FALSE ~ "Dry"))
+  
+  Race_with_pitstops <- merge(Race_temp, pitstops_data, by=c("driver", "lap_number"), all = TRUE)
+  # fill na for laps without a pit stop
+  # Race_with_pitstops <- Race_with_pitstops %>% mutate(pitstop_duration = ifelse(is.na(pitstop_duration), 0, pitstop_duration))
+  Race_full_data <- merge(Race_with_pitstops, grid_data)
+  Race_full_data$pitstop_duration <- shift(Race_full_data$pitstop_duration, n=1, type="lag")
+  
+  # # ONLY UNCOMMENT TO SAVE INTO A FOLDER, BE CAREFUL NOT TO OVERWRITE
+  # # Save the data into a .csv.
+  # write.csv(Race_full_data, file = paste("data/NEW/", races[round],"2023.csv", sep = ""))
+}
+```
+
+
+
