@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "Please cite the repository as below."
+authors:
+- family-names: "Kortals"
+  given-names: "Natalia"
+title: "Bayesian-Networks-F1-Project"
+version: 1.0.0
+doi: 10.5281/zenodo.1234
+date-released: 2025-02-23
+url: "https://github.com/nataliakortals/Bayesian-Networks-F1-Project"
