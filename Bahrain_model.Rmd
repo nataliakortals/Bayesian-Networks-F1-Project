@@ -18,6 +18,8 @@ library(data.table)
 library(GGally)
 ```
 
+## EDA
+
 Firstly, we load the data saved into .csv file, acquired using f1dataR package. https://CRAN.R-project.org/package=f1dataR
 
 ```{r load data}
@@ -29,45 +31,8 @@ head(BAH)
 summary(BAH)
 ```
 
-Before pairplot we need to set the categorical variables as factors
 
-
-```{r}
-BAH$driver <- factor(BAH$driver)
-BAH$team <- factor(BAH$team)
-
-# Circuit characteristics
-BAH$traction <- factor(BAH$traction, ordered = TRUE)
-BAH$asphalt_grip <- factor(BAH$asphalt_grip, ordered = TRUE)
-BAH$asphalt_abrasion <- factor(BAH$asphalt_abrasion, ordered = TRUE)
-BAH$track_evol <- factor(BAH$track_evol, ordered = TRUE)
-BAH$tyre_stress <- factor(BAH$tyre_stress, ordered = TRUE)
-BAH$braking <- factor(BAH$braking, ordered = TRUE)
-BAH$lateral <- factor(BAH$lateral, ordered = TRUE)
-BAH$downforce <- factor(BAH$downforce, ordered = TRUE)
-
-BAH$tyre <- factor(BAH$tyre, ordered = TRUE
-                   # , levels = c("SOFT", "MEDIUM", "HARD")
-                   ) 
-```
-
-
-```{r pairplot}
-
-
-ggpairs(BAH, columns = c("lap_time", "team", "position", "pitstop_duration")
-        # ,aes(color = tyre, alpha = 0.5)
-             )
-```
-
-Todo:
-plot laptime vs position scatter, maybe coloured by tyre
 team vs position boxplot
-team vs laptime boxplot, with colour for tyres too
-tyre vs laptime density plots, coloured by tyre overlayed on top of each other
-pitstop_duration vs team
-
-
 
 
 
@@ -75,22 +40,36 @@ Next, we plot the variables to understand the dataset:
 
 ```{r plot pitstop vs laptime}
 ggplot(data=subset(BAH, !is.na(pitstop_duration)), aes(x=pitstop_duration, y = lap_time)) +
-  geom_point()  + geom_smooth(method=lm)
+  geom_point()  + geom_smooth(method=lm) +
+  labs(x = "Pitstop Duration", y = "Lap Time", title = "Pitstop Duration vs Lap Times at Bahrain GP 2023") +
+  theme(plot.title = element_text(hjust=0.5))
 ```
 
-```{r plot tyre count}
-ggplot() + geom_bar(aes(x = BAH$tyre))
-```
 
 ```{r plot team vs pitstop_duration}
-ggplot() + geom_boxplot(aes(x = BAH$team, y = BAH$pitstop_duration))
+# ggplot() + geom_boxplot(aes(x = BAH$team, y = BAH$pitstop_duration))
+
+ggplot() + geom_boxplot(aes(x = BAH$team, y = BAH$pitstop_duration))+
+  labs(x = "Team", y = "Pitstop Duration", title = "Box Plot of Pitstop Duration per Team (Bahrain 2023)") +
+  theme_minimal() + theme(axis.text.x = element_text(angle = 45, hjust=1)) +
+  theme(plot.title = element_text(hjust = 0.5))
 ```
-```{r tyre vs laptime}
-ggplot() + geom_boxplot(aes(x = BAH$tyre, y = BAH$lap_time))
+
+```{r plot position vs laptime}
+ggplot(data=BAH, aes(x=position, y = lap_time)) +
+  geom_point()  + #geom_smooth(method=lm) +
+  labs(x = "Position", y = "Lap Time", title = "Position vs Lap Times at Bahrain GP 2023") +
+  theme(plot.title = element_text(hjust=0.5))
 ```
 
+```{r plot team vs position}
 
-
+ggplot() + geom_boxplot(aes(x = BAH$team, y = BAH$position))+
+  labs(x = "Team", y = "Position", title = "Box Plot of Position per Team (Bahrain 2023)") +
+  theme_minimal() + theme(axis.text.x = element_text(angle = 45, hjust=1)) +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+From the plot above, we can for example see that Red Bull Racing drivers stayed in the front the entire time, while Alpine drivers spanned positions between 16 and 10 - either because their drivers were far apart, or climbed or lost many positions throughout the event.
 
 ```{r}
 BAH %>%
@@ -106,38 +85,49 @@ ggplot() +
 
 
 ```{r }
-ggplot() + geom_point(aes(x = BAH$team, y = BAH$lap_time, colour = BAH$tyre))
+ggplot() + geom_boxplot(aes(x = BAH$team, y = BAH$lap_time))+
+  labs(x = "Team", y = "Lap Time", title = "Box Plot of Lap Time per Team (Bahrain 2023)") +
+  theme_minimal() + theme(axis.text.x = element_text(angle = 45, hjust=1)) +
+  theme(plot.title = element_text(hjust = 0.5))
 
 ```
+
+Before pairplot we need to set the categorical variables as factors
 
 ```{r}
-min(BAH$lap_time, na.rm = TRUE)
+BAH$driver <- factor(BAH$driver)
+BAH$team <- factor(BAH$team)
+BAH$tyre <- factor(BAH$tyre) 
+
+# Circuit characteristics
+BAH$traction <- factor(BAH$traction, ordered = TRUE)
+BAH$asphalt_grip <- factor(BAH$asphalt_grip, ordered = TRUE)
+BAH$asphalt_abrasion <- factor(BAH$asphalt_abrasion, ordered = TRUE)
+BAH$track_evol <- factor(BAH$track_evol, ordered = TRUE)
+BAH$tyre_stress <- factor(BAH$tyre_stress, ordered = TRUE)
+BAH$braking <- factor(BAH$braking, ordered = TRUE)
+BAH$lateral <- factor(BAH$lateral, ordered = TRUE)
+BAH$downforce <- factor(BAH$downforce, ordered = TRUE)
+
 ```
 
-```{r finding appropriate pitstop bins}
-#Reload the unprocessed dataset
-BAH = data.frame(read.csv("data/bahrain2023.csv", header =TRUE))
+
+```{r pairplot}
+ggpairs(BAH, columns = c("lap_time", "team", "position", "pitstop_duration"))
 ```
 
-```{r}
+```{r pistop density}
 ggplot() + 
   geom_density(aes(x = BAH$pitstop_duration), fill="#ec8ccd", color="#ec8ccd") + 
   labs(x = "Pitstop Duration", y = "Density", title = "Density Plot of Pitstop Duration at Bahrain GP 2023") +
   theme(plot.title = element_text(hjust=0.5))
 ```
 
-```{r}
-# Convert pitstop_duration to numeric
+```{r pitstop binning}
 BAH$pitstop_duration <- as.numeric(BAH$pitstop_duration)
-# Make bins
-BAH$pitstop_duration <- cut(BAH$pitstop_duration, breaks = c(min(BAH$pitstop_duration, na.rm = TRUE), quantile(BAH$pitstop_duration, probs = c(.2, .4,  .6, .8),na.rm=TRUE),max(BAH$pitstop_duration, na.rm = TRUE)), ordered_result = TRUE, include.lowest = TRUE, labels = c("fastest_pit", ".2", ".4", ".6", ".8"))
 
-ggplot(data=subset(BAH, !is.na(pitstop_duration)), aes(x=pitstop_duration)) +
-  geom_bar()
-```
+BAH$pitstop_duration <- cut(BAH$pitstop_duration, breaks = c(min(BAH$pitstop_duration, na.rm = TRUE), quantile(BAH$pitstop_duration, probs = c(.2, .4,  .6, .8),na.rm=TRUE),max(BAH$pitstop_duration, na.rm = TRUE)), ordered_result = TRUE, include.lowest = TRUE)
 
-```{r}
-ggplot() + geom_point(aes(x = BAH$pitstop_duration, y = BAH$lap_time))
 ```
 
 
@@ -157,14 +147,13 @@ BAH$downforce <- factor(BAH$downforce, ordered = TRUE)
 
 # Lap time - ordered: the shorter the better
 # the fastest lap is included thanks to argument include.lowest = TRUE
-BAH$lap_time <- cut(BAH$lap_time, breaks = c(min(BAH$lap_time, na.rm = TRUE), quantile(BAH$lap_time,probs = c(.02, .05, .1, .15, .2, .3,.4,.5,.6, .7,.8, .85, .9, .95, .98),na.rm=TRUE),max(BAH$lap_time, na.rm = TRUE)), include.lowest = TRUE, ordered_result = TRUE
-                    # without the labels yet
-                    # , labels = c("fastest", ".05", ".1", ".15", ".2", ".25", ".3",".4",".5",".6", ".7",".8", ".85", ".87", ".9", ".92", ".94", ".96", ".98")
-                    )
+BAH$lap_time <- cut(BAH$lap_time, breaks = c(min(BAH$lap_time, na.rm = TRUE), quantile(BAH$lap_time,probs = c(.02, .05, .1, .15, .2, .3,.4,.5,.6, .7,.8, .85, .9, .95, .98),na.rm=TRUE),max(BAH$lap_time, na.rm = TRUE)), include.lowest = TRUE, ordered_result = TRUE)
 
-# Pitstop duration bin and fill NAs with a [0,1] bin
-levels(BAH$pitstop_duration) <- c("[0,1]", levels(BAH$pitstop_duration))
-BAH <- BAH %>% replace_na(list(pitstop_duration = "[0,1]")) #change to "NA"
+# Add "no_pitstop" to the factor levels for pitstop_duration
+BAH$pitstop_duration <- factor(BAH$pitstop_duration, 
+                                levels = c("no_pitstop", levels(BAH$pitstop_duration)))
+# Replace all NA values with "no_pitstop"
+BAH <- BAH %>% replace_na(list(pitstop_duration = "no_pitstop"))
 
 
 BAH$tyre <- factor(BAH$tyre)
@@ -178,28 +167,14 @@ BAH <- BAH %>%
 BAH$previous_position <- factor(BAH$previous_position, ordered = TRUE)
 BAH$position <- factor(BAH$position, ordered = TRUE)
 
-# Choosing relevant variables
-BAH <- BAH %>%  dplyr::select(c(lap_time, 
-                                  tyre, team, position, 
-                                  previous_position, pitstop_duration, driver
-                                # traction, asphalt_grip, asphalt_abrasion, 
-                                # track_evol, tyre_stress, braking, 
-                                # lateral, downforce
-                                )) #  rainfall, driver
 
 ```
 
+```{r}
+levels(BAH$pitstop_duration)
+```
 
 
-```{r checking NAs}
-# check which rows have NAs and why
-which(is.na(BAH))
-```
-```{r deal with NAs}
-# dropping  nas
-BAH <- drop_na(BAH)
-BAHapest <- BAH
-```
 ```{r}
 ggplot() + geom_bar(aes(x = BAH$lap_time))+
   labs(x = "Lap Time Intervals", y = "Count", title="Lap Time Binning Results for Bahrain GP 2023")+
@@ -208,61 +183,101 @@ theme(axis.text.x = element_text(angle = 45, hjust=1), plot.title = element_text
 
 
 
+```{r}
+count_LTPT <- BAH %>%
+  filter(pitstop_duration != "no_pitstop") %>%
+  count(pitstop_duration, lap_time) %>%
+  spread(lap_time, n, fill = 0)
 
-```{r}
-ggplot() + geom_point(aes(x = BAH$pitstop_duration, y = BAH$lap_time))
+heatmap_data <- gather(count_LTPT, key = "lap_time", value = "count", -pitstop_duration)
+
+ggplot(heatmap_data, aes(x = lap_time, y = pitstop_duration, fill = count)) +
+  geom_tile() +
+  scale_fill_gradient(low = "white", high = "blue") +
+  labs(title = "Distribution of Pitstop Duration vs Lap Time",
+       x = "Lap Time",
+       y = "Pitstop Duration",
+       fill = "Count") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust=0.5))
+
 ```
-```{r}
-ggplot() + geom_point(aes(x = BAH$team, y = BAH$pitstop_duration))
+```{r checking NAs}
+# check which rows have NAs and investigate why
+which(is.na(BAH))
+```
+```{r deal with NAs}
+# dropping  nas
+BAH <- drop_na(BAH)
+
 ```
 
-```{r}
+
+```{r pitlane start warning}
 # if starting position is 0, raise a Warning to check if that was a pitlane start
-# Group by 'driver' and check for zeros
 BAH %>%
   group_by(team) %>%
   summarize(has_zero = any(previous_position == 0), .groups = "drop") %>%
   filter(has_zero) %>%
   pull(team) -> drivers_with_zero
 
-# Raise warning if any drivers have zeros
+# Raise warning if any drivers seem to be starting from pitlane - check with reports on F1 website
 if (length(drivers_with_zero) > 0) {
-  warning(paste("The following drivers have zeros in their values:", paste(drivers_with_zero, collapse = ", ")))
+  warning(paste("The following drivers have starting position = 0:", paste(drivers_with_zero, collapse = ", ")))
 }
 ```
 
-## Starting with a know DAG.
+# Simple DAG
+## Known DAG.
+
+Suppose we want to model the Bahrain GP with 5 variables: lap time, tyre compound, team, position, pitstop duration.
+
 
 ```{r}
 library(bnlearn)
 library(Rgraphviz)
-dag = empty.graph(nodes = c("lap_time", "tyre", "team", "position", 
-                      "previous_position", "pitstop_duration")) # "rainfall",
+
+# Choosing relevant variables
+BAH1 <- BAH %>%  dplyr::select(c(lap_time, 
+                                  tyre, team, position,
+                                pitstop_duration)) 
+
+dag = empty.graph(nodes = c("lap_time", "tyre", "team", "position", "pitstop_duration"))
+# Known relationships
 arc.set = matrix(c("team", "position",
+                   "team", "tyre",
                    "lap_time", "position",
                    "tyre", "lap_time",
                   "pitstop_duration", "lap_time",
                    "pitstop_duration", "position",
-                  # "rainfall", "lap_time",
-                  # "rainfall", "tyre",
-                  "team", "pitstop_duration",
-                  "previous_position", "position"
-                  
-                  ), 
+                  "team", "pitstop_duration"), 
                  byrow = TRUE, ncol=2, dimnames =list(NULL,c("from","to")))
 arcs(dag) = arc.set
 graphviz.plot(dag)
 ```
 ```{r}
-arc.strength(dag, data = BAH, criterion = "x2")
+arc.strength(dag, data = BAH1, criterion = "x2")
 ```
 
 
 ```{r}
-bn.bayes = bn.fit(dag,data=BAH, method = "bayes", iss = 10)
+bn.bayes = bn.fit(dag,data=BAH1, method = "bayes", iss = 10)
 
 bn.bayes$pitstop_duration
 ```
+
+```{r}
+bn.fit.barchart(bn.bayes$lap_time)
+```
+
+```{r}
+bn.fit.barchart(bn.bayes$tyre)
+```
+
+```{r}
+graphviz.chart(bn.bayes)
+```
+
 ```{r}
 bn.bayes$lap_time
 ```
@@ -270,13 +285,233 @@ bn.bayes$lap_time
 ```{r}
 bn.bayes$tyre
 ```
-## DAG uknown case
+## DAG unknown: constraint-based method (incremental association Markov blanket)
 
-Learning DAG using hill climbing and  blacklists
+```{r}
+BAH.iamb =iamb(BAH1, test ='mi')
+graphviz.plot(BAH.iamb)
+```
+
+```{r}
+bl = matrix(c("tyre", "team"), 
+            ncol = 2, byrow = TRUE)
+```
+
+
+```{r}
+BAH.iamb_bl =iamb(BAH1, blacklist = bl, test ='mi')
+graphviz.plot(BAH.iamb_bl)
+```
+
+
+### Perform independence tests
+
+
+
+```{r}
+# Does pistop influence lap time?
+ci.test("lap_time","pitstop_duration", test = "jt", data = BAH1)
+```
+```{r}
+# Does team influence position?
+ci.test("position", "team", test = "mc-mi", data = BAH1)
+```
+
+```{r}
+# Does team influence pitstop?
+ci.test("pitstop_duration", "team", test = "mc-mi", data = BAH1)
+```
+
+
+```{r}
+# Add the arcs from conditional independence tests with resulting p-value < 0.05
+new_BAH.iamb_bl = set.arc(BAH.iamb_bl, from = "pitstop_duration", to = "lap_time")
+new_BAH.iamb_bl = set.arc(new_BAH.iamb_bl, from = "team", to = "position")
+new_BAH.iamb_bl = set.arc(new_BAH.iamb_bl, from = "team", to = "pitstop_duration")
+
+
+graphviz.plot(new_BAH.iamb_bl)
+```
+```{r}
+# Does pitstop influence position?
+ci.test("position", "pitstop_duration", "team", test = "mc-mi", data = BAH1)
+```
+
+```{r}
+new_BAH.iamb_bl = set.arc(new_BAH.iamb_bl, from = "pitstop_duration", to = "position")
+
+graphviz.plot(new_BAH.iamb_bl)
+```
+
+
+
+```{r}
+# Does tyre influence lap time?
+ci.test("lap_time","tyre", c("pitstop_duration"), test = "mc-mi", data = BAH1)
+```
+
+
+
+```{r}
+new_BAH.iamb_bl = set.arc(new_BAH.iamb_bl, from = "tyre", to = "lap_time")
+graphviz.plot(new_BAH.iamb_bl)
+```
+
+```{r}
+# Does lap time influence position?
+ci.test("position","lap_time", c("tyre", "pitstop_duration"), test = "mc-mi", data = BAH1)
+```
+
+```{r}
+new_BAH.iamb_bl = set.arc(new_BAH.iamb_bl, from = "lap_time", to = "position")
+graphviz.plot(new_BAH.iamb_bl)
+```
+
+```{r}
+# Does tyre influence pitstop?
+ci.test("pitstop_duration","tyre", "team", test = "mc-mi", data = BAH1)
+```
+
+```{r}
+# Does pitstop influence tyre?
+ci.test("tyre", "pitstop_duration", "team", test = "mc-mi", data = BAH1)
+```
+```{r}
+# Does tyre influence position?
+ci.test("position", "tyre", c("lap_time", "team", "pitstop_duration"), test = "mc-mi", data = BAH1)
+```
+
+```{r}
+new_BAH.iamb_bl = set.arc(new_BAH.iamb_bl, from = "tyre", to = "position")
+graphviz.plot(new_BAH.iamb_bl)
+```
+
+## DAG uknown: score-based method (hill-climbing)
+
+```{r}
+# Use hill-climbing to determine the DAG
+BAH.hc1 =hc(BAH1)
+graphviz.plot(BAH.hc1)
+```
+
+Learning DAG using hill climbing and whitelists, blacklists
+
+
+```{r}
+# Use hill-climbing to determine the DAG with blacklisting
+BAH.hc_bl =hc(BAH1, blacklist = bl)
+graphviz.plot(BAH.hc_bl)
+```
+```{r}
+arc.strength(BAH.hc_bl, data = BAH1, criterion = "x2")
+```
+
+
+```{r}
+wl = matrix(c("lap_time", "position"), 
+            ncol = 2, byrow = TRUE)
+```
+
+There is a lot of blacklisting/ whitelisting involved, which pretty much determines the DAG - is this an indication it's better to use a known DAG with distributions of variables?
+
+```{r}
+# Use hill-climbing to determine the DAG
+BAH.hc_bl_wl =hc(BAH1, blacklist = bl, whitelist = wl)
+graphviz.plot(BAH.hc_bl_wl)
+```
+
+```{r}
+# Nothing to team
+for (name in names(BAH1)){
+  bl4 = matrix(c(name, "team"), ncol=2, 
+            dimnames =list(NULL,c("from","to")))
+  bl = rbind(bl, bl4)
+}
+```
+
+```{r}
+# Use hill-climbing to determine the DAG
+BAH.hc_bl_wl =hc(BAH1, blacklist = bl, whitelist = wl)
+graphviz.plot(BAH.hc_bl_wl)
+```
+
+```{r}
+arc.strength(BAH.hc_bl_wl, data = BAH1, criterion = "x2")
+```
+### Scores
+```{r}
+# Known
+score(dag, data = BAH1, type = "bic")
+score(BAH.hc1, data = BAH1, type = "bic")
+
+# IAMB 
+score(new_BAH.iamb_bl, data = BAH1, type = "bic")
+
+# HC
+score(BAH.hc_bl, data = BAH1, type = "bic")
+score(BAH.hc_bl_wl, data = BAH1, type = "bic")
+
+```
+
+Here we can note that the CPDAG underlying hc and hc_bl is the same, so their dags are score-equivalent. Indeed, we get the same BIC score for both.
+
+# Dynamic DAG
+## Known DAG.
+
+Suppose we want to model the Bahrain GP with 5 variables: lap time, tyre compound, team, position, pitstop duration.
+
+
+```{r}
+library(bnlearn)
+library(Rgraphviz)
+
+# Choosing relevant variables
+BAH2 <- BAH %>%  dplyr::select(c(lap_time, 
+                                  tyre, team, position,
+                                pitstop_duration, previous_position)) 
+
+dag = empty.graph(nodes = c("lap_time", "tyre", "team", "position", "pitstop_duration", "previous_position"))
+arc.set = matrix(c("team", "position",
+                   "team", "tyre",
+                   "lap_time", "position",
+                   "tyre", "lap_time",
+                  "pitstop_duration", "lap_time",
+                   "pitstop_duration", "position",
+                  "team", "pitstop_duration",
+                  "previous_position", "position"), 
+                 byrow = TRUE, ncol=2, dimnames =list(NULL,c("from","to")))
+arcs(dag) = arc.set
+graphviz.plot(dag)
+```
+```{r}
+arc.strength(dag, data = BAH2, criterion = "x2")
+```
+
+
+```{r}
+bn.bayes = bn.fit(dag,data=BAH2, method = "bayes", iss = 10)
+
+bn.bayes$pitstop_duration
+```
+
+
+```{r}
+bn.bayes$tyre
+```
+## DAG uknown : score-based method
+
+```{r}
+# Use hill-climbing to determine the DAG
+BAH.hc2 =hc(BAH2)
+graphviz.plot(BAH.hc2)
+```
+
+Learning DAG using hill climbing and whitelists, blacklists
 
 ```{r}
 # Blacklist variables so that chronological order is kept
-bl = matrix(c("position", "previous_position",
+bl = matrix(c(
+  "position", "previous_position",
               "pitstop_duration", "tyre",
               "tyre", "pitstop_duration",
               "lap_time", "tyre"
@@ -285,96 +520,95 @@ bl = matrix(c("position", "previous_position",
             ncol = 2, byrow = TRUE)
 
 # Nothing from position
-for (name in names(BAH)){
+for (name in names(BAH2)){
   bl2 = matrix(c("position", name), ncol=2,
             dimnames =list(NULL,c("from","to")))
   bl = rbind(bl, bl2)
 }
 
 
-# Nothing to previous position apart from team
-for (name in names(BAH)){
-  if (name != "team"){
-  bl3 = matrix(c(name, "previous_position"), ncol=2, 
-            dimnames =list(NULL,c("from","to")))
-  bl = rbind(bl, bl3)}
-}
-
 # Nothing to team
-for (name in names(BAH)){
+for (name in names(BAH2)){
   bl4 = matrix(c(name, "team"), ncol=2, 
             dimnames =list(NULL,c("from","to")))
   bl = rbind(bl, bl4)
+}
+
+
+# Nothing to previous position apart from team
+for (name in names(BAH2)){
+  if (name != "team"){
+  bl3 = matrix(c(name, "previous_position"), ncol=2,
+            dimnames =list(NULL,c("from","to")))
+  bl = rbind(bl, bl3)}
 }
 
 bl
 ```
 
 
+
 ```{r}
-unknown_dag = empty.graph(nodes = names(BAH))
-wl = matrix(c("previous_position", "position",
-              "lap_time", "position"
+# unknown_dag = empty.graph(nodes = names(BAH))
+wl = matrix(c("previous_position", "position"
+              # "lap_time", "position"
               ), 
             ncol = 2, byrow = TRUE)
-arcs(unknown_dag) = wl
-graphviz.plot(unknown_dag)
-
 ```
 
-There is a lot of blacklisting/ whitelisting involved, which pretty much determines the DAG - is this an indication it's better to use a known DAG with distributions of variables?
+
 
 ```{r}
 # Use hill-climbing to determine the DAG
-BAH.hc =hc(BAH, blacklist = bl, whitelist = wl)
-graphviz.plot(BAH.hc)
+BAH.hc2_bl_wl =hc(BAH2, blacklist = bl, whitelist = wl)
+graphviz.plot(BAH.hc2_bl_wl)
 ```
 
 ```{r}
-arc.strength(BAH.hc, data = BAH, criterion = "x2")
+arc.strength(BAH.hc2_bl_wl, data = BAH2, criterion = "x2")
 ```
 
+### Scores
 ```{r}
-score(dag, data = BAH, type = "bic")
-score(BAH.hc, data = BAH, type = "bic")
-```
-```{r}
-score(dag, data = BAH, type = "bde")
-score(BAH.hc, data = BAH, type = "bde")
+score(dag, data = BAH2, type = "bic")
+score(BAH.hc2, data = BAH2, type = "bic")
+score(BAH.hc2_bl_wl, data = BAH2, type = "bic")
 ```
 
-```{r}
-# Alt hill cclimbing with no rules
-altBAH.hc =hc(BAH, blacklist = bl)
-score(altBAH.hc, data = BAH, type = "bde")
-graphviz.plot(altBAH.hc)
-```
 
-## Use incremental association Markov blanket to learn the DAG
+## DAG unknown - constraint-based method (incremental association Markov blanket)
 
 ```{r}
-BAH.iamb =iamb(BAH, blacklist = bl, whitelist = wl, test ='mi')
+BAH.iamb =iamb(BAH2, test ='mi')
 graphviz.plot(BAH.iamb)
 ```
 
+```{r}
+BAH.iamb_bl =iamb(BAH2, blacklist = bl, test ='mi')
+graphviz.plot(BAH.iamb_bl)
+```
+```{r}
+BAH.iamb_bl_wl =iamb(BAH2, blacklist = bl, whitelist = wl, test ='mi')
+graphviz.plot(BAH.iamb_bl_wl)
+```
 
-## Perform independence tests
+### Perform independence tests
 
 ```{r}
 # Testing for conditional independence: position
-ci.test("team", "previous_position", test = "mi", data = BAH)
+ci.test("team", "previous_position", test = "mi", data = BAH2)
 ```
 ```{r}
 dag.BAH = set.arc(BAH.iamb, from = "team", to = "previous_position")
 
-ci.test("team", "pitstop_duration", test = "mi", data = BAH)
+ci.test("team", "pitstop_duration", test = "mi", data = BAH2)
 ```
 ```{r}
-ci.test("lap_time","pitstop_duration", test = "jt", data = BAH)
+ci.test("lap_time","pitstop_duration", test = "jt", data = BAH2)
 ```
 
 ```{r}
-ci.test("lap_time", "team", "tyre", test = "mi", data = BAH)
+ci.test("lap_time", "team", "tyre", test = "mi", data = BAH2)
 ```
 
 ```{r}
@@ -383,14 +617,14 @@ dag.BAH = set.arc(dag.BAH, from = "pitstop_duration", to = "lap_time")
 graphviz.plot(dag.BAH)
 ```
 ```{r}
-ci.test("position", "pitstop_duration", c("lap_time", "previous_position"), test = "mc-jt", data = BAH)
+ci.test("position", "pitstop_duration", c("lap_time", "previous_position"), test = "mc-jt", data = BAH2)
 ```
 ```{r}
 dag.BAH = set.arc(dag.BAH, from = "pitstop_duration", to = "position")
-ci.test("pitstop_duration", "previous_position", test = "mc-jt", data = BAH)
+ci.test("pitstop_duration", "previous_position", test = "mc-jt", data = BAH2)
 ```
 ```{r}
-ci.test("position", "team", c("lap_time", "previous_position"), test = "mi", data = BAH)
+ci.test("position", "team", c("lap_time", "previous_position"), test = "mi", data = BAH2)
 ```
 
 ```{r}
@@ -398,8 +632,10 @@ graphviz.plot(dag.BAH)
 ```
 
 
+
+
 ```{r}
-BAH.fit = bn.fit(dag.BAH, data = BAH, method = "bayes", iss = 10)
+BAH.fit = bn.fit(dag.BAH, data = BAH2, method = "bayes", iss = 10)
 ```
 
 ```{r}

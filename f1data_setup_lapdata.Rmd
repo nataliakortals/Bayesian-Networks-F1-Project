@@ -127,7 +127,7 @@ Race_full_data$pitstop_duration <- shift(Race_full_data$pitstop_duration, n=1, t
 
 ```{r}
 # Make a table with 10 random rows to show the data in the report
-set.seed(123)
+set.seed(145)
 
 random_sample <- Race_full_data %>% sample_n(size = 10)
 
@@ -139,6 +139,7 @@ print(latex_table, type = "latex", include.rownames = FALSE)
 Save the data into a .csv.
 
 ```{r save into csv}
+# # Comment out to save
 # write.csv(Race_full_data,
 ```
 

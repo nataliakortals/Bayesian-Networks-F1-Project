@@ -1,5 +1,5 @@
 ---
-title: "Bayesian Networks in F1: Factors influencing the position in a rac"
+title: "Bayesian Networks in Formula One Race Strategy"
 subtitle: "2023 season"
 author: "Natalia Kortals"
 output: html_document
@@ -15,6 +15,7 @@ library(dplyr)
 library(ggplot2)
 library(gridExtra)
 library(data.table)
+library(stringr)
 ```
 
 Firstly, we load the data saved into .csv file, acquired using f1dataR package. https://CRAN.R-project.org/package=f1dataR
@@ -25,36 +26,117 @@ folder_path <- "data/"
 file_list <- list.files(path = folder_path, pattern = "2023\\.csv$", full.names = TRUE)
 file_list
 
-combined_df <- data.frame()
+season_df <- data.frame()
 for (file in file_list) {
   temp_df <- read.csv(file)
-  temp_df$event <- tools::file_path_sans_ext(basename(file)) # add a variable event that will be useful for filtering through races
-  combined_df <- rbind(combined_df, temp_df)
+  temp_df$event <- tools::file_path_sans_ext(basename(file)) # add a variable event that will be useful for filtering                                                                     through races
+  season_df <- rbind(season_df, temp_df)
 }
+print(dim(season_df))
+```
+
+```{r head}
+head(season_df)
+```
+## Summary of the data
+
+Here we can see that we have to discretise and categorise the integer and continuous variables.
+
+```{r summary}
+summary(season_df)
+```
+
+Next, we plot the variables to understand the dataset: 
+
+```{r laps count plot}
+ggplot(season_df, aes(x = event, fill = team)) +
+  geom_bar(position = "stack") +
+  labs(x = "Event", y = "Count", title = "Sample Size of Laps per Race by Team") +
+  scale_fill_brewer(palette = "Paired", name = "Team") +
+  theme_minimal() + theme(axis.text.x = element_text(angle = 45, hjust=1)) +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+
+```{r tyres count plot}
+ggplot(season_df, aes(x = event, fill = tyre)) +
+  geom_bar(position = "stack") +
+  labs(x = "Event", y = "Count", title = "Sample Size of Tyre Compounds per Race") +
+  scale_fill_brewer(palette = "Paired", name = "Tyre") +
+  theme_minimal() + theme(axis.text.x = element_text(angle = 45, hjust=1)) +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r rainfall count plot}
+ggplot(season_df, aes(x = event, fill = rainfall)) +
+  geom_bar(position = "stack") +
+  labs(x = "Event", y = "Count", title = "Weather Conditions per Race") +
+  scale_fill_brewer(palette = "Paired", name = "Rainfall") +
+  theme_minimal() + theme(axis.text.x = element_text(angle = 45, hjust=1)) +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r circuit vars heatmap}
+# Need a new df with 8 variables, 5 rows, count of unique events with a value
+
+value_counts <- season_df %>%
+  pivot_longer(cols = c(traction, asphalt_grip, asphalt_abrasion, track_evol,
+                    tyre_stress, braking, lateral, downforce), names_to = "Variable", values_to = "Value") %>%
+  group_by(Variable, Value) %>%
+  summarise(n = n_distinct(event), .groups = "drop") %>%  # Count unique events
+  arrange(Variable, Value)
+
+# Print result
+print(value_counts)
+
+ggplot(value_counts, aes(x = Variable, y = as.factor(Value), fill = n)) +
+  geom_tile(color = "white") +
+  scale_fill_gradient(low = "lightyellow", high = "red") +
+  labs(title = "Heatmap of Circuit Characteristics Across 22 Races",
+       x = "Variable",
+       y = "Value",
+       fill = "Count") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust=1)) +
+  theme(plot.title = element_text(hjust=0.5))
 
 ```
+
+
 ## Missingness
 
 ```{r wrong pitstop data}
 # Check how many wrong pitstop_duration values are there and which races they are present in
 
-library(stringr)
-
-# Check for time-series-like entries
-time_like <- str_detect(combined_df$pitstop_duration, "\\d+:\\d+\\.\\d+")
+# Check for time-series-like string entries
+time_like <- str_detect(season_df$pitstop_duration, "\\d+:\\d+\\.\\d+")
 # Count occurrences
 num_time_like <- sum(time_like)
-
 # Check how many time-series-like entries there are per event
-unique_events <- combined_df %>%
+miss_pit_per_events <- season_df %>%
   filter(time_like) %>%
   group_by(event) %>%
   summarise(count = n(), .groups = "drop")
 
-print(unique_events)
+print(miss_pit_per_events)
 
 ```
-It seems that only 7 events are affected by the wrong pitstop data format. Interestingly, for all those laps the lap_time variable is also missing, which seems to be an error in collecting the timing data or those laps being disregarded in some way (unfinished laps). 
+It seems that only 7 events are affected by the wrong pitstop data format. Interestingly, for all those laps the lap_time variable is also missing, which seems to be an error or technology failure in collecting the timing data, with the entry being overwritten by a timestamp. 
+
+
+```{r pitstop count}
+# Get total number of pitstops per race to help deciding what to drop
+total_pitstops <- season_df %>%
+  filter(!is.na(pitstop_duration)) %>%
+  group_by(event) %>%
+  summarise(count = n(), .groups = "drop")
+print(total_pitstops)
+```
+
+```{r avg no of pitstops per race}
+# get the average of pitstops
+mean(total_pitstops$count)
+```
 
 In albert_park2023 the incorrect format of pitstop_duration variable accounts for 75% of the pitstop datapoints.
 For interlagos2023 and rodriguez2023, the incorrect datapoints are around 25% and 47% of the total pitstops.
@@ -62,113 +144,57 @@ In Zaandvort 9 laps are affected, which makes for only around 11% of pitstops at
 For races where this occurs only once, such as marina_bay2023, suzuka2023, villeneuve2023 - this mistaken row of data will be dropped.
 
 Setting an allowance of up to 20% pitstop_duration data missing, we disregard data from
-albert_park2023, interlagos2023, rodriguez2023 in later analysis. For other events, this rows of data will be dropped as a data cleaning step. 
-
-```{r}
-# Get total number of pitstops per race to help deciding what to drop
-unique_events2 <- combined_df %>%
-  filter(!is.na(pitstop_duration)) %>%
-  group_by(event) %>%
-  summarise(count = n(), .groups = "drop")
-print(unique_events2)
-```
-
-```{r}
-# get the average of pitstops
-mean(unique_events2$count)
-```
-
-
-## Summary of the data
-
-```{r}
-summary(combined_df)
-```
-
-Here we can see that we have to discretise and categorise the integer and continuous variables.
+albert_park2023, interlagos2023, rodriguez2023 in later analysis. For other events, this rows of data will be dropped as a data cleaning step.
 
 
 
 
-Next, we plot the variables to understand the dataset: 
 
 ```{r plot event vs laptime}
 # if pitstop is na
-# check for safety car conditions
-ggplot(data=subset(combined_df, is.na(pitstop_duration)), mapping = aes(x = event, y = lap_time)) +
-  geom_boxplot() + theme(axis.text.x = element_text(angle = 45, hjust=1))
-```
-
-```{r}
-# install.packages("GGally")
-library(GGally)
-
-ggpairs(combined_df,          # Data frame
-        columns = c("traction", "asphalt_grip", "asphalt_abrasion", "track_evol",
-                    "tyre_stress", "braking", "lateral", "downforce")) 
-
-```
-
-
-
-```{r}
-ggplot() + geom_bar(aes(x = combined_df$tyre))
-```
-```{r laptime race 1}
-combined_df %>%
-  filter( event == "albert_park2023"  ) %>%
-  ggplot( aes(x=lap_time)) +
-    geom_density(fill="#69b3a2", color="#e9ecef", alpha=0.8)
-```
-```{r}
-combined_df %>%
-  filter(lap_number == 1 & (event == "albert_park2023" | event == "hungaroring2023")) %>%
-  ggplot() +
-    geom_point(aes(x = team, y =lap_time, colour = event))
-
-# ggplot() + geom_point(aes(x = combined_df$driver, y = combined_df$lap_time, colour = combined_df$event))
-```
-
-
-```{r laptime race 2}
-combined_df %>%
-  filter( event == "miami2023" ) %>%
-  ggplot( aes(x=lap_time)) +
-    geom_density(fill="#69b3a2", color="#e9ecef", alpha=0.8)
-# ggplot() + geom_density(aes(x = combined_df$lap_time))
+ggplot(data=subset(season_df, is.na(pitstop_duration)), mapping = aes(x = event, y = lap_time)) +
+  geom_boxplot() + theme(axis.text.x = element_text(angle = 45, hjust=1)) +
+  labs(x = "Event", y = "Lap Time", title = "Box Plot of Lap Times at 2023 Races") +
+  theme_minimal() + theme(axis.text.x = element_text(angle = 45, hjust=1)) +
+  theme(plot.title = element_text(hjust = 0.5))
 ```
 
 
 ```{r}
-max(combined_df$lap_time, na.rm = TRUE)
+ggplot() + geom_bar(aes(x = season_df$tyre))
 ```
+
+
 
 ```{r pitstop bins}
+
+
+# Make a massive loop now 
 # Convert pitstop_duration to numeric
-combined_df$pitstop_duration <- as.numeric(combined_df$pitstop_duration)
+season_df$pitstop_duration <- as.numeric(season_df$pitstop_duration)
 # Make bins
-combined_df$pitstop_duration <- cut(combined_df$pitstop_duration, breaks = c(min(combined_df$pitstop_duration, na.rm = TRUE), quantile(combined_df$pitstop_duration, probs = c(.2, .4, .6, .8),na.rm=TRUE),max(combined_df$pitstop_duration, na.rm = TRUE)), ordered_result = TRUE, include.lowest = TRUE, labels = c("fastest_pit", ".2", ".4", ".6", ".8"))
+season_df$pitstop_duration <- cut(season_df$pitstop_duration, breaks = c(min(season_df$pitstop_duration, na.rm = TRUE), quantile(season_df$pitstop_duration, probs = c(.2, .4, .6, .8),na.rm=TRUE),max(season_df$pitstop_duration, na.rm = TRUE)), ordered_result = TRUE, include.lowest = TRUE, labels = c("fastest_pit", ".2", ".4", ".6", ".8"))
 # Quantiles need more meaningful names
 
-ggplot(data=subset(combined_df, !is.na(pitstop_duration)), aes(x=pitstop_duration)) +
+ggplot(data=subset(season_df, !is.na(pitstop_duration)), aes(x=pitstop_duration)) +
   geom_bar()
 
 # Fill NAs with 0,1 bins
-levels(combined_df$pitstop_duration) <- c("fastest_pit", ".2", ".4", ".6", ".8", "no_stop")
-combined_df <- combined_df %>% replace_na(list(pitstop_duration = "no_stop")) #change to "NA"
+levels(season_df$pitstop_duration) <- c("fastest_pit", ".2", ".4", ".6", ".8", "no_stop")
+season_df <- season_df %>% replace_na(list(pitstop_duration = "no_stop")) #change to "NA"
 
 ```
 
 
 ```{r}
-ggplot(combined_df, aes(x=pitstop_duration)) +
+ggplot(season_df, aes(x=pitstop_duration)) +
   geom_bar()
 ```
 
 
 ```{r boxplot pitstop bins vs laptime}
 # Boxplot of pitstop bins vs continuous lap_time
-ggplot(data=combined_df, aes(x=pitstop_duration, y = lap_time)) +
+ggplot(data=season_df, aes(x=pitstop_duration, y = lap_time)) +
   geom_boxplot()
 ```
 
@@ -178,42 +204,42 @@ ggplot(data=combined_df, aes(x=pitstop_duration, y = lap_time)) +
 ```{r lap time bins}
 # Lap time - ordered: the shorter the better
 # the fastest lap is included thanks to argument include.lowest = TRUE
-combined_df$lap_time <- cut(combined_df$lap_time, breaks = c(min(combined_df$lap_time, na.rm = TRUE), quantile(combined_df$lap_time,probs = c(.05, .1, .15, .2, .25, .3,.4,.5,.6, .7,.8, .85, .87, .9, .92, .94, .96, .98, .99),na.rm=TRUE),max(combined_df$lap_time, na.rm = TRUE)), include.lowest = TRUE, ordered_result = TRUE, labels = c("fastest", ".05", ".1", ".15", ".2", ".25", ".3",".4",".5",".6", ".7",".8", ".85", ".87", ".9", ".92", ".94", ".96", ".98", ".99"))
+season_df$lap_time <- cut(season_df$lap_time, breaks = c(min(season_df$lap_time, na.rm = TRUE), quantile(season_df$lap_time,probs = c(.05, .1, .15, .2, .25, .3,.4,.5,.6, .7,.8, .85, .87, .9, .92, .94, .96, .98, .99),na.rm=TRUE),max(season_df$lap_time, na.rm = TRUE)), include.lowest = TRUE, ordered_result = TRUE, labels = c("fastest", ".05", ".1", ".15", ".2", ".25", ".3",".4",".5",".6", ".7",".8", ".85", ".87", ".9", ".92", ".94", ".96", ".98", ".99"))
 
-ggplot(data=combined_df, aes(x=lap_time)) +
+ggplot(data=season_df, aes(x=lap_time)) +
   geom_bar()
 ```
 
 
 ```{r convert to factors and ordinal}
 
-combined_df$driver <- factor(combined_df$driver)
-combined_df$team <- factor(combined_df$team)
+season_df$driver <- factor(season_df$driver)
+season_df$team <- factor(season_df$team)
 
 # Circuit characteristics
-combined_df$traction <- factor(combined_df$traction, ordered = TRUE)
-combined_df$asphalt_grip <- factor(combined_df$asphalt_grip, ordered = TRUE)
-combined_df$asphalt_abrasion <- factor(combined_df$asphalt_abrasion, ordered = TRUE)
-combined_df$track_evol <- factor(combined_df$track_evol, ordered = TRUE)
-combined_df$tyre_stress <- factor(combined_df$tyre_stress, ordered = TRUE)
-combined_df$braking <- factor(combined_df$braking, ordered = TRUE)
-combined_df$lateral <- factor(combined_df$lateral, ordered = TRUE)
-combined_df$downforce <- factor(combined_df$downforce, ordered = TRUE)
+season_df$traction <- factor(season_df$traction, ordered = TRUE)
+season_df$asphalt_grip <- factor(season_df$asphalt_grip, ordered = TRUE)
+season_df$asphalt_abrasion <- factor(season_df$asphalt_abrasion, ordered = TRUE)
+season_df$track_evol <- factor(season_df$track_evol, ordered = TRUE)
+season_df$tyre_stress <- factor(season_df$tyre_stress, ordered = TRUE)
+season_df$braking <- factor(season_df$braking, ordered = TRUE)
+season_df$lateral <- factor(season_df$lateral, ordered = TRUE)
+season_df$downforce <- factor(season_df$downforce, ordered = TRUE)
 
-combined_df$tyre <- factor(combined_df$tyre, ordered = TRUE, levels = c("SOFT", "MEDIUM", "HARD")) 
+season_df$tyre <- factor(season_df$tyre, ordered = TRUE, levels = c("SOFT", "MEDIUM", "HARD")) 
 # Weather can be ordered too, with Dry being the preferred
-combined_df$rainfall <- factor(combined_df$rainfall, ordered = TRUE)
+season_df$rainfall <- factor(season_df$rainfall, ordered = TRUE)
 
 # Make a variable for position on previous lap
-combined_df <- combined_df %>%
-  mutate(previous_position = ifelse(lap_number == 1, start_position, shift(combined_df$position, n=1, type="lag")))
+season_df <- season_df %>%
+  mutate(previous_position = ifelse(lap_number == 1, start_position, shift(season_df$position, n=1, type="lag")))
 
 # Positions are ordered, quite self-explanatory reason
-combined_df$previous_position <- factor(combined_df$previous_position, ordered = TRUE)
-combined_df$position <- factor(combined_df$position, ordered = TRUE)
+season_df$previous_position <- factor(season_df$previous_position, ordered = TRUE)
+season_df$position <- factor(season_df$position, ordered = TRUE)
 
 # Choosing relevant variables
-combined_df <- combined_df %>%  dplyr::select(c(lap_time, 
+season_df <- season_df %>%  dplyr::select(c(lap_time, 
                                   tyre, team, 
                                   position, 
                                   previous_position, pitstop_duration
@@ -230,27 +256,19 @@ combined_df <- combined_df %>%  dplyr::select(c(lap_time,
 
 ```{r checking NAs}
 # check which rows have NAs and why
-which(is.na(combined_df))
+which(is.na(season_df))
 ```
 ```{r deal with NAs}
 # # dropping  nas
-# combined_df <- drop_na(combined_df)
+# season_df <- drop_na(season_df)
 ```
 
 
-Plots 
-
-```{r}
-ggplot() + geom_point(aes(x = combined_df$pitstop_duration, y = combined_df$lap_time))
-```
-```{r}
-ggplot() + geom_point(aes(x = combined_df$team, y = combined_df$pitstop_duration))
-```
 
 ```{r}
 # if starting position is 0, raise a Warning to check if that was a pitlane start
 # Group by 'driver' and check for zeros
-combined_df %>%
+season_df %>%
   group_by(driver) %>%
   summarize(has_zero = any(previous_position == 0), .groups = "drop") %>%
   filter(has_zero) %>%
@@ -262,165 +280,5 @@ if (length(drivers_with_zero) > 0) {
 }
 ```
 
-## Starting with a know DAG.
 
-```{r}
-library(bnlearn)
-library(Rgraphviz)
-dag = empty.graph(nodes = c("lap_time", "tyre", "team", "position", 
-                      "previous_position", "pitstop_duration", "driver")) # "rainfall",
-arc.set = matrix(c("team", "position",
-                   "driver", "position",
-                   "lap_time", "position",
-                   "tyre", "lap_time",
-                  "pitstop_duration", "lap_time",
-                   "pitstop_duration", "position",
-                  # "rainfall", "lap_time",
-                  # "rainfall", "tyre",
-                  "team", "pitstop_duration",
-                  "previous_position", "position"
-                  
-                  ), 
-                 byrow = TRUE, ncol=2, dimnames =list(NULL,c("from","to")))
-arcs(dag) = arc.set
-graphviz.plot(dag)
-```
-```{r}
-arc.strength(dag, data = combined_df, criterion = "x2")
-```
-
-
-```{r}
-bn.bayes = bn.fit(dag,data=combined_df, method = "bayes", iss = 10)
-
-bn.bayes$pitstop_duration
-```
-```{r}
-bn.bayes$lap_time
-```
-
-```{r}
-bn.bayes$tyre
-```
-## DAG uknown case
-
-Learning DAG using hill climbing and  blacklists
-
-```{r}
-# Blacklist variables so that chronological order is kept
-bl = matrix(c("position", "previous_position",
-              "pitstop_duration", "tyre",
-              "tyre", "pitstop_duration",
-              "lap_time", "tyre"
-              
-              ), 
-            ncol = 2, byrow = TRUE)
-
-# Nothing from position
-for (name in names(combined_df)){
-  bl2 = matrix(c("position", name), ncol=2,
-            dimnames =list(NULL,c("from","to")))
-  bl = rbind(bl, bl2)
-}
-
-
-# Nothing to previous position apart from team
-for (name in names(combined_df)){
-  if (name != "team"){
-  bl3 = matrix(c(name, "previous_position"), ncol=2, 
-            dimnames =list(NULL,c("from","to")))
-  bl = rbind(bl, bl3)}
-}
-
-# Nothing to team
-for (name in names(combined_df)){
-  bl4 = matrix(c(name, "team"), ncol=2, 
-            dimnames =list(NULL,c("from","to")))
-  bl = rbind(bl, bl4)
-}
-
-bl
-```
-
-
-```{r}
-unknown_dag = empty.graph(nodes = names(combined_df))
-wl = matrix(c("previous_position", "position",
-              "lap_time", "position"
-              ), 
-            ncol = 2, byrow = TRUE)
-arcs(unknown_dag) = wl
-graphviz.plot(unknown_dag)
-
-```
-
-
-```{r}
-# Use hill-climbing to determine the DAG
-combined_df.hc =hc(combined_df, blacklist = bl, whitelist = wl)
-graphviz.plot(combined_df.hc)
-```
-
-```{r}
-arc.strength(combined_df.hc, data = combined_df, criterion = "x2")
-```
-
-```{r}
-score(dag, data = combined_df, type = "bic")
-score(combined_df.hc, data = combined_df, type = "bic")
-```
-```{r}
-score(dag, data = combined_df, type = "bde")
-score(combined_df.hc, data = combined_df, type = "bde")
-```
-
-```{r}
-# Alt hill cclimbing with no rules
-altcombined_df.hc =hc(combined_df, blacklist = bl)
-score(altcombined_df.hc, data = combined_df, type = "bde")
-graphviz.plot(altcombined_df.hc)
-```
-
-## Use incremental association Markov blanket to learn the DAG
-
-```{r}
-combined_df.iamb =iamb(combined_df, blacklist = bl, whitelist = wl, test ='mi')
-graphviz.plot(combined_df.iamb)
-```
-
-
-## Perform independence tests
-If the p-value is very small, there is no evidence for independence so we add the arc to the dag.
-```{r}
-# Testing for conditional independence: position
-ci.test("team", "previous_position", test = "mi", data = combined_df)
-```
-```{r}
-dag.combined_df = set.arc(combined_df.iamb, from = "team", to = "previous_position")
-
-ci.test("team", "pitstop_duration", test = "mi", data = combined_df)
-```
-```{r}
-ci.test("lap_time","pitstop_duration", test = "jt", data = combined_df)
-```
-
-```{r}
-dag.combined_df = set.arc(dag.combined_df, from = "pitstop_duration", to = "lap_time")
-graphviz.plot(dag.combined_df)
-```
-
-```{r}
-ci.test("lap_time", "tyre", "pitstop_duration", test = "jt", data = combined_df)
-```
-
-```{r}
-ci.test("lap_time", "team", "pitstop_duration", test = "mi", data = combined_df)
-```
-
-```{r}
-
-```
-```{r}
-
-```
 
