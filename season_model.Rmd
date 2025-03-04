@@ -29,9 +29,13 @@ file_list
 season_df <- data.frame()
 for (file in file_list) {
   temp_df <- read.csv(file)
-  temp_df$event <- tools::file_path_sans_ext(basename(file)) # add a variable event that will be useful for filtering                                                                     through races
+  # add a variable event that will be useful for filtering                                                                     through races
+  temp_df$event <- gsub("2023", "", tools::file_path_sans_ext(basename(file))) 
   season_df <- rbind(season_df, temp_df)
 }
+```
+
+```{r size of data}
 print(dim(season_df))
 ```
 
@@ -103,6 +107,16 @@ ggplot(value_counts, aes(x = Variable, y = as.factor(Value), fill = n)) +
 ```
 
 
+```{r plot event vs laptime}
+# if pitstop is na
+ggplot(data=subset(season_df, is.na(pitstop_duration)), mapping = aes(x = event, y = lap_time)) +
+  geom_boxplot() + theme(axis.text.x = element_text(angle = 45, hjust=1)) +
+  labs(x = "Event", y = "Lap Time", title = "Box Plot of Lap Times at 2023 Races") +
+  theme_minimal() + theme(axis.text.x = element_text(angle = 45, hjust=1)) +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+
 ## Missingness
 
 ```{r wrong pitstop data}
@@ -147,49 +161,33 @@ Setting an allowance of up to 20% pitstop_duration data missing, we disregard da
 albert_park2023, interlagos2023, rodriguez2023 in later analysis. For other events, this rows of data will be dropped as a data cleaning step.
 
 
-
-
-
-```{r plot event vs laptime}
-# if pitstop is na
-ggplot(data=subset(season_df, is.na(pitstop_duration)), mapping = aes(x = event, y = lap_time)) +
-  geom_boxplot() + theme(axis.text.x = element_text(angle = 45, hjust=1)) +
-  labs(x = "Event", y = "Lap Time", title = "Box Plot of Lap Times at 2023 Races") +
-  theme_minimal() + theme(axis.text.x = element_text(angle = 45, hjust=1)) +
-  theme(plot.title = element_text(hjust = 0.5))
-```
-
-
-```{r}
-ggplot() + geom_bar(aes(x = season_df$tyre))
-```
-
-
-
 ```{r pitstop bins}
+# Make a massive loop now
 
+for (round in unique(season_df$event)){
+  print(round)
+  race_df <- subset(season_df, event ==round)
+  # print(head(race_df))
 
-# Make a massive loop now 
-# Convert pitstop_duration to numeric
-season_df$pitstop_duration <- as.numeric(season_df$pitstop_duration)
-# Make bins
-season_df$pitstop_duration <- cut(season_df$pitstop_duration, breaks = c(min(season_df$pitstop_duration, na.rm = TRUE), quantile(season_df$pitstop_duration, probs = c(.2, .4, .6, .8),na.rm=TRUE),max(season_df$pitstop_duration, na.rm = TRUE)), ordered_result = TRUE, include.lowest = TRUE, labels = c("fastest_pit", ".2", ".4", ".6", ".8"))
-# Quantiles need more meaningful names
-
-ggplot(data=subset(season_df, !is.na(pitstop_duration)), aes(x=pitstop_duration)) +
-  geom_bar()
-
-# Fill NAs with 0,1 bins
-levels(season_df$pitstop_duration) <- c("fastest_pit", ".2", ".4", ".6", ".8", "no_stop")
-season_df <- season_df %>% replace_na(list(pitstop_duration = "no_stop")) #change to "NA"
+  # # Convert pitstop_duration to numeric
+  race_df$pitstop_duration <- as.numeric(race_df$pitstop_duration)
+  # Make bins
+  race_df$pitstop_duration <- cut(race_df$pitstop_duration, breaks = c(min(race_df$pitstop_duration, na.rm = TRUE), quantile(race_df$pitstop_duration, probs = c(.2, .4, .6, .8),na.rm=TRUE),max(race_df$pitstop_duration, na.rm = TRUE)), ordered_result = TRUE, include.lowest = TRUE, labels = c("fastest_pit", ".2", ".4", ".6", ".8"))
+  
+  # Add "no_pitstop" to the factor levels for pitstop_duration
+  race_df$pitstop_duration <- factor(race_df$pitstop_duration, 
+                                  levels = c("no_pitstop", levels(race_df$pitstop_duration)))
+  # Replace all NA values with "no_pitstop"
+  race_df<- race_df %>% replace_na(list(pitstop_duration = "no_pitstop"))
+  
+  print(levels(race_df$pitstop_duration))
+  
+# At the end they have to merge to make a new full season df
+  }
 
 ```
 
 
-```{r}
-ggplot(season_df, aes(x=pitstop_duration)) +
-  geom_bar()
-```
 
 
 ```{r boxplot pitstop bins vs laptime}
@@ -226,7 +224,7 @@ season_df$braking <- factor(season_df$braking, ordered = TRUE)
 season_df$lateral <- factor(season_df$lateral, ordered = TRUE)
 season_df$downforce <- factor(season_df$downforce, ordered = TRUE)
 
-season_df$tyre <- factor(season_df$tyre, ordered = TRUE, levels = c("SOFT", "MEDIUM", "HARD")) 
+season_df$tyre <- factor(season_df$tyre) 
 # Weather can be ordered too, with Dry being the preferred
 season_df$rainfall <- factor(season_df$rainfall, ordered = TRUE)
 
