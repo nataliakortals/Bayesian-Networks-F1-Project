@@ -32,9 +32,6 @@ summary(BAH)
 ```
 
 
-team vs position boxplot
-
-
 
 Next, we plot the variables to understand the dataset: 
 
@@ -275,10 +272,6 @@ bn.fit.barchart(bn.bayes$tyre)
 ```
 
 ```{r}
-graphviz.chart(bn.bayes)
-```
-
-```{r}
 bn.bayes$lap_time
 ```
 
@@ -288,59 +281,92 @@ bn.bayes$tyre
 ## DAG unknown: constraint-based method (incremental association Markov blanket)
 
 ```{r}
-BAH.iamb =iamb(BAH1, test ='mi')
+BAH.iamb_naive =iamb(BAH1, test ='mi')
+graphviz.plot(BAH.iamb_naive)
+```
+
+Make a blacklist representing the natural temporal ordering of variables
+
+```{r}
+# Blacklist variables so that chronological order is kept
+bl = matrix(c(
+              "lap_time", "pitstop_duration",
+              "lap_time", "tyre"
+             ), 
+            ncol = 2, byrow = TRUE)
+
+# Nothing from position
+for (name in names(BAH1)){
+  bl2 = matrix(c("position", name), ncol=2,
+            dimnames =list(NULL,c("from","to")))
+  bl = rbind(bl, bl2)
+}
+
+
+# Nothing to team
+for (name in names(BAH1)){
+  bl3 = matrix(c(name, "team"), ncol=2, 
+            dimnames =list(NULL,c("from","to")))
+  bl = rbind(bl, bl3)
+}
+
+
+
+bl
+```
+
+
+
+
+```{r}
+BAH.iamb =iamb(BAH1, blacklist = bl, test ='mi')
 graphviz.plot(BAH.iamb)
 ```
-
-```{r}
-bl = matrix(c("tyre", "team"), 
-            ncol = 2, byrow = TRUE)
-```
-
-
-```{r}
-BAH.iamb_bl =iamb(BAH1, blacklist = bl, test ='mi')
-graphviz.plot(BAH.iamb_bl)
-```
-
 
 ### Perform independence tests
 
 
 
 ```{r}
-# Does pistop influence lap time?
-ci.test("lap_time","pitstop_duration", test = "jt", data = BAH1)
+# Does pitstop influence lap time?
+ci.test("lap_time","pitstop_duration", test = "mc-jt", data = BAH1)
 ```
 ```{r}
 # Does team influence position?
 ci.test("position", "team", test = "mc-mi", data = BAH1)
 ```
+```{r}
+# Does team influence tyre?
+ci.test("tyre", "team", test = "mc-mi", data = BAH1)
+```
 
 ```{r}
-# Does team influence pitstop?
+# Does team influence pitstop_duration?
 ci.test("pitstop_duration", "team", test = "mc-mi", data = BAH1)
+```
+```{r}
+# Does team influence lap_time?
+ci.test("lap_time", "team", "pitstop_duration", test = "mc-mi", data = BAH1)
+```
+
+```{r}
+# Does lap_time influence position?
+ci.test("position", "lap_time", "team", test = "mc-mi", data = BAH1)
 ```
 
 
 ```{r}
 # Add the arcs from conditional independence tests with resulting p-value < 0.05
-new_BAH.iamb_bl = set.arc(BAH.iamb_bl, from = "pitstop_duration", to = "lap_time")
-new_BAH.iamb_bl = set.arc(new_BAH.iamb_bl, from = "team", to = "position")
-new_BAH.iamb_bl = set.arc(new_BAH.iamb_bl, from = "team", to = "pitstop_duration")
+tested_BAH.iamb = set.arc(BAH.iamb, from = "lap_time", to = "position")
+tested_BAH.iamb = set.arc(tested_BAH.iamb, from = "team", to = "lap_time")
+tested_BAH.iamb = set.arc(tested_BAH.iamb, from = "team", to = "pitstop_duration")
 
 
-graphviz.plot(new_BAH.iamb_bl)
+graphviz.plot(tested_BAH.iamb)
 ```
 ```{r}
 # Does pitstop influence position?
 ci.test("position", "pitstop_duration", "team", test = "mc-mi", data = BAH1)
-```
-
-```{r}
-new_BAH.iamb_bl = set.arc(new_BAH.iamb_bl, from = "pitstop_duration", to = "position")
-
-graphviz.plot(new_BAH.iamb_bl)
 ```
 
 
@@ -349,42 +375,12 @@ graphviz.plot(new_BAH.iamb_bl)
 # Does tyre influence lap time?
 ci.test("lap_time","tyre", c("pitstop_duration"), test = "mc-mi", data = BAH1)
 ```
-
-
-
 ```{r}
-new_BAH.iamb_bl = set.arc(new_BAH.iamb_bl, from = "tyre", to = "lap_time")
-graphviz.plot(new_BAH.iamb_bl)
+tested_BAH.iamb = set.arc(tested_BAH.iamb, from = "pitstop_duration", to = "position")
+tested_BAH.iamb = set.arc(tested_BAH.iamb, from = "tyre", to = "lap_time")
+graphviz.plot(tested_BAH.iamb)
 ```
 
-```{r}
-# Does lap time influence position?
-ci.test("position","lap_time", c("tyre", "pitstop_duration"), test = "mc-mi", data = BAH1)
-```
-
-```{r}
-new_BAH.iamb_bl = set.arc(new_BAH.iamb_bl, from = "lap_time", to = "position")
-graphviz.plot(new_BAH.iamb_bl)
-```
-
-```{r}
-# Does tyre influence pitstop?
-ci.test("pitstop_duration","tyre", "team", test = "mc-mi", data = BAH1)
-```
-
-```{r}
-# Does pitstop influence tyre?
-ci.test("tyre", "pitstop_duration", "team", test = "mc-mi", data = BAH1)
-```
-```{r}
-# Does tyre influence position?
-ci.test("position", "tyre", c("lap_time", "team", "pitstop_duration"), test = "mc-mi", data = BAH1)
-```
-
-```{r}
-new_BAH.iamb_bl = set.arc(new_BAH.iamb_bl, from = "tyre", to = "position")
-graphviz.plot(new_BAH.iamb_bl)
-```
 
 ## DAG uknown: score-based method (hill-climbing)
 
@@ -406,52 +402,22 @@ graphviz.plot(BAH.hc_bl)
 arc.strength(BAH.hc_bl, data = BAH1, criterion = "x2")
 ```
 
-
-```{r}
-wl = matrix(c("lap_time", "position"), 
-            ncol = 2, byrow = TRUE)
-```
-
-There is a lot of blacklisting/ whitelisting involved, which pretty much determines the DAG - is this an indication it's better to use a known DAG with distributions of variables?
-
-```{r}
-# Use hill-climbing to determine the DAG
-BAH.hc_bl_wl =hc(BAH1, blacklist = bl, whitelist = wl)
-graphviz.plot(BAH.hc_bl_wl)
-```
-
-```{r}
-# Nothing to team
-for (name in names(BAH1)){
-  bl4 = matrix(c(name, "team"), ncol=2, 
-            dimnames =list(NULL,c("from","to")))
-  bl = rbind(bl, bl4)
-}
-```
-
-```{r}
-# Use hill-climbing to determine the DAG
-BAH.hc_bl_wl =hc(BAH1, blacklist = bl, whitelist = wl)
-graphviz.plot(BAH.hc_bl_wl)
-```
-
-```{r}
-arc.strength(BAH.hc_bl_wl, data = BAH1, criterion = "x2")
-```
 ### Scores
+
 ```{r}
 # Known
 score(dag, data = BAH1, type = "bic")
-score(BAH.hc1, data = BAH1, type = "bic")
 
 # IAMB 
-score(new_BAH.iamb_bl, data = BAH1, type = "bic")
+score(BAH.iamb, data = BAH1, type = "bic")
+score(tested_BAH.iamb, data = BAH1, type = "bic")
 
 # HC
+score(BAH.hc1, data = BAH1, type = "bic")
 score(BAH.hc_bl, data = BAH1, type = "bic")
-score(BAH.hc_bl_wl, data = BAH1, type = "bic")
 
 ```
+
 
 Here we can note that the CPDAG underlying hc and hc_bl is the same, so their dags are score-equivalent. Indeed, we get the same BIC score for both.
 
@@ -466,11 +432,12 @@ library(bnlearn)
 library(Rgraphviz)
 
 # Choosing relevant variables
-BAH2 <- BAH %>%  dplyr::select(c(lap_time, 
+BAH2 <- BAH %>%  dplyr::select(c(lap_time, previous_position,
                                   tyre, team, position,
-                                pitstop_duration, previous_position)) 
+                                pitstop_duration)) 
 
-dag = empty.graph(nodes = c("lap_time", "tyre", "team", "position", "pitstop_duration", "previous_position"))
+dag_d = empty.graph(nodes = c("lap_time", "tyre", "team", "position", "pitstop_duration", "previous_position"))
+# Known relationships
 arc.set = matrix(c("team", "position",
                    "team", "tyre",
                    "lap_time", "position",
@@ -480,43 +447,50 @@ arc.set = matrix(c("team", "position",
                   "team", "pitstop_duration",
                   "previous_position", "position"), 
                  byrow = TRUE, ncol=2, dimnames =list(NULL,c("from","to")))
-arcs(dag) = arc.set
-graphviz.plot(dag)
+arcs(dag_d) = arc.set
+graphviz.plot(dag_d)
 ```
 ```{r}
-arc.strength(dag, data = BAH2, criterion = "x2")
-```
-
-
-```{r}
-bn.bayes = bn.fit(dag,data=BAH2, method = "bayes", iss = 10)
-
-bn.bayes$pitstop_duration
+arc.strength(dag_d, data = BAH2, criterion = "x2")
 ```
 
 
 ```{r}
-bn.bayes$tyre
+bn.bayes_d = bn.fit(dag_d,data=BAH2, method = "bayes", iss = 10)
+
+bn.bayes_d$pitstop_duration
 ```
-## DAG uknown : score-based method
 
 ```{r}
-# Use hill-climbing to determine the DAG
-BAH.hc2 =hc(BAH2)
-graphviz.plot(BAH.hc2)
+bn.fit.barchart(bn.bayes_d$lap_time)
 ```
 
-Learning DAG using hill climbing and whitelists, blacklists
+```{r}
+bn.fit.barchart(bn.bayes_d$tyre)
+```
+
+```{r}
+bn.bayes_d$lap_time
+```
+
+```{r}
+bn.bayes_d$tyre
+```
+## DAG unknown: constraint-based method (incremental association Markov blanket)
+
+```{r}
+BAH.iamb_naive_d =iamb(BAH2, test ='mi')
+graphviz.plot(BAH.iamb_naive_d)
+```
+
+Make a blacklist representing the natural temporal ordering of variables
 
 ```{r}
 # Blacklist variables so that chronological order is kept
 bl = matrix(c(
-  "position", "previous_position",
-              "pitstop_duration", "tyre",
-              "tyre", "pitstop_duration",
+              "lap_time", "pitstop_duration",
               "lap_time", "tyre"
-              
-              ), 
+             ), 
             ncol = 2, byrow = TRUE)
 
 # Nothing from position
@@ -529,126 +503,132 @@ for (name in names(BAH2)){
 
 # Nothing to team
 for (name in names(BAH2)){
-  bl4 = matrix(c(name, "team"), ncol=2, 
+  bl3 = matrix(c(name, "team"), ncol=2, 
             dimnames =list(NULL,c("from","to")))
-  bl = rbind(bl, bl4)
-}
-
-
-# Nothing to previous position apart from team
-for (name in names(BAH2)){
-  if (name != "team"){
-  bl3 = matrix(c(name, "previous_position"), ncol=2,
-            dimnames =list(NULL,c("from","to")))
-  bl = rbind(bl, bl3)}
+  bl = rbind(bl, bl3)
 }
 
 bl
-```
 
-
-
-```{r}
-# unknown_dag = empty.graph(nodes = names(BAH))
-wl = matrix(c("previous_position", "position"
-              # "lap_time", "position"
-              ), 
+wl = matrix(c(
+              "previous_position", "position"
+             ), 
             ncol = 2, byrow = TRUE)
 ```
 
 
 
-```{r}
-# Use hill-climbing to determine the DAG
-BAH.hc2_bl_wl =hc(BAH2, blacklist = bl, whitelist = wl)
-graphviz.plot(BAH.hc2_bl_wl)
-```
 
 ```{r}
-arc.strength(BAH.hc2_bl_wl, data = BAH2, criterion = "x2")
-```
-
-### Scores
-```{r}
-score(dag, data = BAH2, type = "bic")
-score(BAH.hc2, data = BAH2, type = "bic")
-score(BAH.hc2_bl_wl, data = BAH2, type = "bic")
-```
-
-
-## DAG unknown - constraint-based method (incremental association Markov blanket)
-
-```{r}
-BAH.iamb =iamb(BAH2, test ='mi')
-graphviz.plot(BAH.iamb)
-```
-
-```{r}
-BAH.iamb_bl =iamb(BAH2, blacklist = bl, test ='mi')
-graphviz.plot(BAH.iamb_bl)
-```
-```{r}
-BAH.iamb_bl_wl =iamb(BAH2, blacklist = bl, whitelist = wl, test ='mi')
-graphviz.plot(BAH.iamb_bl_wl)
+BAH.iamb_d =iamb(BAH2, blacklist = bl, whitelist = wl, test ='mi')
+graphviz.plot(BAH.iamb_d)
 ```
 
 ### Perform independence tests
 
-```{r}
-# Testing for conditional independence: position
-ci.test("team", "previous_position", test = "mi", data = BAH2)
-```
-```{r}
-dag.BAH = set.arc(BAH.iamb, from = "team", to = "previous_position")
 
-ci.test("team", "pitstop_duration", test = "mi", data = BAH2)
-```
-```{r}
-ci.test("lap_time","pitstop_duration", test = "jt", data = BAH2)
-```
 
 ```{r}
-ci.test("lap_time", "team", "tyre", test = "mi", data = BAH2)
+# Does pitstop influence lap time?
+ci.test("lap_time","pitstop_duration", test = "mc-jt", data = BAH2)
+```
+```{r}
+# Does team influence position?
+ci.test("position", "team", test = "mc-mi", data = BAH2)
+```
+```{r}
+# Does team influence tyre?
+ci.test("tyre", "team", test = "mc-mi", data = BAH2)
 ```
 
 ```{r}
-dag.BAH = set.arc(dag.BAH, from = "team", to = "lap_time")
-dag.BAH = set.arc(dag.BAH, from = "pitstop_duration", to = "lap_time")
-graphviz.plot(dag.BAH)
+# Does team influence pitstop_duration?
+ci.test("pitstop_duration", "team", test = "mc-mi", data = BAH2)
 ```
 ```{r}
+# Does team influence lap_time?
+ci.test("lap_time", "team", "pitstop_duration", test = "mc-mi", data = BAH2)
+```
+
+```{r}
+# Does lap_time influence position?
+ci.test("position", "lap_time", "team", test = "mc-mi", data = BAH2)
+```
+
+
+```{r}
+# Add the arcs from conditional independence tests with resulting p-value < 0.05
+tested_BAH.iamb_d = set.arc(BAH.iamb_d, from = "lap_time", to = "position")
+tested_BAH.iamb_d = set.arc(tested_BAH.iamb_d, from = "team", to = "lap_time")
+tested_BAH.iamb_d = set.arc(tested_BAH.iamb_d, from = "team", to = "pitstop_duration")
+
+
+graphviz.plot(tested_BAH.iamb_d)
+```
+```{r}
+# Does pitstop influence position?
 ci.test("position", "pitstop_duration", c("lap_time", "previous_position"), test = "mc-jt", data = BAH2)
 ```
-```{r}
-dag.BAH = set.arc(dag.BAH, from = "pitstop_duration", to = "position")
-ci.test("pitstop_duration", "previous_position", test = "mc-jt", data = BAH2)
-```
-```{r}
-ci.test("position", "team", c("lap_time", "previous_position"), test = "mi", data = BAH2)
-```
-
-```{r}
-graphviz.plot(dag.BAH)
-```
-
 
 
 
 ```{r}
-BAH.fit = bn.fit(dag.BAH, data = BAH2, method = "bayes", iss = 10)
+# Does tyre influence lap time?
+ci.test("lap_time","tyre", c("pitstop_duration", "team"), test = "mc-mi", data = BAH2)
 ```
 
 ```{r}
-# We will need the gRain package
-library(gRain)
-# Use the gRain package to set evidence (condition on an event)
-junction = compile(as.grain(BAH.fit))
+# Does team influence previous_position?
+ci.test("previous_position","team", test = "mc-mi", data = BAH2)
 ```
 
 ```{r}
-jf = setEvidence(junction, names(BAH)[!is.na(BAH[2,])],
-                 as.vector(apply(BAH[2,!is.na(BAH[2,])],2,paste)))
-
-graphviz.chart(BAH.fit, grid = TRUE, main = "Original BN")
+# Does team influence position?
+ci.test("position","team", "previous_position", test = "mc-mi", data = BAH2)
 ```
 
+```{r}
+tested_BAH.iamb_d = set.arc(tested_BAH.iamb_d, from = "tyre", to = "lap_time")
+tested_BAH.iamb_d = set.arc(tested_BAH.iamb_d, from = "team", to = "position")
+tested_BAH.iamb_d = set.arc(tested_BAH.iamb_d, from = "team", to = "previous_position")
+graphviz.plot(tested_BAH.iamb_d)
+```
+
+
+## DAG uknown: score-based method (hill-climbing)
+
+```{r}
+# Use hill-climbing to determine the DAG
+BAH.hc2 =hc(BAH2)
+graphviz.plot(BAH.hc2)
+```
+
+Learning DAG using hill climbing and whitelists, blacklists
+
+
+```{r}
+# Use hill-climbing to determine the DAG with blacklisting
+BAH.hc_bl_d =hc(BAH2, blacklist = bl, whitelist = wl)
+graphviz.plot(BAH.hc_bl_d)
+```
+```{r}
+arc.strength(BAH.hc_bl_d, data = BAH2, criterion = "x2")
+```
+
+### Scores
+
+```{r}
+# Known
+score(dag_d, data = BAH2, type = "bic")
+
+# IAMB 
+score(BAH.iamb_d, data = BAH2, type = "bic")
+score(tested_BAH.iamb_d, data = BAH2, type = "bic")
+
+# HC
+score(BAH.hc2, data = BAH2, type = "bic")
+score(BAH.hc_bl_d, data = BAH2, type = "bic")
+
+```
+
+The known DAG seems to heavily underrepresent the dataset, with a very low BIC score. Notably, the IAMB with blacklisting fits the data better before the addition of arcs from conditional independence tests. Hill climbing results suggest that the addition of blacklists has not affected the score by much, with the penalty of adding more arcs.

@@ -152,13 +152,13 @@ print(total_pitstops)
 mean(total_pitstops$count)
 ```
 
-In albert_park2023 the incorrect format of pitstop_duration variable accounts for 75% of the pitstop datapoints.
-For interlagos2023 and rodriguez2023, the incorrect datapoints are around 25% and 47% of the total pitstops.
+In albert_park the incorrect format of pitstop_duration variable accounts for 75% of the pitstop datapoints.
+For interlagos and rodriguez, the incorrect datapoints are around 25% and 47% of the total pitstops.
 In Zaandvort 9 laps are affected, which makes for only around 11% of pitstops at that event.
-For races where this occurs only once, such as marina_bay2023, suzuka2023, villeneuve2023 - this mistaken row of data will be dropped.
+For races where this occurs only once, such as marina_bay, suzuka, villeneuve - this mistaken row of data will be dropped.
 
 Setting an allowance of up to 20% pitstop_duration data missing, we disregard data from
-albert_park2023, interlagos2023, rodriguez2023 in later analysis. For other events, this rows of data will be dropped as a data cleaning step.
+albert_park, interlagos, rodriguez in later analysis. For other events, this rows of data will be dropped as a data cleaning step.
 
 
 ```{r pitstop bins}
