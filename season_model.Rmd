@@ -16,6 +16,8 @@ library(ggplot2)
 library(gridExtra)
 library(data.table)
 library(stringr)
+library(bnlearn)
+library(Rgraphviz)
 ```
 
 Firstly, we load the data saved into .csv file, acquired using f1dataR package. https://CRAN.R-project.org/package=f1dataR
@@ -115,7 +117,14 @@ ggplot(data=subset(season_df, is.na(pitstop_duration)), mapping = aes(x = event,
   theme_minimal() + theme(axis.text.x = element_text(angle = 45, hjust=1)) +
   theme(plot.title = element_text(hjust = 0.5))
 ```
-
+```{r plot position vs laptime}
+# if pitstop is na
+ggplot(data=subset(season_df, is.na(pitstop_duration)), mapping = aes(x = position, y = lap_time)) +
+  geom_point() + theme(axis.text.x = element_text(angle = 45, hjust=1)) +
+  labs(x = "Position", y = "Lap Time", title = "Position vs Lap Times at 2023 Races") +
+  theme_minimal() + theme(axis.text.x = element_text(angle = 45, hjust=1)) +
+  theme(plot.title = element_text(hjust = 0.5))
+```
 
 ## Missingness
 
@@ -160,123 +169,438 @@ For races where this occurs only once, such as marina_bay, suzuka, villeneuve - 
 Setting an allowance of up to 20% pitstop_duration data missing, we disregard data from
 albert_park, interlagos, rodriguez in later analysis. For other events, this rows of data will be dropped as a data cleaning step.
 
+```{r}
+# remove albert_park, interlagos, rodriguez
+season_df_filtered <- season_df %>% filter(!event %in% c("albert_park", "interlagos", "rodriguez"))
 
-```{r pitstop bins}
-# Make a massive loop now
+#find out the percentage of missing lap time data
+sum(is.na(season_df_filtered$lap_time))/dim(season_df_filtered)[1]
 
-for (round in unique(season_df$event)){
+#drop the missing lap_times as they account for 1.4% of the data
+season_df_filtered <- season_df_filtered %>% filter(!is.na(lap_time))
+
+# filter out Alpine at Hungaroring (only 1 or 2 laps per driver due to crash)
+season_df_filtered <- season_df_filtered %>% filter(event != "hungaroring" | team != "Alpine")
+
+```
+Make a new variable: final position
+
+```{r}
+# find the maximum lap number per event
+
+```
+
+
+
+```{r}
+# list of levels of previous position
+prev_pos_levels <- c("1",  "2" , "3", "4", "5" , "6",  "7",  "8",  "9",  "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "0")
+pos_levels <-  c("1",  "2" , "3", "4", "5" , "6",  "7",  "8",  "9",  "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20")
+```
+
+
+```{r}
+# Create an empty list to store each processed round
+race_list <- list()
+
+for (round in unique(season_df_filtered$event)) {
   print(round)
-  race_df <- subset(season_df, event ==round)
-  # print(head(race_df))
+  race_df <- subset(season_df_filtered, event == round)
 
-  # # Convert pitstop_duration to numeric
+  # Convert pitstop_duration to numeric
   race_df$pitstop_duration <- as.numeric(race_df$pitstop_duration)
+  
   # Make bins
-  race_df$pitstop_duration <- cut(race_df$pitstop_duration, breaks = c(min(race_df$pitstop_duration, na.rm = TRUE), quantile(race_df$pitstop_duration, probs = c(.2, .4, .6, .8),na.rm=TRUE),max(race_df$pitstop_duration, na.rm = TRUE)), ordered_result = TRUE, include.lowest = TRUE, labels = c("fastest_pit", ".2", ".4", ".6", ".8"))
+  race_df$pitstop_duration <- cut(
+    race_df$pitstop_duration, 
+    breaks = c(
+      min(race_df$pitstop_duration, na.rm = TRUE), 
+      quantile(race_df$pitstop_duration, probs = c(.2, .4, .6, .8), na.rm=TRUE), 
+      max(race_df$pitstop_duration, na.rm = TRUE)
+    ), 
+    ordered_result = TRUE, 
+    include.lowest = TRUE, 
+    labels = c("fastest_pit", "20", "40", "60", "80")
+  )
   
   # Add "no_pitstop" to the factor levels for pitstop_duration
-  race_df$pitstop_duration <- factor(race_df$pitstop_duration, 
-                                  levels = c("no_pitstop", levels(race_df$pitstop_duration)))
+  race_df$pitstop_duration <- factor(
+    race_df$pitstop_duration, 
+    levels = c("no_pitstop", levels(race_df$pitstop_duration))
+  )
+  
   # Replace all NA values with "no_pitstop"
-  race_df<- race_df %>% replace_na(list(pitstop_duration = "no_pitstop"))
+  race_df <- race_df %>% replace_na(list(pitstop_duration = "no_pitstop"))
   
-  print(levels(race_df$pitstop_duration))
+  # Lap time bins
+  race_df$lap_time <- cut(race_df$lap_time, 
+                            breaks = c(min(race_df$lap_time, na.rm = TRUE), 
+                            quantile(race_df$lap_time,probs = c(.02, .05, .1, .15, .2, .3,.4,.5,.6, .7,.8, .85, .9, .95, .98),na.rm=TRUE), 
+                            max(race_df$lap_time, na.rm = TRUE)), include.lowest = TRUE, ordered_result = TRUE, labels = c("fastest", "02", "05", "10", "15", "20", "30","40","50","60", "70","80", "85", "90", "95", "98"))
   
-# At the end they have to merge to make a new full season df
-  }
+  # Convert to factors or ordered factors
+  race_df$driver <- factor(race_df$driver)
+  race_df$team <- factor(race_df$team)
+  race_df$tyre <- factor(race_df$tyre) 
+  race_df$rainfall <- factor(race_df$rainfall)
+  
+  
+  # Make a variable for position on previous lap
+  race_df <- race_df %>%
+    mutate(previous_position = ifelse(lap_number == 1, start_position, shift(race_df$position, n=1, type="lag")))
+  
+  # Positions are ordered, quite self-explanatory reason
+  race_df$previous_position <- factor(race_df$previous_position, ordered = TRUE, levels = prev_pos_levels)
+  race_df$position <- factor(race_df$position, ordered = TRUE, levels = pos_levels)
+
+  
+  # Store the modified race_df in the list
+  race_list[[round]] <- race_df
+}
+
+# Merge all processed race_df dataframes into a new full-season dataframe
+full_season_df <- bind_rows(race_list)
 
 ```
 
 
 
-
-```{r boxplot pitstop bins vs laptime}
-# Boxplot of pitstop bins vs continuous lap_time
-ggplot(data=season_df, aes(x=pitstop_duration, y = lap_time)) +
-  geom_boxplot()
-```
-
-
-
-
-```{r lap time bins}
-# Lap time - ordered: the shorter the better
-# the fastest lap is included thanks to argument include.lowest = TRUE
-season_df$lap_time <- cut(season_df$lap_time, breaks = c(min(season_df$lap_time, na.rm = TRUE), quantile(season_df$lap_time,probs = c(.05, .1, .15, .2, .25, .3,.4,.5,.6, .7,.8, .85, .87, .9, .92, .94, .96, .98, .99),na.rm=TRUE),max(season_df$lap_time, na.rm = TRUE)), include.lowest = TRUE, ordered_result = TRUE, labels = c("fastest", ".05", ".1", ".15", ".2", ".25", ".3",".4",".5",".6", ".7",".8", ".85", ".87", ".9", ".92", ".94", ".96", ".98", ".99"))
-
-ggplot(data=season_df, aes(x=lap_time)) +
-  geom_bar()
-```
-
-
-```{r convert to factors and ordinal}
-
-season_df$driver <- factor(season_df$driver)
-season_df$team <- factor(season_df$team)
+```{r convert circuit characteristics to factors and ordinal}
 
 # Circuit characteristics
-season_df$traction <- factor(season_df$traction, ordered = TRUE)
-season_df$asphalt_grip <- factor(season_df$asphalt_grip, ordered = TRUE)
-season_df$asphalt_abrasion <- factor(season_df$asphalt_abrasion, ordered = TRUE)
-season_df$track_evol <- factor(season_df$track_evol, ordered = TRUE)
-season_df$tyre_stress <- factor(season_df$tyre_stress, ordered = TRUE)
-season_df$braking <- factor(season_df$braking, ordered = TRUE)
-season_df$lateral <- factor(season_df$lateral, ordered = TRUE)
-season_df$downforce <- factor(season_df$downforce, ordered = TRUE)
+full_season_df$traction <- factor(full_season_df$traction, ordered = TRUE)
+full_season_df$asphalt_grip <- factor(full_season_df$asphalt_grip, ordered = TRUE)
+full_season_df$asphalt_abrasion <- factor(full_season_df$asphalt_abrasion, ordered = TRUE)
+full_season_df$track_evol <- factor(full_season_df$track_evol, ordered = TRUE)
+full_season_df$tyre_stress <- factor(full_season_df$tyre_stress, ordered = TRUE)
+full_season_df$braking <- factor(full_season_df$braking, ordered = TRUE)
+full_season_df$lateral <- factor(full_season_df$lateral, ordered = TRUE)
+full_season_df$downforce <- factor(full_season_df$downforce, ordered = TRUE)
 
-season_df$tyre <- factor(season_df$tyre) 
-# Weather can be ordered too, with Dry being the preferred
-season_df$rainfall <- factor(season_df$rainfall, ordered = TRUE)
-
-# Make a variable for position on previous lap
-season_df <- season_df %>%
-  mutate(previous_position = ifelse(lap_number == 1, start_position, shift(season_df$position, n=1, type="lag")))
-
-# Positions are ordered, quite self-explanatory reason
-season_df$previous_position <- factor(season_df$previous_position, ordered = TRUE)
-season_df$position <- factor(season_df$position, ordered = TRUE)
 
 # Choosing relevant variables
-season_df <- season_df %>%  dplyr::select(c(lap_time, 
-                                  tyre, team, 
-                                  position, 
-                                  previous_position, pitstop_duration
-                                  , driver
-                                  # , 
-                                # traction, asphalt_grip, asphalt_abrasion, 
-                                # track_evol, tyre_stress, braking, 
-                                # lateral, downforce
+season23 <- full_season_df %>%  dplyr::select(c( driver, lap_time, 
+                                tyre, team, 
+                                position, rainfall,
+                                previous_position, pitstop_duration,
+                                traction, asphalt_grip, asphalt_abrasion,
+                                track_evol, tyre_stress, braking,
+                                lateral, downforce
                                 ))
 
 ```
 
 
 
+```{r}
+# Show rows where starting position is 0, to check if that was a pitlane start
+full_season_df %>%
+  group_by(event, driver) %>%
+  filter(previous_position == 0) %>%
+  print(full_season_df)
+```
+# Structure learning
+
+
+## Blacklists and whitelists
+Make a blacklist representing the natural temporal ordering of variables
+
+```{r}
+# Blacklist variables so that chronological order is kept
+bl = matrix(c(
+              "lap_time", "pitstop_duration",
+              "lap_time", "tyre"
+             ), 
+            ncol = 2, byrow = TRUE)
+
+# Nothing from position
+for (name in names(season23)){
+  bl2 = matrix(c("position", name), ncol=2,
+            dimnames =list(NULL,c("from","to")))
+  bl = rbind(bl, bl2)
+}
+
+
+# Nothing to team
+for (name in names(season23)){
+  bl3 = matrix(c(name, "team"), ncol=2, 
+            dimnames =list(NULL,c("from","to")))
+  bl = rbind(bl, bl3)
+}
+
+# Nothing to rainfall
+for (name in names(season23)){
+  bl3 = matrix(c(name, "rainfall"), ncol=2, 
+            dimnames =list(NULL,c("from","to")))
+  bl = rbind(bl, bl3)
+}
+
+# Nothing to circuit characteristics from other variables
+circuit_chars <- c("traction", "asphalt_grip", "asphalt_abrasion",
+                                "track_evol", "tyre_stress", "braking",
+                                "lateral", "downforce")
+other_vars <- c("driver", "lap_time", 
+                                "tyre", "team", "rainfall",
+                                "previous_position", "pitstop_duration")
+for (oth in other_vars){
+  for (circ in circuit_chars){
+    bl4 = matrix(c(oth, circ), ncol=2, 
+              dimnames =list(NULL,c("from","to")))
+    bl = rbind(bl, bl4)
+}}
+
+bl
+
+# Whitelist
+wl = matrix(c(
+              "previous_position", "position"
+             ), 
+            ncol = 2, byrow = TRUE)
+
+```
+
+## IAMB
+```{r}
+# naive try
+season23.iamb_naive =iamb(season23, test ='mi')
+graphviz.plot(season23.iamb_naive)
+```
+
+
+```{r}
+season23.iamb =iamb(season23, blacklist = bl, whitelist = wl, test ='mi')
+graphviz.plot(season23.iamb)
+```
+```{r}
+season23.iamb = set.arc(season23.iamb, from = "braking", to = "track_evol")
+arc.strength(season23.iamb, data = season23, criterion = "mc-mi")
+```
+
+
+```{r}
+# Does lap_time influence position?
+ci.test("position", "lap_time", "previous_position", test = "mc-jt", data = season23)
+```
+
+
+## Hill-climbing
+### Naive case
+```{r}
+season23.hc_naive =hc(season23)
+graphviz.plot(season23.hc_naive)
+```
+
+Now, let's check the arc strength for the naive model.
+
+```{r}
+score(season23.hc_naive, data = season23, test = "bic")
+arc.strength(season23.hc_naive, data = season23, criterion = "bic")
+```
+
+
+Next, try introducing some blacklisting elements one by one to check the effect on the DAG
+```{r}
+small_bl = matrix(c(
+              "lap_time", "pitstop_duration",
+              "lap_time", "tyre"#,
+              # "position", "previous_position",
+              # "lap_time", "previous_position"
+             ), 
+            ncol = 2, byrow = TRUE)
+
+# Nothing from position
+for (name in names(season23)){
+  bl2 = matrix(c("position", name), ncol=2,
+            dimnames =list(NULL,c("from","to")))
+  small_bl = rbind(small_bl, bl2)
+}
+
+# Nothing to team
+for (name in names(season23)){
+  bl3 = matrix(c(name, "team"), ncol=2, 
+            dimnames =list(NULL,c("from","to")))
+  small_bl = rbind(small_bl, bl3)
+}
+
+season23.hc_try1 =hc(season23, blacklist = small_bl)
+graphviz.plot(season23.hc_try1)
+
+```
+### Informed case
+Learning DAG using hill climbing and whitelists, blacklists
+```{r}
+# Use hill-climbing to determine the DAG with blacklisting
+season23.hc =hc(season23, blacklist = bl, whitelist = wl)
+graphviz.plot(season23.hc)
+score(season23.hc, data = season23, type = "bic")
+```
+
+Perform independence tests:
+
+```{r}
+# Does tyre influence lap_time?
+ci.test("lap_time","tyre", "pitstop_duration", test = "mc-mi", data = season23)
+```
+
+
+```{r}
+tested_season23.hc = set.arc(season23.hc, from = "tyre", to = "lap_time")
+graphviz.plot(tested_season23.hc)
+score(tested_season23.hc, data = season23, type = "bic")
+```
+```{r}
+arc.strength(tested_season23.hc, data = season23, criterion = "bic")
+```
+
+```{r}
+# Does lap_time influence position?
+ci.test("position", "lap_time", "previous_position", test = "mc-jt", data = season23)
+```
+
+
+
+
+```{r}
+tested_season23.hc = set.arc(tested_season23.hc, from = "lap_time", to = "position")
+graphviz.plot(tested_season23.hc)
+score(tested_season23.hc, data = season23, type = "bic")
+```
+
+```{r}
+arc_strength_BIC <- arc.strength(tested_season23.hc, data = season23, criterion = "bic")
+arc_strength_BIC
+
+```
+
+
+```{r}
+# Make this into a table for latex and comment on this
+library(xtable)
+latex_arc_BIC <- xtable(arc_strength_BIC)
+print(latex_arc_BIC, type = "latex", include.rownames = FALSE)
+
+```
+
+
+```{r}
+# Does pitstop_duration influence position?
+ci.test("position","pitstop_duration", test = "mc-jt", data = season23)
+```
+```{r}
+tested_season23.hc = set.arc(tested_season23.hc, from = "pitstop_duration", to = "position")
+graphviz.plot(tested_season23.hc)
+```
+```{r}
+arc_strength_BIC_pit_to_pos <- arc.strength(tested_season23.hc, data = season23, criterion = "bic")
+arc_strength_BIC_pit_to_pos
+
+```
+
+## Prediction
+Use the deleted races for prediction: take interlagos
+
+```{r load data}
+INT = data.frame(read.csv("data/interlagos2023.csv", header =TRUE))
+head(INT)
+```
+
+```{r pitstop binning}
+INT$pitstop_duration <- as.numeric(INT$pitstop_duration)
+
+INT$pitstop_duration <- cut(INT$pitstop_duration, breaks = c(min(INT$pitstop_duration, na.rm = TRUE), quantile(INT$pitstop_duration, probs = c(.2, .4,  .6, .8),na.rm=TRUE),max(INT$pitstop_duration, na.rm = TRUE)), ordered_result = TRUE, include.lowest = TRUE, labels = c("fastest_pit", "20", "40", "60", "80"))
+
+```
+```{r}
+INT$rainfall
+```
+
+
+```{r clean and order data}
+INT$driver <- factor(INT$driver)
+INT$team <- factor(INT$team)
+INT$tyre <- factor(INT$tyre)
+
+# Circuit characteristics
+INT$traction <- factor(INT$traction, ordered = TRUE)
+INT$asphalt_grip <- factor(INT$asphalt_grip, ordered = TRUE)
+INT$asphalt_abrasion <- factor(INT$asphalt_abrasion, ordered = TRUE)
+INT$track_evol <- factor(INT$track_evol, ordered = TRUE)
+INT$tyre_stress <- factor(INT$tyre_stress, ordered = TRUE)
+INT$braking <- factor(INT$braking, ordered = TRUE)
+INT$lateral <- factor(INT$lateral, ordered = TRUE)
+INT$downforce <- factor(INT$downforce, ordered = TRUE)
+
+# Lap time bins
+  INT$lap_time <- cut(INT$lap_time, 
+                            breaks = c(min(INT$lap_time, na.rm = TRUE), 
+                            quantile(INT$lap_time,probs = c(.02, .05, .1, .15, .2, .3,.4,.5,.6, .7,.8, .85, .9, .95, .98),na.rm=TRUE), 
+                            max(INT$lap_time, na.rm = TRUE)), include.lowest = TRUE, ordered_result = TRUE, labels = c("fastest", "02", "05", "10", "15", "20", "30","40","50","60", "70","80", "85", "90", "95", "98"))
+ 
+
+# Add "no_pitstop" to the factor levels for pitstop_duration
+INT$pitstop_duration <- factor(INT$pitstop_duration, 
+                                levels = c("no_pitstop", levels(INT$pitstop_duration)))
+# Replace all NA values with "no_pitstop"
+INT <- INT %>% replace_na(list(pitstop_duration = "no_pitstop"))
+
+INT$rainfall <- factor(INT$rainfall)
+
+# Make a variable for position on previous lap
+INT <- INT %>%
+  mutate(previous_position = ifelse(lap_number == 1, start_position, shift(INT$position, n=1, type="lag")))
+
+# Positions are ordered
+INT$previous_position <- factor(INT$previous_position, ordered = TRUE)
+
+
+```
+
 ```{r checking NAs}
-# check which rows have NAs and why
-which(is.na(season_df))
+# check which rows have NAs and investigate why
+which(is.na(INT))
 ```
 ```{r deal with NAs}
-# # dropping  nas
-# season_df <- drop_na(season_df)
+# dropping  nas
+INT <- drop_na(INT)
+
 ```
 
 
 
 ```{r}
-# if starting position is 0, raise a Warning to check if that was a pitlane start
-# Group by 'driver' and check for zeros
-season_df %>%
-  group_by(driver) %>%
-  summarize(has_zero = any(previous_position == 0), .groups = "drop") %>%
-  filter(has_zero) %>%
-  pull(driver) -> drivers_with_zero
+# Choosing relevant variables
+INT_pred <- INT %>%  dplyr::select(c( driver, lap_time, 
+                                tyre, team, 
+                                position,
+                                rainfall,
+                                previous_position, pitstop_duration,
+                                traction, asphalt_grip, asphalt_abrasion,
+                                track_evol, tyre_stress, braking,
+                                lateral, downforce
+                                )) 
 
-# Raise warning if any drivers have zeros
-if (length(drivers_with_zero) > 0) {
-  warning(paste("The following drivers have zeros in their values:", paste(drivers_with_zero, collapse = ", ")))
-}
+# Ensure factor levels are the same
+levels(INT_pred$rainfall) <- levels(season23$rainfall)
+levels(INT_pred$traction) <- levels(season23$traction)
+levels(INT_pred$asphalt_grip) <- levels(season23$asphalt_grip)
+levels(INT_pred$asphalt_abrasion) <- levels(season23$asphalt_abrasion)
+levels(INT_pred$track_evol) <- levels(season23$track_evol)
+levels(INT_pred$tyre_stress) <- levels(season23$tyre_stress)
+levels(INT_pred$braking) <- levels(season23$braking)
+levels(INT_pred$lateral) <- levels(season23$lateral)
+levels(INT_pred$downforce) <- levels(season23$downforce)
+levels(INT_pred$driver) <- levels(season23$driver)
+levels(INT_pred$tyre) <- levels(season23$tyre)
+levels(INT_pred$rainfall) <- levels(season23$rainfall)
+
+
+# Turn position into NA
+INT_pred$position <- NA
+# Predict
+
+season23.fit = bn.fit(season23.hc, data = season23)
+
+ALO5.pred = predict(season23.fit, data= season23[5,!is.na(season23[5,])], node = "position", method = "bayes-lw", prob = T)
+ALO5.pred
 ```
-
-
 

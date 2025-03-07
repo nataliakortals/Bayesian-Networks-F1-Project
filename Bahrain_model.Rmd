@@ -168,7 +168,7 @@ BAH$position <- factor(BAH$position, ordered = TRUE)
 ```
 
 ```{r}
-levels(BAH$pitstop_duration)
+levels(BAH$lap_time)
 ```
 
 
