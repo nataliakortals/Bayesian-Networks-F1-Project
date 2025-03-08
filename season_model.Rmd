@@ -18,6 +18,7 @@ library(data.table)
 library(stringr)
 library(bnlearn)
 library(Rgraphviz)
+library(GGally)
 ```
 
 Firstly, we load the data saved into .csv file, acquired using f1dataR package. https://CRAN.R-project.org/package=f1dataR
@@ -119,12 +120,16 @@ ggplot(data=subset(season_df, is.na(pitstop_duration)), mapping = aes(x = event,
 ```
 ```{r plot position vs laptime}
 # if pitstop is na
-ggplot(data=subset(season_df, is.na(pitstop_duration)), mapping = aes(x = position, y = lap_time)) +
-  geom_point() + theme(axis.text.x = element_text(angle = 45, hjust=1)) +
-  labs(x = "Position", y = "Lap Time", title = "Position vs Lap Times at 2023 Races") +
+ggplot(data=subset(season_df, is.na(pitstop_duration)), mapping = aes(x = lap_time, y = position)) +
+  geom_jitter() + theme(axis.text.x = element_text(angle = 45, hjust=1)) +
+  labs(x = "Lap Time", y = "Position", title = "Lap Time vs Position at 2023 Races") +
   theme_minimal() + theme(axis.text.x = element_text(angle = 45, hjust=1)) +
   theme(plot.title = element_text(hjust = 0.5))
 ```
+```{r pairplot}
+ggpairs(season_df, columns = c("lap_time", "position"), columnLabels = c("Lap Time", "Position")) 
+```
+
 
 ## Missingness
 
@@ -170,26 +175,19 @@ Setting an allowance of up to 20% pitstop_duration data missing, we disregard da
 albert_park, interlagos, rodriguez in later analysis. For other events, this rows of data will be dropped as a data cleaning step.
 
 ```{r}
-# remove albert_park, interlagos, rodriguez
-season_df_filtered <- season_df %>% filter(!event %in% c("albert_park", "interlagos", "rodriguez"))
+# # remove albert_park, interlagos, rodriguez
+# season_df_filtered <- season_df %>% filter(!event %in% c("albert_park", "interlagos", "rodriguez"))
 
 #find out the percentage of missing lap time data
-sum(is.na(season_df_filtered$lap_time))/dim(season_df_filtered)[1]
+sum(is.na(season_df$lap_time))/dim(season_df)[1]
 
-#drop the missing lap_times as they account for 1.4% of the data
-season_df_filtered <- season_df_filtered %>% filter(!is.na(lap_time))
+#drop the missing lap_times as they account for less than 2% of the data
+season_df_filtered <- season_df %>% filter(!is.na(lap_time))
 
 # filter out Alpine at Hungaroring (only 1 or 2 laps per driver due to crash)
 season_df_filtered <- season_df_filtered %>% filter(event != "hungaroring" | team != "Alpine")
 
 ```
-Make a new variable: final position
-
-```{r}
-# find the maximum lap number per event
-
-```
-
 
 
 ```{r}
@@ -277,9 +275,21 @@ full_season_df$braking <- factor(full_season_df$braking, ordered = TRUE)
 full_season_df$lateral <- factor(full_season_df$lateral, ordered = TRUE)
 full_season_df$downforce <- factor(full_season_df$downforce, ordered = TRUE)
 
+#Save each of the races to be removed as seperate dfs
+
+interlagos_df <- full_season_df %>% filter(event =="interlagos")
+
+albert_park_df <- full_season_df %>% filter(event =="albert_park")
+
+rodriguez_df <- full_season_df %>% filter(event =="rodriguez")
+
+
+# remove albert_park, interlagos, rodriguez
+full_season_df <- full_season_df %>% filter(!event %in% c("albert_park", "interlagos", "rodriguez"))
+
 
 # Choosing relevant variables
-season23 <- full_season_df %>%  dplyr::select(c( driver, lap_time, 
+season23_full <- full_season_df %>%  dplyr::select(c( driver, lap_time, 
                                 tyre, team, 
                                 position, rainfall,
                                 previous_position, pitstop_duration,
@@ -290,7 +300,10 @@ season23 <- full_season_df %>%  dplyr::select(c( driver, lap_time,
 
 ```
 
-
+```{r corr of discretised LT vs position}
+library(polycor)
+polychor(season23_full$lap_time, season23_full$position)
+```
 
 ```{r}
 # Show rows where starting position is 0, to check if that was a pitlane start
@@ -307,6 +320,76 @@ Make a blacklist representing the natural temporal ordering of variables
 
 ```{r}
 # Blacklist variables so that chronological order is kept
+big_bl = matrix(c(
+              "lap_time", "pitstop_duration",
+              "lap_time", "tyre"
+             ), 
+            ncol = 2, byrow = TRUE)
+
+# Nothing from position
+for (name in names(season23_full)){
+  bl2 = matrix(c("position", name), ncol=2,
+            dimnames =list(NULL,c("from","to")))
+  big_bl = rbind(big_bl, bl2)
+}
+
+
+# Nothing to team
+for (name in names(season23_full)){
+  bl3 = matrix(c(name, "team"), ncol=2, 
+            dimnames =list(NULL,c("from","to")))
+  big_bl = rbind(big_bl, bl3)
+}
+
+# Nothing to rainfall
+for (name in names(season23_full)){
+  bl3 = matrix(c(name, "rainfall"), ncol=2, 
+            dimnames =list(NULL,c("from","to")))
+  big_bl = rbind(big_bl, bl3)
+}
+
+# Nothing to circuit characteristics from other variables
+circuit_chars <- c("traction", "asphalt_grip", "asphalt_abrasion",
+                                "track_evol", "tyre_stress", "braking",
+                                "lateral", "downforce")
+other_vars <- c("driver", "lap_time", 
+                                "tyre", "team", "rainfall",
+                                "previous_position", "pitstop_duration")
+for (name in names(season23_full)){
+  for (circ in circuit_chars){
+    bl4 = matrix(c(name, circ), ncol=2, 
+              dimnames =list(NULL,c("from","to")))
+    big_bl = rbind(big_bl, bl4)
+}}
+
+big_bl
+
+# Whitelist
+wl = matrix(c(
+              "previous_position", "position"
+             ), 
+            ncol = 2, byrow = TRUE)
+
+```
+
+## IAMB
+
+
+```{r}
+season23_full.iamb =iamb(season23_full, blacklist = big_bl, whitelist = wl, test ='mi')
+highlight = list(nodes = circuit_chars, col = "blue", fill = "lightblue")
+graphviz.plot(season23_full.iamb, render = TRUE, highlight = highlight)
+```
+```{r}
+# Choosing relevant variables
+season23 <- full_season_df %>%  dplyr::select(c( driver, lap_time, 
+                                tyre, team, 
+                                position, rainfall,
+                                previous_position, pitstop_duration,
+                                traction, tyre_stress 
+                                ))
+
+# New blacklist variables so that chronological order is kept
 bl = matrix(c(
               "lap_time", "pitstop_duration",
               "lap_time", "tyre"
@@ -336,15 +419,11 @@ for (name in names(season23)){
 }
 
 # Nothing to circuit characteristics from other variables
-circuit_chars <- c("traction", "asphalt_grip", "asphalt_abrasion",
-                                "track_evol", "tyre_stress", "braking",
-                                "lateral", "downforce")
-other_vars <- c("driver", "lap_time", 
-                                "tyre", "team", "rainfall",
-                                "previous_position", "pitstop_duration")
-for (oth in other_vars){
-  for (circ in circuit_chars){
-    bl4 = matrix(c(oth, circ), ncol=2, 
+circuit_chars_select <- c("traction", "tyre_stress")
+
+for (name in names(season23)){
+  for (circ in circuit_chars_select){
+    bl4 = matrix(c(name, circ), ncol=2, 
               dimnames =list(NULL,c("from","to")))
     bl = rbind(bl, bl4)
 }}
@@ -359,75 +438,26 @@ wl = matrix(c(
 
 ```
 
-## IAMB
-```{r}
-# naive try
-season23.iamb_naive =iamb(season23, test ='mi')
-graphviz.plot(season23.iamb_naive)
-```
-
-
 ```{r}
 season23.iamb =iamb(season23, blacklist = bl, whitelist = wl, test ='mi')
 graphviz.plot(season23.iamb)
+score(season23.iamb, data = season23, type = "bic")
 ```
-```{r}
-season23.iamb = set.arc(season23.iamb, from = "braking", to = "track_evol")
-arc.strength(season23.iamb, data = season23, criterion = "mc-mi")
-```
-
-
-```{r}
-# Does lap_time influence position?
-ci.test("position", "lap_time", "previous_position", test = "mc-jt", data = season23)
-```
-
 
 ## Hill-climbing
-### Naive case
-```{r}
-season23.hc_naive =hc(season23)
-graphviz.plot(season23.hc_naive)
-```
 
-Now, let's check the arc strength for the naive model.
-
-```{r}
-score(season23.hc_naive, data = season23, test = "bic")
-arc.strength(season23.hc_naive, data = season23, criterion = "bic")
-```
-
-
-Next, try introducing some blacklisting elements one by one to check the effect on the DAG
-```{r}
-small_bl = matrix(c(
-              "lap_time", "pitstop_duration",
-              "lap_time", "tyre"#,
-              # "position", "previous_position",
-              # "lap_time", "previous_position"
-             ), 
-            ncol = 2, byrow = TRUE)
-
-# Nothing from position
-for (name in names(season23)){
-  bl2 = matrix(c("position", name), ncol=2,
-            dimnames =list(NULL,c("from","to")))
-  small_bl = rbind(small_bl, bl2)
-}
-
-# Nothing to team
-for (name in names(season23)){
-  bl3 = matrix(c(name, "team"), ncol=2, 
-            dimnames =list(NULL,c("from","to")))
-  small_bl = rbind(small_bl, bl3)
-}
-
-season23.hc_try1 =hc(season23, blacklist = small_bl)
-graphviz.plot(season23.hc_try1)
-
-```
-### Informed case
 Learning DAG using hill climbing and whitelists, blacklists
+```{r}
+# Use hill-climbing to determine the DAG with blacklisting
+season23_full.hc =hc(season23_full, blacklist = big_bl, whitelist = wl)
+
+highlight = list(nodes = circuit_chars, col = "blue", fill = "lightblue")
+graphviz.plot(season23_full.hc, render = TRUE, highlight = highlight)
+score(season23_full.hc, data = season23_full, type = "bic")
+```
+
+
+
 ```{r}
 # Use hill-climbing to determine the DAG with blacklisting
 season23.hc =hc(season23, blacklist = bl, whitelist = wl)
@@ -435,172 +465,77 @@ graphviz.plot(season23.hc)
 score(season23.hc, data = season23, type = "bic")
 ```
 
+
+
 Perform independence tests:
+
+```{r}
+# Does driver influence previous position?
+ci.test("previous_position","driver", test = "mc-mi", data = season23)
+```
+```{r}
+# Does pitstop_duration influence lap_time?
+ci.test("lap_time", "pitstop_duration", test = "mc-jt", data = season23)
+```
+```{r}
+# Does pitstop_duration influence lap_time given tyre?
+ci.test("lap_time", "pitstop_duration", "tyre", test = "mc-mi", data = season23)
+```
 
 ```{r}
 # Does tyre influence lap_time?
 ci.test("lap_time","tyre", "pitstop_duration", test = "mc-mi", data = season23)
 ```
 
-
 ```{r}
-tested_season23.hc = set.arc(season23.hc, from = "tyre", to = "lap_time")
-graphviz.plot(tested_season23.hc)
-score(tested_season23.hc, data = season23, type = "bic")
+# Does rainfall influence tyre?
+ci.test("tyre", "rainfall", c("traction", "tyre_stress"), test = "mc-mi", data = season23)
 ```
-```{r}
-arc.strength(tested_season23.hc, data = season23, criterion = "bic")
-```
-
 ```{r}
 # Does lap_time influence position?
 ci.test("position", "lap_time", "previous_position", test = "mc-jt", data = season23)
 ```
 
 
-
-
 ```{r}
+tested_season23.hc = set.arc(season23.hc, from = "tyre", to = "lap_time")
 tested_season23.hc = set.arc(tested_season23.hc, from = "lap_time", to = "position")
 graphviz.plot(tested_season23.hc)
+```
+```{r}
 score(tested_season23.hc, data = season23, type = "bic")
 ```
 
-```{r}
-arc_strength_BIC <- arc.strength(tested_season23.hc, data = season23, criterion = "bic")
-arc_strength_BIC
-
-```
-
 
 ```{r}
-# Make this into a table for latex and comment on this
-library(xtable)
-latex_arc_BIC <- xtable(arc_strength_BIC)
-print(latex_arc_BIC, type = "latex", include.rownames = FALSE)
-
-```
-
-
-```{r}
-# Does pitstop_duration influence position?
-ci.test("position","pitstop_duration", test = "mc-jt", data = season23)
+arc.strength(tested_season23.hc, data = season23, criterion = "bic")
 ```
 ```{r}
-tested_season23.hc = set.arc(tested_season23.hc, from = "pitstop_duration", to = "position")
-graphviz.plot(tested_season23.hc)
-```
-```{r}
-arc_strength_BIC_pit_to_pos <- arc.strength(tested_season23.hc, data = season23, criterion = "bic")
-arc_strength_BIC_pit_to_pos
-
+arc.strength(tested_season23.hc, data = season23, criterion = "mi")
 ```
 
 ## Prediction
-Use the deleted races for prediction: take interlagos
-
-```{r load data}
-INT = data.frame(read.csv("data/interlagos2023.csv", header =TRUE))
-head(INT)
-```
-
-```{r pitstop binning}
-INT$pitstop_duration <- as.numeric(INT$pitstop_duration)
-
-INT$pitstop_duration <- cut(INT$pitstop_duration, breaks = c(min(INT$pitstop_duration, na.rm = TRUE), quantile(INT$pitstop_duration, probs = c(.2, .4,  .6, .8),na.rm=TRUE),max(INT$pitstop_duration, na.rm = TRUE)), ordered_result = TRUE, include.lowest = TRUE, labels = c("fastest_pit", "20", "40", "60", "80"))
-
-```
-```{r}
-INT$rainfall
-```
-
-
-```{r clean and order data}
-INT$driver <- factor(INT$driver)
-INT$team <- factor(INT$team)
-INT$tyre <- factor(INT$tyre)
-
-# Circuit characteristics
-INT$traction <- factor(INT$traction, ordered = TRUE)
-INT$asphalt_grip <- factor(INT$asphalt_grip, ordered = TRUE)
-INT$asphalt_abrasion <- factor(INT$asphalt_abrasion, ordered = TRUE)
-INT$track_evol <- factor(INT$track_evol, ordered = TRUE)
-INT$tyre_stress <- factor(INT$tyre_stress, ordered = TRUE)
-INT$braking <- factor(INT$braking, ordered = TRUE)
-INT$lateral <- factor(INT$lateral, ordered = TRUE)
-INT$downforce <- factor(INT$downforce, ordered = TRUE)
-
-# Lap time bins
-  INT$lap_time <- cut(INT$lap_time, 
-                            breaks = c(min(INT$lap_time, na.rm = TRUE), 
-                            quantile(INT$lap_time,probs = c(.02, .05, .1, .15, .2, .3,.4,.5,.6, .7,.8, .85, .9, .95, .98),na.rm=TRUE), 
-                            max(INT$lap_time, na.rm = TRUE)), include.lowest = TRUE, ordered_result = TRUE, labels = c("fastest", "02", "05", "10", "15", "20", "30","40","50","60", "70","80", "85", "90", "95", "98"))
- 
-
-# Add "no_pitstop" to the factor levels for pitstop_duration
-INT$pitstop_duration <- factor(INT$pitstop_duration, 
-                                levels = c("no_pitstop", levels(INT$pitstop_duration)))
-# Replace all NA values with "no_pitstop"
-INT <- INT %>% replace_na(list(pitstop_duration = "no_pitstop"))
-
-INT$rainfall <- factor(INT$rainfall)
-
-# Make a variable for position on previous lap
-INT <- INT %>%
-  mutate(previous_position = ifelse(lap_number == 1, start_position, shift(INT$position, n=1, type="lag")))
-
-# Positions are ordered
-INT$previous_position <- factor(INT$previous_position, ordered = TRUE)
-
-
-```
-
-```{r checking NAs}
-# check which rows have NAs and investigate why
-which(is.na(INT))
-```
-```{r deal with NAs}
-# dropping  nas
-INT <- drop_na(INT)
-
-```
-
+Use the deleted races for prediction
 
 
 ```{r}
 # Choosing relevant variables
-INT_pred <- INT %>%  dplyr::select(c( driver, lap_time, 
+rodriguez_pred <- rodriguez_df %>%  dplyr::select(c( driver, lap_time, 
                                 tyre, team, 
                                 position,
                                 rainfall,
                                 previous_position, pitstop_duration,
-                                traction, asphalt_grip, asphalt_abrasion,
-                                track_evol, tyre_stress, braking,
-                                lateral, downforce
-                                )) 
-
-# Ensure factor levels are the same
-levels(INT_pred$rainfall) <- levels(season23$rainfall)
-levels(INT_pred$traction) <- levels(season23$traction)
-levels(INT_pred$asphalt_grip) <- levels(season23$asphalt_grip)
-levels(INT_pred$asphalt_abrasion) <- levels(season23$asphalt_abrasion)
-levels(INT_pred$track_evol) <- levels(season23$track_evol)
-levels(INT_pred$tyre_stress) <- levels(season23$tyre_stress)
-levels(INT_pred$braking) <- levels(season23$braking)
-levels(INT_pred$lateral) <- levels(season23$lateral)
-levels(INT_pred$downforce) <- levels(season23$downforce)
-levels(INT_pred$driver) <- levels(season23$driver)
-levels(INT_pred$tyre) <- levels(season23$tyre)
-levels(INT_pred$rainfall) <- levels(season23$rainfall)
-
+                                traction, tyre_stress
+                                ))
 
 # Turn position into NA
-INT_pred$position <- NA
+# rodriguez_pred$position <- NA
+levels(rodriguez_pred$driver) <- levels(season23$driver)
+levels(rodriguez_pred)
 # Predict
+season23.fit = bn.fit(tested_season23.hc, data = season23)
 
-season23.fit = bn.fit(season23.hc, data = season23)
-
-ALO5.pred = predict(season23.fit, data= season23[5,!is.na(season23[5,])], node = "position", method = "bayes-lw", prob = T)
+ALO5.pred = predict(season23.fit, data= rodriguez_pred[1:5,], node = "position", method = "parents", prob = T)
 ALO5.pred
 ```
 
