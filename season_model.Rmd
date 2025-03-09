@@ -108,7 +108,14 @@ ggplot(value_counts, aes(x = Variable, y = as.factor(Value), fill = n)) +
   theme(plot.title = element_text(hjust=0.5))
 
 ```
-
+```{r plot team vs position}
+# if pitstop is na
+ggplot(data=season_df, mapping = aes(x = team, y = start_position)) +
+  geom_boxplot() + theme(axis.text.x = element_text(angle = 45, hjust=1)) +
+  labs(x = "Team", y = "Starting Position", title = "Box Plot of Starting Positions by Team in 2023") +
+  theme_minimal() + theme(axis.text.x = element_text(angle = 45, hjust=1)) +
+  theme(plot.title = element_text(hjust = 0.5))
+```
 
 ```{r plot event vs laptime}
 # if pitstop is na
@@ -515,27 +522,61 @@ arc.strength(tested_season23.hc, data = season23, criterion = "mi")
 ```
 
 ## Prediction
-Use the deleted races for prediction
+Use the deleted races for prediction (interlagos example)
 
 
 ```{r}
 # Choosing relevant variables
-rodriguez_pred <- rodriguez_df %>%  dplyr::select(c( driver, lap_time, 
+int_pred <- interlagos_df %>%  dplyr::select(c( driver, lap_time, 
                                 tyre, team, 
-                                position,
+                                # position,
                                 rainfall,
                                 previous_position, pitstop_duration,
                                 traction, tyre_stress
                                 ))
 
-# Turn position into NA
-# rodriguez_pred$position <- NA
-levels(rodriguez_pred$driver) <- levels(season23$driver)
-levels(rodriguez_pred)
+# Ensure the levels match (some drivers were changed during the season)
+levels(int_pred$driver) <- levels(season23$driver)
+
 # Predict
 season23.fit = bn.fit(tested_season23.hc, data = season23)
-
-ALO5.pred = predict(season23.fit, data= rodriguez_pred[1:5,], node = "position", method = "parents", prob = T)
-ALO5.pred
+int.prediction = predict(season23.fit, data= int_pred, node = "position", method = "bayes-lw")
+int.prediction
 ```
+```{r}
+# Assess the predicitons
+int.predicted.pos = predict(season23.fit, data= int_pred, node = "position", method = "bayes-lw")
+
+predicted_values_numeric <- as.numeric(as.character(int.predicted.pos))
+true_values_numeric <- as.numeric(as.character(interlagos_df$position))
+
+mae <- mean(abs(predicted_values_numeric - true_values_numeric), na.rm = TRUE)
+print(paste("MAE:", round(mae, 2)))
+
+rmse <- sqrt(mean((predicted_values_numeric - true_values_numeric)^2, na.rm = TRUE))
+print(paste("RMSE:", round(rmse, 2)))
+
+
+```
+Barcelona what-if prediction
+```{r}
+# Choosing relevant variables
+bar_pred <- full_season_df %>% filter(event == "catalunya") %>%
+  dplyr::select(c( driver, lap_time, 
+                                tyre, team, 
+                                # position,
+                                rainfall,
+                                previous_position, pitstop_duration,
+                                traction, tyre_stress
+                                ))
+
+# Ensure the levels match (some drivers were changed during the season)
+levels(bar_pred$driver) <- levels(season23$driver)
+
+# Predict
+season23.fit = bn.fit(tested_season23.hc, data = season23)
+bar.prediction = predict(season23.fit, data= bar_pred, node = "position", method = "bayes-lw")
+bar.prediction
+```
+
 

@@ -272,12 +272,77 @@ bn.fit.barchart(bn.bayes$tyre)
 ```
 
 ```{r}
+bn.fit.barchart(bn.bayes$tyre)
+```
+```{r}
+bn.bayes$position$prob[,,5,1]
+```
+
+
+
+```{r}
+p1 = ggplot(mapping = aes(x = rep(seq(1:length(levels(BAH1$lap_time))),20),
+                     y=matrix(t(bn.bayes$position$prob[,,3,1]), ncol =1), color = rep(levels(BAH1$position), each = length(levels(BAH1$lap_time))))) + 
+  geom_point() +
+  geom_line() +
+  scale_x_discrete(limits=levels(BAH1$lap_time)) +
+  scale_color_discrete(limits = sort(unique(BAH1$position))) +
+  labs(x = "Lap Time", y= "Conditional probability", color = "Position", title ="Alpine, No pitstop")+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) 
+p2 = ggplot(mapping = aes(x = rep(seq(1:length(levels(BAH1$lap_time))),20),
+                     y=matrix(t(bn.bayes$position$prob[,,5,1]), ncol =1), color = rep(levels(BAH1$position), each = length(levels(BAH1$lap_time))))) + 
+  geom_point() +
+  geom_line() +
+  scale_x_discrete(limits=levels(BAH1$lap_time)) + 
+  scale_color_discrete(limits = sort(unique(BAH1$position))) +
+  labs(x = "Lap Time", y= "Conditional probability", color = "Position", title ="Ferrari, No pitstop")+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) 
+p3 = ggplot(mapping = aes(x = rep(seq(1:length(levels(BAH1$lap_time))),20),
+                     y=matrix(t(bn.bayes$position$prob[,,8,1]), ncol =1), color = rep(levels(BAH1$position), each = length(levels(BAH1$lap_time))))) + 
+  geom_point() +
+  geom_line() +
+  scale_x_discrete(limits=levels(BAH1$lap_time)) + 
+  scale_color_discrete(limits = sort(unique(BAH1$position))) +
+  labs(x = "Lap Time", y= "Conditional probability", color = "Position", title ="Mercedes, No pitstop")+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) 
+p4 = ggplot(mapping = aes(x = rep(seq(1:length(levels(BAH1$lap_time))),20),
+                     y=matrix(t(bn.bayes$position$prob[,,9,1]), ncol =1), color = rep(levels(BAH1$position), each = length(levels(BAH1$lap_time))))) + 
+  geom_point() +
+  geom_line() +
+  scale_x_discrete(limits=levels(BAH1$lap_time)) +
+  scale_color_discrete(limits = sort(unique(BAH1$position))) +
+  labs(x = "Lap Time", y= "Conditional probability", color = "Position", title ="Red Bull, No pitstop")+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) 
+grid.arrange(p1, p2, p3, p4, nrow = 2)
+
+ggsave("cond_lineplots.png", 
+       grid.arrange(p1, p2, p3, p4, nrow = 2), 
+       width = 14, height = 16) 
+
+
+```
+
+
+
+
+```{r}
 bn.bayes$lap_time
 ```
 
 ```{r}
-bn.bayes$tyre
+p5 = ggplot(mapping = aes(x = rep(seq(1:length(levels(BAH1$lap_time))),3),
+                     y=matrix((bn.bayes$lap_time$prob[,,1]), ncol =1), color = rep(levels(BAH1$tyre), each = length(levels(BAH1$lap_time))))) + 
+  geom_point() +
+  geom_line() +
+  scale_x_discrete(breaks=seq(1:length(levels(BAH1$lap_time))),
+        labels=levels(BAH1$lap_time)) +
+  scale_color_discrete(limits = sort(unique(BAH1$tyre))) +
+  labs(x = "Lap Time", y= "Conditional probability", color = "Tyre", title =" No pitstop")
+p5
 ```
+
+
+
 ## DAG unknown: constraint-based method (incremental association Markov blanket)
 
 ```{r}
