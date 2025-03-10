@@ -312,12 +312,12 @@ library(polycor)
 polychor(season23_full$lap_time, season23_full$position)
 ```
 
-```{r}
+```{r include=FALSE}
 # Show rows where starting position is 0, to check if that was a pitlane start
-full_season_df %>%
-  group_by(event, driver) %>%
-  filter(previous_position == 0) %>%
-  print(full_season_df)
+# full_season_df %>%
+#   group_by(event, driver) %>%
+#   filter(previous_position == 0) %>%
+#   print(full_season_df)
 ```
 # Structure learning
 
@@ -579,4 +579,65 @@ bar.prediction = predict(season23.fit, data= bar_pred, node = "position", method
 bar.prediction
 ```
 
+```{r}
+# Choosing relevant variables
+cota_pred <- full_season_df %>% filter(event == "americas") %>%
+  dplyr::select(c( driver, lap_time, 
+                                tyre, team, 
+                                rainfall,
+                                pitstop_duration,
+                                previous_position,
+                                traction, tyre_stress
+                                ))
+
+# filter for hamilton, change his tyre at lap 39 (row 255 of the df)
+cota_pred <- cota_pred %>%
+  mutate(tyre = if_else(driver == "HAM" & row_number() >= 255, "HARD", tyre))
+
+#Turn back into factor
+cota_pred$tyre <- factor(cota_pred$tyre, levels = levels(full_season_df$tyre))
+# Ensure the levels match (some drivers were changed during the season)
+levels(cota_pred$driver) <- levels(season23$driver)
+```
+
+Could Hamilton have won in COTA if he put on mediums like the rest of his rivals for the last stint?
+
+```{r}
+# Predict
+cota.prediction = predict(season23.fit, data= subset(cota_pred, driver == "HAM")[39:nrow(subset(cota_pred, driver == "HAM")),], node = "position", method = "bayes-lw")
+cota.prediction
+```
+
+Singapore: would Russell overtake on the final lap if he didn't crash?
+
+```{r}
+# Choosing relevant variables
+sin_pred <- full_season_df %>% filter(event == "marina_bay") %>%
+  dplyr::select(c( driver, lap_time, 
+                                tyre, team, 
+                                rainfall,
+                                pitstop_duration,
+                                previous_position,
+                                traction, tyre_stress
+                                ))
+# Ensure the levels match (some drivers were changed during the season)
+levels(sin_pred$driver) <- levels(season23$driver)
+
+# Predict
+sin.prediction = predict(season23.fit, data= subset(sin_pred, driver == "RUS")[nrow(subset(sin_pred, driver == "RUS")),], node = "position", method = "bayes-lw")
+sin.prediction
+
+```
+
+```{r}
+# filter for hamilton, change his tyre at lap 39 (row 255 of the df)
+sin_pred_fast <- sin_pred %>%
+  mutate(lap_time = if_else(driver == "RUS" & row_number() >= 820, "fastest", lap_time))
+sin_pred_fast$lap_time <- factor(sin_pred_fast$lap_time, levels = levels(full_season_df$lap_time))
+
+sin.prediction_f = predict(season23.fit, data= subset(sin_pred, driver == "RUS")[nrow(subset(sin_pred, driver == "RUS")),], node = "position", method = "bayes-lw")
+sin.prediction_f
+
+
+```
 
